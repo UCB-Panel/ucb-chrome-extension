@@ -2,27 +2,26 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8326",
   "files" : {
-    "\/scss\/style.scss" : {
+    "\/js\/linkClass.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scss\/style.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/css\/style.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/js\/linkClass.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/js\/min\/linkClass.min.js",
+      "fileType" : 64
     },
-    "\/fireworks\/okay.png" : {
+    "\/images\/dindo.de.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/fireworks\/okay.png",
+      "inputAbbreviatedPath" : "\/images\/dindo.de.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/fireworks\/okay.png",
-      "initialSize" : 7062,
+      "outputAbbreviatedPath" : "\/images\/dindo.de.png",
+      "initialSize" : 15161,
       "fileType" : 8192
     },
     "\/images\/sidebar.png" : {
@@ -45,6 +44,18 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/pre\/coffee\/options.coffee" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/pre\/coffee\/options.coffee",
+      "checkOutputStyle" : 0,
+      "minifyOutput" : 1,
+      "outputAbbreviatedPath" : "\/js\/options.js",
+      "outputStyle" : 0,
+      "fileType" : 32
+    },
     "\/images\/reload.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -56,17 +67,16 @@
       "initialSize" : 898,
       "fileType" : 8192
     },
-    "\/scss\/ie.scss" : {
+    "\/images\/food.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scss\/ie.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/css\/ie.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/images\/food.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/food.png",
+      "initialSize" : 778,
+      "fileType" : 8192
     },
     "\/css\/style.css" : {
       "ignoreWasSetByUser" : 0,
@@ -77,28 +87,16 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/vendors\/bootstrap\/js\/bootstrap.min.js" : {
+    "\/images\/favicon.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/vendors\/bootstrap\/js\/bootstrap.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/js\/min\/bootstrap.min.min.js",
-      "fileType" : 64
-    },
-    "\/coffee\/analytics.coffee" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/coffee\/analytics.coffee",
-      "checkOutputStyle" : 0,
-      "minifyOutput" : 1,
-      "outputAbbreviatedPath" : "\/js\/analytics.js",
-      "outputStyle" : 0,
-      "fileType" : 32
+      "inputAbbreviatedPath" : "\/images\/favicon.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/favicon.png",
+      "initialSize" : 3316,
+      "fileType" : 8192
     },
     "\/USB-Panel.png" : {
       "ignoreWasSetByUser" : 0,
@@ -111,6 +109,29 @@
       "initialSize" : 8784,
       "fileType" : 8192
     },
+    "\/pre\/scss\/print.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/pre\/scss\/print.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/css\/print.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/js\/options.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/js\/options.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/js\/min\/options.min.js",
+      "fileType" : 64
+    },
     "\/images\/kreis_temperatur.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -120,17 +141,6 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/images\/kreis_temperatur.png",
       "initialSize" : 2461,
-      "fileType" : 8192
-    },
-    "\/icon-128.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/icon-128.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/icon-128.png",
-      "initialSize" : 10689,
       "fileType" : 8192
     },
     "\/images\/bibliothek.png" : {
@@ -144,28 +154,6 @@
       "initialSize" : 743,
       "fileType" : 8192
     },
-    "\/js\/options.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/options.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/js\/min\/options.min.js",
-      "fileType" : 64
-    },
-    "\/images\/favicon.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/favicon.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/favicon.png",
-      "initialSize" : 3316,
-      "fileType" : 8192
-    },
     "\/js\/min\/content.min.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -177,6 +165,17 @@
       "outputAbbreviatedPath" : "\/js\/min\/content.min.min.js",
       "fileType" : 64
     },
+    "\/vendors\/bootstrap\/js\/bootstrap.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/vendors\/bootstrap\/js\/bootstrap.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/js\/min\/bootstrap.min.min.js",
+      "fileType" : 64
+    },
     "\/ucb-panel.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -186,28 +185,16 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/images\/food.png" : {
+    "\/icon-128.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/food.png",
+      "inputAbbreviatedPath" : "\/icon-128.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/food.png",
-      "initialSize" : 778,
+      "outputAbbreviatedPath" : "\/icon-128.png",
+      "initialSize" : 10689,
       "fileType" : 8192
-    },
-    "\/coffee\/content.coffee" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/coffee\/content.coffee",
-      "checkOutputStyle" : 0,
-      "minifyOutput" : 1,
-      "outputAbbreviatedPath" : "\/js\/content.js",
-      "outputStyle" : 0,
-      "fileType" : 32
     },
     "\/images\/mail.png" : {
       "ignoreWasSetByUser" : 0,
@@ -226,7 +213,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/config.rb",
-      "outputAbbreviatedPath" : "\/config.rb",
+      "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 32768
     },
     "\/icon-simple-128.png" : {
@@ -239,18 +226,6 @@
       "outputAbbreviatedPath" : "\/icon-simple-128.png",
       "initialSize" : 9125,
       "fileType" : 8192
-    },
-    "\/scss\/print.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scss\/print.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/css\/print.css",
-      "fileType" : 4,
-      "debugStyle" : 0
     },
     "\/js\/analytics.js" : {
       "ignoreWasSetByUser" : 0,
@@ -305,21 +280,23 @@
       "initialSize" : 642,
       "fileType" : 8192
     },
+    "\/images\/traffic.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/traffic.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/traffic.png",
+      "initialSize" : 4627,
+      "fileType" : 8192
+    },
     "\/css\/ie.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/css\/ie.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
-    "\/vendors\/bootstrap\/css\/bootstrap.min.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/vendors\/bootstrap\/css\/bootstrap.min.css",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
@@ -343,17 +320,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/vendors\/jquery.min.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/vendors\/jquery.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/js\/min\/jquery.min.min.js",
-      "fileType" : 64
-    },
     "\/vendors\/jquery.xml2json.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -364,18 +330,6 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/js\/min\/jquery.xml2json.min.js",
       "fileType" : 64
-    },
-    "\/coffee\/options.coffee" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/coffee\/options.coffee",
-      "checkOutputStyle" : 0,
-      "minifyOutput" : 1,
-      "outputAbbreviatedPath" : "\/js\/options.js",
-      "outputStyle" : 0,
-      "fileType" : 32
     },
     "\/vendors\/underscore-min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -388,37 +342,6 @@
       "outputAbbreviatedPath" : "\/js\/min\/underscore-min.min.js",
       "fileType" : 64
     },
-    "\/css\/screen.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/css\/screen.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
-    "\/images\/stud_ip.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/stud_ip.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/stud_ip.png",
-      "initialSize" : 732,
-      "fileType" : 8192
-    },
-    "\/images\/dindo.de.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/dindo.de.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/dindo.de.png",
-      "initialSize" : 15161,
-      "fileType" : 8192
-    },
     "\/images\/webmail.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -429,6 +352,50 @@
       "outputAbbreviatedPath" : "\/images\/webmail.png",
       "initialSize" : 450,
       "fileType" : 8192
+    },
+    "\/pre\/coffee\/content.coffee" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/pre\/coffee\/content.coffee",
+      "checkOutputStyle" : 0,
+      "minifyOutput" : 1,
+      "outputAbbreviatedPath" : "\/js\/content.js",
+      "outputStyle" : 0,
+      "fileType" : 32
+    },
+    "\/css\/screen.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/screen.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
+    "\/vendors\/jquery.waituntilexists.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/vendors\/jquery.waituntilexists.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/js\/min\/jquery.waituntilexists.min.min.js",
+      "fileType" : 64
+    },
+    "\/pre\/scss\/screen.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/pre\/scss\/screen.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/css\/screen.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/js\/content.js" : {
       "ignoreWasSetByUser" : 0,
@@ -441,15 +408,27 @@
       "outputAbbreviatedPath" : "\/js\/min\/content.min.js",
       "fileType" : 64
     },
-    "\/vendors\/jquery.waituntilexists.min.js" : {
+    "\/pre\/coffee\/analytics.coffee" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/vendors\/jquery.waituntilexists.min.js",
+      "inputAbbreviatedPath" : "\/pre\/coffee\/analytics.coffee",
+      "checkOutputStyle" : 0,
+      "minifyOutput" : 1,
+      "outputAbbreviatedPath" : "\/js\/analytics.js",
+      "outputStyle" : 0,
+      "fileType" : 32
+    },
+    "\/vendors\/jquery.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/vendors\/jquery.min.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/js\/min\/jquery.waituntilexists.min.min.js",
+      "outputAbbreviatedPath" : "\/js\/min\/jquery.min.min.js",
       "fileType" : 64
     },
     "\/fireworks\/icon-simple.fw.png" : {
@@ -474,39 +453,25 @@
       "outputAbbreviatedPath" : "\/js\/min\/options.min.min.js",
       "fileType" : 64
     },
-    "\/images\/traffic.png" : {
+    "\/images\/beer.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/traffic.png",
+      "inputAbbreviatedPath" : "\/images\/beer.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/traffic.png",
-      "initialSize" : 4627,
+      "outputAbbreviatedPath" : "\/images\/beer.png",
+      "initialSize" : 732,
       "fileType" : 8192
     },
-    "\/scss\/screen.scss" : {
+    "\/vendors\/bootstrap\/css\/bootstrap.min.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scss\/screen.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/css\/screen.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/images\/banner.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/banner.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/banner.png",
-      "initialSize" : 11250,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/vendors\/bootstrap\/css\/bootstrap.min.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/images\/optionen.png" : {
       "ignoreWasSetByUser" : 0,
@@ -517,6 +482,17 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/images\/optionen.png",
       "initialSize" : 896,
+      "fileType" : 8192
+    },
+    "\/images\/banner.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/images\/banner.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/banner.png",
+      "initialSize" : 11250,
       "fileType" : 8192
     },
     "\/images\/gremienallee.png" : {
@@ -530,16 +506,17 @@
       "initialSize" : 3341,
       "fileType" : 8192
     },
-    "\/images\/beer.png" : {
+    "\/pre\/scss\/ie.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/images\/beer.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/images\/beer.png",
-      "initialSize" : 732,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/pre\/scss\/ie.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/css\/ie.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/fireworks\/UCB-Panel.fw.png" : {
       "ignoreWasSetByUser" : 0,
@@ -552,16 +529,39 @@
       "initialSize" : 62818,
       "fileType" : 8192
     },
-    "\/js\/linkClass.js" : {
+    "\/images\/stud_ip.png" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/linkClass.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/js\/min\/linkClass.min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/images\/stud_ip.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/images\/stud_ip.png",
+      "initialSize" : 732,
+      "fileType" : 8192
+    },
+    "\/pre\/scss\/style.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/pre\/scss\/style.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/css\/style.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/fireworks\/okay.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/fireworks\/okay.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/fireworks\/okay.png",
+      "initialSize" : 7062,
+      "fileType" : 8192
     }
   },
   "manualImportLinks" : [
