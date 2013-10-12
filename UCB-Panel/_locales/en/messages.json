@@ -1,0 +1,12 @@
+{
+	// ONLY GENERAL STRINGS GO HERE
+	"extensionName": {
+		"message": "UCB-Panel"
+	},
+	"extensionDescription": {
+		"message": "UCB-Panel - The panel for Umwelt Campus Birkenfeld"
+	},
+	"extensionTitle": {
+		"message": "UCB-Panel"
+	}
+}
