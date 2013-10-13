@@ -25,7 +25,9 @@ Features:
  ✔ Hauptfunktionalität baut nun auf Klassen auf @done (13-10-12 22:45)
  ✔ UCB Campusplan @done (13-10-12 23:13)
  ✔ FH Trier OLAT @done (13-10-12 23:54)
- ☐ Code auf Github schieben
+ ✔ Code auf Github schieben @done (13-10-13 02:46)
+ ✔ build-script erstellen @done (13-10-13 02:48)
+ ✔ aufräumen @done (13-10-13 02:48)
  ☐ vcrp-icon für OLAT
  ☐ Einstellungsseite erstellt in der man zwischen 2 Themes wählen kann
  ☐ Extension komplett auf Englisch übersetzt
