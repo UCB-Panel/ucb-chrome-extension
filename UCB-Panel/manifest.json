@@ -6,7 +6,8 @@
   "default_locale": "en",
   "permissions": [
     "tabs",
-    "http://infotv.umwelt-campus.de/"
+    "http://infotv.umwelt-campus.de/",
+    "http://traffic.campus-company.eu/"
   ],
   "options_page": "options.html",
   "icons": {

@@ -72,6 +72,38 @@ body {
     margin-left: auto;
 }
 
+.TrafficDisplay {
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    height: 32px;
+    margin-left: 10px;
+    font: 12px Arial,sans-serif;
+
+    .TrafficLeftSide {
+        display: inline-block;
+        height: 32px;
+
+        .traffic_down{
+            color: blue;
+        }
+
+        .traffic_up{
+            color: red;
+        }
+    }
+
+    .TrafficRightSide {
+        position: relative;
+        display: inline-block;
+        float: right;
+        margin-left: 10px;
+        top: 8px;
+        color: green;
+        font-weight: bold;
+    }
+}
+
 .menuitem-iconic {
     $color: #eee;
     width: 100%;

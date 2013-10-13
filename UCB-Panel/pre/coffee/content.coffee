@@ -41,6 +41,79 @@ createCollapseButton = (innerClass, value, icon, text) ->
 addSpacer = (parentClass) ->
 	$(parentClass).append "<hr />"
 
+getTrafficAndPrint = () ->
+	$.get "http://traffic.campus-company.eu/", (page) ->
+		exp = page.match(/Ihr Restguthaben: <strong>\s*[0-9]*\.[0-9]* MB/)
+		trafficPerMonth = page.match(/von [0-9]* MB pro Monat/) + ""
+		downloadThisMonth = page.match(/<th>Monatssumme<\/th>\s*<th align=\"right\">[0-9]*\.?[0-9]*\,[0-9]*/) + ""
+		uploadThisMonth = page.match(/<th>Monatssumme<\/th>\s*<th align=\"right\">[0-9]*\.?[0-9]*\,[0-9]*<\/th>\s*<th align="right">[0-9]*\.?[0-9]*\,[0-9]*/) + ""
+		dataPerDate = new Array()
+		tag = undefined
+		while (tag = page.match(/<tr class=\"(trbg1|trbg0)\">\s*<td>([0-9]{4}-[0-9]{2}-[0-9]{2})<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<\/tr>/))?
+			page = page.replace(/<tr class=\"(trbg1|trbg0)\">\s*<td>([0-9]{4}-[0-9]{2}-[0-9]{2})<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<\/tr>/, "")
+			data = new Object()
+			data.date = Date.parse(tag[2])
+			data.down = tag[3]
+			data.down = data.down.replace(/\./, "")
+			data.down = data.down.replace(/,/, ".")
+			data.down *= 1
+			data.up = tag[4]
+			data.up = data.up.replace(/\./, "")
+			data.up = data.up.replace(/,/, ".")
+			data.up *= 1
+			data.traffic = tag[5]
+			data.traffic = data.traffic.replace(/\./, "")
+			data.traffic = data.traffic.replace(/,/, ".")
+			data.traffic *= 1
+			dataPerDate.push data
+		unless trafficPerMonth is "null"
+			#TRAFFIC PRO MONAT
+			trafficPerMonth = trafficPerMonth.replace(/von /, "") + ""
+			trafficPerMonth = trafficPerMonth.replace(RegExp(" MB pro Monat"), "") + ""
+			trafficPerMonth = trafficPerMonth * 1
+		if exp?
+			#TRAFFIC AKTUELL
+			exp = exp + ""
+			exp = exp.replace(/Ihr Restguthaben: <strong>\s*/, "") + ""
+			exp = exp.replace(RegExp(" MB"), "") + ""
+			exp = exp * 1
+		unless downloadThisMonth is "null"
+			#Downloaded AKTUELL
+			downloadThisMonth = downloadThisMonth.replace(/<th>Monatssumme<\/th>\s*<th align=\"right\">/, "")
+			downloadThisMonth = downloadThisMonth.replace(/\./, "")
+			downloadThisMonth = downloadThisMonth.replace(/,/, ".")
+			downloadThisMonth *= 1
+		else
+			downloadThisMonth = 0.0
+		unless uploadThisMonth is "null"
+			#Uploaded AKTUELL
+			uploadThisMonth = uploadThisMonth.replace(/<th>Monatssumme<\/th>\s*<th align=\"right\">[0-9]*\.?[0-9]*\,[0-9]*<\/th>\s*<th align="right">/, "")
+			uploadThisMonth = uploadThisMonth.replace(/\./, "")
+			uploadThisMonth = uploadThisMonth.replace(/,/, ".")
+			uploadThisMonth *= 1
+		else
+			uploadThisMonth = 0.0
+
+		# daten verarbeiten und in lesbare form bringen
+		data = new Object()
+		data.Traffic = exp.toFixed(2) + " MB"
+		data.TrafficGBMB = ((if (exp / 1000).toFixed(2) > 1 then (exp / 1000).toFixed(2) + " GB" else exp.toFixed(2) + " MB"))
+		data.TrafficGB = (exp / 1000).toFixed(2) + " GB"
+		data.TrafficPM = trafficPerMonth.toFixed(2) + " MB"
+		data.TrafficPMraw = trafficPerMonth.toFixed(2)
+		data.TrafficPMGB = (trafficPerMonth / 1000).toFixed(2) + " GB"
+		data.Down = downloadThisMonth.toFixed(2) + " MB"
+		data.DownGB = (downloadThisMonth / 1000).toFixed(2) + " GB"
+		data.Up = uploadThisMonth.toFixed(2) + " MB"
+		data.UpGB = (uploadThisMonth / 1000).toFixed(2) + " GB"
+		data.dataPerDate = dataPerDate
+
+		#write data to extension
+		$('.traffic_up').append(data.UpGB)
+		$('.traffic_down').append(data.DownGB)
+		$('.traffic_total').append(data.TrafficGB)
+
+
 # build the german app content
 buildGermanApp = ->
 	# General Variables
@@ -83,7 +156,7 @@ buildGermanApp = ->
 	addSpacer( metaClass )
 
 	# <!-- Studierende unter einander -->
-	ucbCommunityGroup = [ucbGremienallee, ucbCommunity]
+	ucbCommunityGroup = [ucbCommunity, ucbGremienallee]
 	addButtonGroup( ucbCommunityGroup, ".ucbPanelButtonGroup" )
 	addSpacer( metaClass )
 
@@ -115,17 +188,23 @@ buildGermanApp = ->
 
 	# 	async: false
 
-	addSpacer( metaClass )
+	# check if we are on the Campus, if not don't display Trafficmeter
+	$.get "http://traffic.campus-company.eu/", (page) ->
+		ip_address = page.match(/Ihre IP-Adresse: 143.93.4[0-2]{1}.[0-9]{1,3}/)+"" #IP im Lan???
+		ip_address = ip_address.replace(/Ihre IP-Adresse: /, "")+""
 
+		unless ip_address is "null"
+			addSpacer( metaClass )
+			
+			$(".ucbPanelButtonGroup").append '<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.ucbgmbh.de/index.php"></button>'
+			$(".ucbPanelButtonGroup").append '<div class="TrafficDisplay"></div>'
+			$(".TrafficDisplay").append '<div class="TrafficLeftSide"></div>'
+			$(".TrafficDisplay").append '<div class="TrafficRightSide"></div>'
+			$(".TrafficLeftSide").append '<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>'
+			$(".TrafficLeftSide").append '<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>'
+			$(".TrafficRightSide").append '<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>'
+			getTrafficAndPrint() # wirte data
 
-	# <!-- Speedmeter -->
-	# 			<!--
-	# 			<button class="button menuitem-iconic ucbpanel_sidebar" type="button" value="toggleSidebar('viewUCB_Panel_sidebar');">Sidebar</button>
-	# 			<button class="button menuitem-iconic ucbpanel_reload" type="button" value="ucbp_ucbpanel.trafficcounter.getTrafficPage();">Aktualisieren</button>
-	# 			-->
-
-
-	$(".ucbPanelButtonGroup").append "<button class=\"button ucbpanel_traffic\" type=\"button\" id=\"Campus Company Traffic\" value=\"http://traffic.ucbgmbh.de/index.php\"></button>"
 
 	# <!-- Footer -->
 	footerHTML = $('
