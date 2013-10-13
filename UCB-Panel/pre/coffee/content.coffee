@@ -151,7 +151,7 @@ buildGermanApp = ->
 	$(metaClass).append '<div class="ucbPanelCollapseContainer"></div>'
 
 	# <!-- UCB Links -->
-	ucbCollapseGroup = [ucbHomepage, ucbTimetable, ucbDates, ucbCampusplan, ucbBlog, ucbFacebook, ucbStaff, ucbDataCenter, ucbExams]
+	ucbCollapseGroup = [ucbHomepage, ucbTimetable, ucbDates, ucbCampusplan, ucbExams, ucbBlog, ucbFacebook, ucbStaff, ucbDataCenter]
 	addButtonGroup( ucbCollapseGroup, ".ucbPanelCollapseContainer" )
 	addSpacer( metaClass )
 
@@ -195,7 +195,7 @@ buildGermanApp = ->
 
 		unless ip_address is "null"
 			addSpacer( metaClass )
-			
+
 			$(".ucbPanelButtonGroup").append '<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.ucbgmbh.de/index.php"></button>'
 			$(".ucbPanelButtonGroup").append '<div class="TrafficDisplay"></div>'
 			$(".TrafficDisplay").append '<div class="TrafficLeftSide"></div>'
