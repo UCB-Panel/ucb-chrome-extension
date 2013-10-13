@@ -1,0 +1,77 @@
+# PROJECT: UCB-Panel
+# 
+# AUTHOR : Niklas Heer
+# DATE   : 13.10.2013
+# LICENSE: GPL 3.0
+
+#!/usr/bin/env python
+import os
+import glob
+import sys
+import argparse
+from subprocess import call, Popen, PIPE, STDOUT
+
+def createZipFile(fs_version):
+    """
+        createZipFile(fs_version): creates the zip file.
+    """
+
+    filename = appName + file_sufix + ".zip"
+
+    os.chdir("UCB-Panel")
+    zip = Popen(['zip', '-FSr@', "../"+release_path+filename], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
+
+    zip_stdout = zip.communicate(input='_locales\ncss\nimages\njs\nvendors\nREADME\nchangelog\nicon-128.png\nicon-simple-128.png\nmanifest.json\noptions.html\nucb-panel.html\n')[0]
+    print(zip_stdout)
+    os.chdir(home)
+
+    return release_path+filename
+
+
+def createRelease(version):
+
+    global file_sufix, release_path, appFile
+
+    # print menu
+    print "====== Release Build Script ======"
+    print "[INFO] Builds a new release for " + appName
+
+    if not version:
+        version = raw_input('Enter version: ')
+
+    # create variables
+    file_sufix += version
+    release_path = 'releases/'
+
+    print "\n[INFO] Creating Release " + version
+
+    # create Zip
+    print "[INFO] Creating ZIP File!"
+    appFile = createZipFile(version)
+    print "[SUCCESS] ZIP File created!"
+
+    # success!
+    print "\n[INFO] The release was successfully build."
+
+"""
+    Main Programm
+"""
+parser = argparse.ArgumentParser(description='This programm can build a release of the UCB-Panel.')
+parser.add_argument('-v', '--version', help='The version number of the release. (e.g. 1.0.0)')
+parser.add_argument('-n', '--name', help='Releasename.')
+args = parser.parse_args()
+
+# Define global variables
+appName = "UCB-Panel"
+home = os.getcwd()
+
+file_sufix = "-"
+release_path = ""
+appFile = ""
+
+if args.version:
+    createRelease(args.version)
+elif args.name:
+    appName = args.name
+else:
+    createRelease("")
