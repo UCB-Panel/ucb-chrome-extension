@@ -1,9 +1,10 @@
-#
+# PROJECT: UCB-Panel
+# 
+# AUTHOR : Niklas Heer
+# DATE   : 13.10.2013
+# LICENSE: GPL 3.0
+
 # Track a click on a button using the asynchronous tracking API.
-#
-# See http://code.google.com/apis/analytics/docs/tracking/asyncTracking.html
-# for information on how to use the asynchronous tracking API.
-#
 trackButtonClick = (e) ->
 	_gaq.push ["_trackEvent", e.target.id, "clicked"]
 
@@ -19,10 +20,7 @@ _gaq.push ["_trackPageview"]
 	s.parentNode.insertBefore ga, s
 )()
 
-###
-Now set up your event handlers for the popup's `button` elements once the
-popup's DOM has loaded.
-###
+# define dom selector for listening
 document.addEventListener "DOMContentLoaded", ->
 	buttons = document.querySelectorAll("button")
 	i = 0

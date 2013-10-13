@@ -1,3 +1,9 @@
+# PROJECT: UCB-Panel
+# 
+# AUTHOR : Niklas Heer
+# DATE   : 13.10.2013
+# LICENSE: GPL 3.0
+
 # classes
 class Link
 	constructor: ( @classes, @icon, @text, @value, @id) ->
