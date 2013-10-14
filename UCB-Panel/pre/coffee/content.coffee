@@ -161,7 +161,7 @@ buildGermanApp = ->
 	addSpacer( metaClass )
 
 	# <!-- Internes -->
-	ucbInternGroup = [ucbQIS, ucbWebMail, ucbIntranet, ucbLibrary, ucbStudIP, ucbJuris, ucbOLAT]
+	ucbInternGroup = [ucbStudIP, ucbWebMail, ucbQIS, ucbIntranet, ucbLibrary, ucbJuris, ucbOLAT]
 	addButtonGroup( ucbInternGroup, ".ucbPanelButtonGroup" )
 	addSpacer( metaClass )
 
