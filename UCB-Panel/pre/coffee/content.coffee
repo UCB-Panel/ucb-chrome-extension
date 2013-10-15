@@ -166,7 +166,7 @@ buildGermanApp = ->
 	addSpacer( metaClass )
 
 	# <!-- Auf dem Campus -->
-	ucbOnCampusGroup = [ucbKneipe, ucbMensa]
+	ucbOnCampusGroup = [ucbMensa, ucbKneipe]
 	addButtonGroup( ucbOnCampusGroup, ".ucbPanelButtonGroup" )
 	$(metaClass).append createCollapseButton(btnBaseCSS + "ucbpanel_mensa trigger", "%COLLAPSE%", "icon_ucbpanel_mensa", "Mensa")
 	$(metaClass).append '<div class="ucbPanelCollapseContainer ucbMensaCollapse" id="ucbMensaCollapse"></div>'
