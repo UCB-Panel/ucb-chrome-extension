@@ -126,6 +126,8 @@ buildGermanApp = ->
 	# Content Objects
 	ucbHomepage = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Startseite", "http://www.umwelt-campus.de/ucb/index.php", "[Collapsed] UCB Startseite")
 	ucbCampusplan = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Campusplan", "http://www.umwelt-campus.de/ucb/fileadmin/layout/ucbplan.pdf", "[Collapsed] UCB Campusplan")
+	ucbContact = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Contact", "http://ucb-contact.umwelt-campus.de/", "[Collapsed] UCB Contact")
+	ucbMSDNAA = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Microsoft-Dreamspark", "https://www.umwelt-campus.de/elms_login.php", "[Collapsed] UCB MSDNAA")
 	ucbBlog = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Blog", "http://blog.hochschule-trier.de/", "[Collapsed] UCB Blog")
 	ucbFacebook = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Facebook-Seite", "https://www.facebook.com/UmweltCampus", "[Collapsed] UCB Facebook")
 	ucbStaff = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Personalverzeichnis", "http://www.umwelt-campus.de/ucb/index.php?id=personalverzeichnis", "[Collapsed] UCB Personalverzeichnis")
@@ -151,7 +153,7 @@ buildGermanApp = ->
 	$(metaClass).append '<div class="ucbPanelCollapseContainer"></div>'
 
 	# <!-- UCB Links -->
-	ucbCollapseGroup = [ucbHomepage, ucbTimetable, ucbDates, ucbCampusplan, ucbExams, ucbBlog, ucbFacebook, ucbStaff, ucbDataCenter]
+	ucbCollapseGroup = [ucbHomepage, ucbTimetable, ucbDates, ucbCampusplan, ucbExams, ucbContact, ucbBlog, ucbFacebook, ucbStaff, ucbDataCenter, ucbMSDNAA]
 	addButtonGroup( ucbCollapseGroup, ".ucbPanelCollapseContainer" )
 	addSpacer( metaClass )
 
