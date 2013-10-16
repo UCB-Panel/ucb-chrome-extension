@@ -17,10 +17,14 @@ $.rloader [src: chrome.extension.getURL('vendors/jquery.xml2json.js')]
 $.rloader [src: chrome.extension.getURL('css/main.css')]
 $.rloader [src: chrome.extension.getURL('css/icons.css')]
 
-if localStorage["fav_theme"] is "simple"
-	$.rloader [src: chrome.extension.getURL('css/simple.css')]
-else
-	$.rloader [src: chrome.extension.getURL('css/classic.css')]
+theme = localStorage["fav_theme"]
+switch theme
+	when "simple"
+		$.rloader [src: chrome.extension.getURL('css/simple.css')]
+	when "flat"
+		$.rloader [src: chrome.extension.getURL('css/flat.css')]
+	else
+		$.rloader [src: chrome.extension.getURL('css/classic.css')]
 
 # load Extension scripts
 # $.rloader [src: chrome.extension.getURL('js/min/analytics.min.js')]

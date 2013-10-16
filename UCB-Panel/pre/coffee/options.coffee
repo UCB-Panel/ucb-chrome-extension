@@ -54,6 +54,7 @@ buildGermanApp = ->
 		<select id="theme">
 			<option value="classic">klassisches Design</option>
 			<option value="simple">einfaches Design</option>
+			<option value="flat">flat Design</option>
 		</select>
 		</p>
 
@@ -72,6 +73,7 @@ buildEnglishApp = ->
 		<select id="theme">
 			<option value="classic">classic design</option>
 			<option value="simple">simple design</option>
+			<option value="flat">flat design</option>
 		</select>
 		</p>
 
