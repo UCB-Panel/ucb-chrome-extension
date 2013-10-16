@@ -170,8 +170,11 @@ buildGermanApp = ->
 	# <!-- Auf dem Campus -->
 	ucbOnCampusGroup = [ucbMensa, ucbKneipe]
 	addButtonGroup( ucbOnCampusGroup, ".ucbPanelButtonGroup" )
-	$(metaClass).append createCollapseButton(btnBaseCSS + "ucbpanel_mensa trigger", "%COLLAPSE%", "icon_ucbpanel_mensa", "Mensa")
-	$(metaClass).append '<div class="ucbPanelCollapseContainer ucbMensaCollapse" id="ucbMensaCollapse"></div>'
+
+
+	# Mensa crawler
+	# $(metaClass).append createCollapseButton(btnBaseCSS + "ucbpanel_mensa trigger", "%COLLAPSE%", "icon_ucbpanel_mensa", "Mensa")
+	# $(metaClass).append '<div class="ucbPanelCollapseContainer ucbMensaCollapse" id="ucbMensaCollapse"></div>'
 
 
 	# $.get "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", (xml) ->
@@ -186,9 +189,8 @@ buildGermanApp = ->
 	# 			json = $.xml2json(xml)
 	# 			$('.ucbMensaCollapse').append json
 	# 			console.log json
-
-
 	# 	async: false
+
 
 	# check if we are on the Campus, if not don't display Trafficmeter
 	$.get "http://traffic.campus-company.eu/", (page) ->

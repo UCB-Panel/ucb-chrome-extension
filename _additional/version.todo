@@ -34,9 +34,10 @@ Features:
  ✔ MSDNAA Link hinzufügen @done (13-10-16 17:03)
  ✔ vcrp-icon für OLAT @done (13-10-16 17:10)
  ✔ resources.js hinzugefügt, welches dynamisch die nötigen resourcen läd @done (13-10-16 18:15)
- ☐ options.html bzw. opstions.js Funktionalität für Themewechsel hinzufügen
- ☐ Flat-Style erstellen
- ☐ options.html erstellen
+ ✔ options.html bzw. opstions.js Funktionalität für Themewechsel hinzufügen @done (13-10-17 01:20)
+ ✔ Simple-Style erstellen @done (13-10-17 01:20)
+ ✔ options.html erstellen @done (13-10-17 01:20)
+ ✔ Style aufgeteilt. (main.css und icons.css hinzugefügt) @done (13-10-17 01:21)
  ☐ Extension komplett auf Englisch übersetzt
  ☐ Webmail Icon zu Exchange bzw. MS ändern
 
@@ -45,3 +46,4 @@ Features:
 v2.1.0:
  ☐ Mensaplan wird per xml geholt und direkt in der Extension angezeigt
  ☐ Suchfunktion für den Umwelt-Campus
+ ☐ flat-design
