@@ -69,7 +69,7 @@ body { width: 220px; min-width: 220px; }
 
 .icon_ucbpanel_juris { width: 16px; height: 16px; display: inline-block; float: left; background: url("chrome-extension://__MSG_@@extension_id__/images/law.png") no-repeat; }
 
-.icon_ucbpanel_olat { width: 16px; height: 16px; display: inline-block; float: left; background: url("chrome-extension://__MSG_@@extension_id__/images/fh-trier.png") no-repeat; }
+.icon_ucbpanel_olat { width: 16px; height: 16px; display: inline-block; float: left; background: url("chrome-extension://__MSG_@@extension_id__/images/openolat_16.png") no-repeat; }
 
 .icon_ucbpanel_mensa { width: 16px; height: 16px; display: inline-block; float: left; background: url("chrome-extension://__MSG_@@extension_id__/images/food.png") no-repeat; }
 
