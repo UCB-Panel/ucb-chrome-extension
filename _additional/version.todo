@@ -33,8 +33,12 @@ Features:
  ✔ UCB Contact Link @done (13-10-16 16:59)
  ✔ MSDNAA Link hinzufügen @done (13-10-16 17:03)
  ✔ vcrp-icon für OLAT @done (13-10-16 17:10)
- ☐ Einstellungsseite erstellt in der man zwischen 2 Themes wählen kann
- ☐ Extension komplett auf Englisch übersetzt 
+ ✔ resources.js hinzugefügt, welches dynamisch die nötigen resourcen läd @done (13-10-16 18:15)
+ ☐ options.html bzw. opstions.js Funktionalität für Themewechsel hinzufügen
+ ☐ Flat-Style erstellen
+ ☐ options.html erstellen
+ ☐ Extension komplett auf Englisch übersetzt
+ ☐ Webmail Icon zu Exchange bzw. MS ändern
 
 
 
