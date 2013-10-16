@@ -8,22 +8,23 @@
 
 # Saves options to localStorage.
 save_options = ->
-	select = document.getElementById("color")
-	color = select.children[select.selectedIndex].value
-	localStorage["favorite_color"] = color
+	select = document.getElementById("theme")
+	theme = select.children[select.selectedIndex].value
+	localStorage["fav_theme"] = theme
 	
 	# Update status to let user know options were saved.
-	status = document.getElementById("status")
-	status.innerHTML = "Options Saved."
+	status = $('#status').append '<div class="alert alert-success">Options Saved.</div>'
+	status.show()
 	setTimeout (->
-		status.innerHTML = ""
+		status.hide()
+		status.html('')
 	), 750
 
 # Restores select box state to saved value from localStorage.
 restore_options = ->
-	favorite = localStorage["favorite_color"]
+	favorite = localStorage["fav_theme"]
 	return  unless favorite
-	select = document.getElementById("color")
+	select = document.getElementById("theme")
 	i = 0
 
 	while i < select.children.length
@@ -32,6 +33,7 @@ restore_options = ->
 			child.selected = "true"
 			break
 		i++
+
 buildGermanApp = ->
 	document.title = "UCB-Panel Einstellungen"
 

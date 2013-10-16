@@ -14,7 +14,13 @@ $.rloader [src: chrome.extension.getURL('vendors/bootstrap/js/bootstrap.min.js')
 $.rloader [src: chrome.extension.getURL('vendors/jquery.xml2json.js')]
 
 # load Extension Stylesheets
-$.rloader [src: chrome.extension.getURL('css/style.css')]
+$.rloader [src: chrome.extension.getURL('css/main.css')]
+$.rloader [src: chrome.extension.getURL('css/icons.css')]
+
+if localStorage["fav_theme"] is "simple"
+	$.rloader [src: chrome.extension.getURL('css/simple.css')]
+else
+	$.rloader [src: chrome.extension.getURL('css/classic.css')]
 
 # load Extension scripts
 # $.rloader [src: chrome.extension.getURL('js/min/analytics.min.js')]

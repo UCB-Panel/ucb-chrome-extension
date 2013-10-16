@@ -120,7 +120,7 @@ buildGermanApp = ->
 	metaClass = ".ucbPanelButtonGroup" # jQuery identifier
 
 	# CSS-Classes
-	btnBaseCSS = "button menuitem-iconic "
+	btnBaseCSS = "button btn btn-default menuitem-iconic "
 	collapseCssClasses = btnBaseCSS + "ucbpanel_iro collapse_item"
 
 	# Content Objects
@@ -149,7 +149,7 @@ buildGermanApp = ->
 
 
 	# Collapse Container
-	$(metaClass).append createCollapseButton("trigger menuitem-iconic", "%COLLAPSE%", "icon_ucbpanel_iro", "Umwelt-Campus")
+	$(metaClass).append createCollapseButton("btn btn-default trigger menuitem-iconic", "%COLLAPSE%", "icon_ucbpanel_iro", "Umwelt-Campus")
 	$(metaClass).append '<div class="ucbPanelCollapseContainer"></div>'
 
 	# <!-- UCB Links -->

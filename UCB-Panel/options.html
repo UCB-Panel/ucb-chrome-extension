@@ -4,25 +4,32 @@
 <!-- DATE   : 13.10.2013 						-->
 <!-- LICENSE: GPL 3.0 							-->
 <html>
-<head><title></title></head>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="vendors/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="vendors/bootstrap/css/bootstrap-theme.min.css">
+</head>
 <body>
+	<div class="container">
+		<div class="page-header">
+			<h1>Einstellungen <small>für das UCB-Panel</small></h1>
+		</div>
+		<div id="status"></div>
+		<p>Theme auswählen:
+		<select id="theme">
+			<option value="classic">klassisches Design</option>
+			<option value="simple">simples Design</option>
+		</select>
+		</p>
 
-Favorite Color:
-<select id="color">
- <option value="red">red</option>
- <option value="green">green</option>
- <option value="blue">blue</option>
- <option value="yellow">yellow</option>
-</select>
-
-<br>
-<div id="status"></div>
-<button id="save">Save</button>
+		<br>
+		<button class="btn" id="save">Save</button>
+	</div>
 </body>
 
 <!-- Scripts -->
 <script src="vendors/jquery.min.js"></script>
 <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="js/min/options.min.js"></script>
+<script src="js/options.js"></script>
 
 </html>

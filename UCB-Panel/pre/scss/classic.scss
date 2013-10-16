@@ -1,0 +1,51 @@
+// PROJECT: UCB-Panel
+//
+// AUTHOR : Niklas Heer niklas.heer@me.com
+// DATE   : 13.10.2013
+// LICENSE: GPL 3.0
+
+@import "compass/reset";
+@import "compass/css3";
+
+
+.menuitem-iconic {
+    $color: #eee;
+    width: 100%;
+
+    @mixin font-color {
+    @if lightness($color) > 50 {
+        color: rgba(black,0.8);
+        text-shadow: 0 0.1em 0 rgba(white,0.5);
+    } @else {
+            color: rgba(white,0.85);
+            text-shadow: 0 -0.08em 0 darken($color, 20%);
+        }
+    }
+
+    font: 12px Arial,sans-serif;
+    @include font-color;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 10px 5px;
+    @include border-radius(0.30em);
+    border: 1px solid;
+    border-color: darken($color, 20%) darken($color, 30%) darken($color, 40%);
+    background-color: $color;
+    @include background-image(linear-gradient($color, darken($color, 10%)));
+    @include box-shadow(0 0.1em 0.5em rgba(black,0.10), 0 0.1em 0.2em rgba(black,0.3), 0 -0.1em 0.07em rgba(black,0.3) inset, 0 0.1em 0.07em rgba(white,0.2) inset);
+    @include transition(all 100ms);
+
+    &:hover {
+        @include box-shadow(0 0.1em 0.5em rgba(black,0.4), 0 0.1em 0.2em rgba(black,0.4), 0 -0.1em 0.07em rgba(black,0.3) inset, 0 0.1em 0.07em rgba(white,0.2) inset);
+        @include background-image(linear-gradient(darken($color, 10%), darken($color, 5%)));
+    }
+
+    &:active {
+        padding: 5px 10px 5px;
+        border-color: darken($color, 30%) darken($color, 20%) $color;
+        @include background-image(linear-gradient(darken($color, 5%), $color));
+        @include box-shadow(0 0.1em 0.2em rgba(black,0.1) inset, 0 0.1em 0.1em rgba(black,0.2) inset, 0.05em 0 0.07em rgba(black,0.2) inset, -0.05em 0 0.07em rgba(black,0.2) inset);
+        @include transition(all 10ms);
+    }
+}
