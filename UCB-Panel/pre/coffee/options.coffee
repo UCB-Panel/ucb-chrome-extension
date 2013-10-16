@@ -36,16 +36,42 @@ restore_options = ->
 
 buildGermanApp = ->
 	document.title = "UCB-Panel Einstellungen"
+	$(".container").append('
+		<div class="page-header">
+			<h1>Einstellungen <small>für das UCB-Panel</small></h1>
+		</div>
+		<div id="status"></div>
+		<p>Theme auswählen:
+		<select id="theme">
+			<option value="classic">klassisches Design</option>
+			<option value="simple">einfaches Design</option>
+		</select>
+		</p>
 
-# Load a stylesheet
-# $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'your stylesheet url') );
+		<br>
+		<button class="btn" id="save">Speichern</button>
+	')
+
 buildEnglishApp = ->
 	document.title = "UCB-Panel settings"
+	$(".container").append('
+		<div class="page-header">
+			<h1>Settings <small>for the UCB-Panel</small></h1>
+		</div>
+		<div id="status"></div>
+		<p>Choose theme:
+		<select id="theme">
+			<option value="classic">classic design</option>
+			<option value="simple">simple design</option>
+		</select>
+		</p>
 
-document.addEventListener "DOMContentLoaded", restore_options
-document.querySelector("#save").addEventListener "click", save_options
+		<br>
+		<button class="btn" id="save">Save</button>
+	')
 
-# NIY
+
+
 
 #
 # MAIN FUNCTION
@@ -63,3 +89,11 @@ $(document).ready ->
 			buildEnglishApp()
 		else
 			buildEnglishApp()
+
+	restore_options()
+
+	# Listeners
+	document.querySelector("#save").addEventListener "click", save_options
+
+
+
