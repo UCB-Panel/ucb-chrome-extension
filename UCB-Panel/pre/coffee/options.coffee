@@ -34,11 +34,20 @@ restore_options = ->
 			break
 		i++
 
+getVersion = (callback) ->
+	xmlhttp = new XMLHttpRequest()
+	xmlhttp.open "GET", "manifest.json"
+	xmlhttp.onload = (e) ->
+		manifest = JSON.parse(xmlhttp.responseText)
+		callback manifest.version
+	xmlhttp.send null
+
 buildGermanApp = ->
 	document.title = "UCB-Panel Einstellungen"
 	$(".container").append('
 		<div class="page-header">
-			<h1>Einstellungen <small>für das UCB-Panel</small></h1>
+			<h1>Einstellungen <small>für das UCB-Panel</small>
+			<small class="pull-right version-number">v </small></h1>
 		</div>
 		<div id="status"></div>
 		<p>Theme auswählen:
@@ -91,6 +100,8 @@ $(document).ready ->
 			buildEnglishApp()
 
 	restore_options()
+	getVersion (ver) ->
+		$(".version-number").append ver
 
 	# Listeners
 	document.querySelector("#save").addEventListener "click", save_options
