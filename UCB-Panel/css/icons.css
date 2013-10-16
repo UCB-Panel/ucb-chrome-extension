@@ -29,7 +29,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .icon_ucbpanel_qis { width: 16px; height: 16px; display: inline-block; float: left; background: url("chrome-extension://__MSG_@@extension_id__/images/fh-trier.png") no-repeat; }
 
-.icon_ucbpanel_webmail { width: 16px; height: 16px; display: inline-block; float: left; background: url("chrome-extension://__MSG_@@extension_id__/images/outlook.jpg") no-repeat; }
+.icon_ucbpanel_webmail { width: 16px; height: 16px; display: inline-block; float: left; background: url("chrome-extension://__MSG_@@extension_id__/images/outlook.png") no-repeat; }
 
 .icon_ucbpanel_mail { width: 16px; height: 16px; display: inline-block; float: left; background: url("chrome-extension://__MSG_@@extension_id__/images/mail.png") no-repeat; }
 
