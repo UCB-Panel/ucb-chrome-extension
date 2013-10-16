@@ -1,6 +1,6 @@
 # PROJECT: UCB-Panel
 # 
-# AUTHOR : Niklas Heer
+# AUTHOR : Niklas Heer (niklas.heer@me.com)
 # DATE   : 13.10.2013
 # LICENSE: GPL 3.0
 
