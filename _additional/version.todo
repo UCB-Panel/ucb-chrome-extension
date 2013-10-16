@@ -33,8 +33,10 @@ Features:
  ☐ vcrp-icon für OLAT
  ☐ Einstellungsseite erstellt in der man zwischen 2 Themes wählen kann
  ☐ Extension komplett auf Englisch übersetzt
- ☐ Mensaplan wird per xml geholt und direkt in der Extension angezeigt
- ☐ Suchfunktion für den Umwelt-Campus
  ☐ UCB Contact Link (http://ucb-contact.umwelt-campus.de/) - icon finden
  ☐ MSDN Link hinzufügen (https://www.umwelt-campus.de) - icon finden 
- ☐ automatisch einloggen (Einstellungen) evtl.
+
+
+v2.1.0:
+ ☐ Mensaplan wird per xml geholt und direkt in der Extension angezeigt
+ ☐ Suchfunktion für den Umwelt-Campus
