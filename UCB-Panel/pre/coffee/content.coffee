@@ -264,10 +264,10 @@ $(document).ready(->
 	$(".icon_arrow").css "background-image", "url(images/arrow_down.gif)"  unless trig.hasClass("trigger_active")
 
 	$('.ucbMainPanel').slimScroll
-        height: '510px',
-        color: '#666',
-        size: '5px',
-        alwaysVisible: true
+		height: '510px',
+		color: '#666',
+		size: '5px',
+		alwaysVisible: true
 
 	# Toggle tooltip
 	$("#footer").tooltip

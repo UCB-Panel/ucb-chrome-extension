@@ -8,153 +8,153 @@
 @import "compass/css3";
 
 .ucbpanel_traffic {
-    $color: #eee;
-    display: inline-block;
-    outline: none;
-    cursor: pointer;
-    padding: 0.4em 0.4em 0.4em;
-    @include border-radius(0.30em);
-    border: 1px solid;
-    border-color: darken($color, 20%) darken($color, 30%) darken($color, 40%);
-    background-color: $color;
+	$color: #eee;
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	padding: 0.4em 0.4em 0.4em;
+	@include border-radius(0.30em);
+	border: 1px solid;
+	border-color: darken($color, 20%) darken($color, 30%) darken($color, 40%);
+	background-color: $color;
 
-    &:hover {
-        @include box-shadow(0 0.1em 0.5em rgba(black,0.4), 0 0.1em 0.2em rgba(black,0.4), 0 -0.1em 0.07em rgba(black,0.3) inset, 0 0.1em 0.07em rgba(white,0.2) inset);
-    }
+	&:hover {
+		@include box-shadow(0 0.1em 0.5em rgba(black,0.4), 0 0.1em 0.2em rgba(black,0.4), 0 -0.1em 0.07em rgba(black,0.3) inset, 0 0.1em 0.07em rgba(white,0.2) inset);
+	}
 
-    &:active {
-        padding: 0.4em 0.4em 0.4em;
-        margin-top: 0.1em;
-        border-color: darken($color, 30%) darken($color, 20%) $color;
-        @include box-shadow(0 0.1em 0.2em rgba(black,0.1) inset, 0 0.1em 0.1em rgba(black,0.2) inset, 0.05em 0 0.07em rgba(black,0.2) inset, -0.05em 0 0.07em rgba(black,0.2) inset);
-        @include transition(all 10ms);
-    }
+	&:active {
+		padding: 0.4em 0.4em 0.4em;
+		margin-top: 0.1em;
+		border-color: darken($color, 30%) darken($color, 20%) $color;
+		@include box-shadow(0 0.1em 0.2em rgba(black,0.1) inset, 0 0.1em 0.1em rgba(black,0.2) inset, 0.05em 0 0.07em rgba(black,0.2) inset, -0.05em 0 0.07em rgba(black,0.2) inset);
+		@include transition(all 10ms);
+	}
 
 
-    width: 32px;
-    height: 32px;
-    padding: none;
-    margin-left:auto;
-    margin-right:auto;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/chart.png") no-repeat;
+	width: 32px;
+	height: 32px;
+	padding: none;
+	margin-left:auto;
+	margin-right:auto;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/chart.png") no-repeat;
 }
 
 .icon_ucbpanel_iro {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/favicon.png") no-repeat left;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/favicon.png") no-repeat left;
 }
 
 .icon_ucbpanel_loading {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/traffic.gif") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/traffic.gif") no-repeat;
 }
 
 .icon_ucbpanel_optionen {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/optionen.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/optionen.png") no-repeat;
 }
 
 .icon_ucbpanel_gremienallee {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/gremienallee.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/gremienallee.png") no-repeat;
 }
 
 .icon_ucbpanel_qis {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/fh-trier.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/fh-trier.png") no-repeat;
 }
 
 .icon_ucbpanel_webmail {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/outlook.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/outlook.png") no-repeat;
 }
 
 .icon_ucbpanel_mail {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/mail.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/mail.png") no-repeat;
 }
 
 .icon_ucbpanel_bib {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/bibliothek.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/bibliothek.png") no-repeat;
 }
 
 .icon_ucbpanel_studip {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/stud_ip.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/stud_ip.png") no-repeat;
 }
 
 .icon_ucbpanel_juris {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/law.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/law.png") no-repeat;
 }
 
 .icon_ucbpanel_olat {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/openolat_16.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/openolat_16.png") no-repeat;
 }
 
 .icon_ucbpanel_mensa {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/food.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/food.png") no-repeat;
 }
 
 .icon_ucbpanel_sidebar {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/sidebar.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/sidebar.png") no-repeat;
 }
 
 .icon_ucbpanel_reload {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/reload.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/reload.png") no-repeat;
 }
 
 .icon_ucbpanel_kneipe {
-    width:16px;
-    height: 16px;
-    display: inline-block;
-    float: left;
-    background: url("chrome-extension://__MSG_@@extension_id__/images/beer.png") no-repeat;
+	width:16px;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/beer.png") no-repeat;
 }

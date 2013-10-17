@@ -18,6 +18,7 @@ $.rloader [src: chrome.extension.getURL('vendors/jquery.slimscroll.min.js')]
 $.rloader [src: chrome.extension.getURL('css/main.css')]
 $.rloader [src: chrome.extension.getURL('css/icons.css')]
 
+# load themes
 theme = localStorage["fav_theme"]
 switch theme
 	when "simple"
