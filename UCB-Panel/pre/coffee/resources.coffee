@@ -12,6 +12,7 @@ $.rloader [src: chrome.extension.getURL('vendors/bootstrap/js/bootstrap.min.js')
 # load jQuery-Plugins
 # $.rloader [src: chrome.extension.getURL('jquery.waituntilexists.min.js')]
 $.rloader [src: chrome.extension.getURL('vendors/jquery.xml2json.js')]
+$.rloader [src: chrome.extension.getURL('vendors/jquery.slimscroll.min.js')]
 
 # load Extension Stylesheets
 $.rloader [src: chrome.extension.getURL('css/main.css')]

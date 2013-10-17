@@ -200,7 +200,7 @@ buildGermanApp = ->
 		unless ip_address is "null"
 			addSpacer( metaClass )
 
-			$(".ucbPanelButtonGroup").append '<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.ucbgmbh.de/index.php"></button>'
+			$(".ucbPanelButtonGroup").append '<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>'
 			$(".ucbPanelButtonGroup").append '<div class="TrafficDisplay"></div>'
 			$(".TrafficDisplay").append '<div class="TrafficLeftSide"></div>'
 			$(".TrafficDisplay").append '<div class="TrafficRightSide"></div>'
@@ -262,6 +262,12 @@ $(document).ready(->
 	$(".trigger").not(".trigger_active").next(".ucbPanelCollapseContainer").hide()
 	trig = $(this)
 	$(".icon_arrow").css "background-image", "url(images/arrow_down.gif)"  unless trig.hasClass("trigger_active")
+
+	$('.ucbMainPanel').slimScroll
+        height: '510px',
+        color: '#666',
+        size: '5px',
+        alwaysVisible: true
 
 	# Toggle tooltip
 	$("#footer").tooltip
