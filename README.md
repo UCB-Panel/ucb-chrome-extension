@@ -6,8 +6,10 @@ Die Google Chrome Extension des Umwelt Campus Birkenfeld (UCB).
 Dies ist ein Projekt welches auf der Arbeit von super_stein basiert, welcher eine Erweiterung für den Firefox programmiert hat.
 Dieses Projekt wird von Studenten des UCBs erstellt und ist kein offizielles Projekt des UCBs.
 
-Entwickler: Niklas Heer<br>
-Mitwirkende: Tad Wohlrapp<br>
+Entwickler: 
+- Niklas Heer
+- Tad Wohlrapp
+
 Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)**
 
 ## Lizenz
