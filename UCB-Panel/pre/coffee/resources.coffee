@@ -28,8 +28,6 @@ switch theme
 	else
 		$.rloader [src: chrome.extension.getURL('css/classic.css')]
 
-# load Extension scripts
-# $.rloader [src: chrome.extension.getURL('js/min/analytics.min.js')]
 
 
 
