@@ -6,13 +6,28 @@ Die Google Chrome Extension des Umwelt Campus Birkenfeld (UCB).
 Dies ist ein Projekt welches auf der Arbeit von super_stein basiert, welcher eine Erweiterung für den Firefox programmiert hat.
 Dieses Projekt wird von Studenten des UCBs erstellt und ist kein offizielles Projekt des UCBs.
 
-Entwickler: 
-- Niklas Heer
+Entwickler: <br>
+- Niklas Heer<br>
 - Tad Wohlrapp
 
-Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)**
+Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)** 
+
+Verwendete Software für das Projekt:
+
+- [nodejs](http://nodejs.org/)
+- [grunt](http://gruntjs.com/)
+- [coffeescript](http://coffeescript.org/)
+- [compass](http://compass-style.org/)
+- [bootstrap](http://getbootstrap.com/)
+- [jquery](http://jquery.com/)
+- [underscorejs](http://underscorejs.org/)
+- [rloader](https://code.google.com/p/rloader/)
 
 ## Mitwirken
+Jeder ist herzlich eingeladen an der Extension mit zu wirken.<br>
+Um die nötige Software zu installieren solltet ihr den unten beschriebenen Schritten folgen.<br>
+Falls ihr Fragen habt einfach eine Mail an ```niklas.heer@me.com```!<br>
+
 [nodejs](http://nodejs.org/) installieren und danach folgende Befehle im Terminal ausführen:<br>
 ```bash
 sudo npm install -g coffeescript
