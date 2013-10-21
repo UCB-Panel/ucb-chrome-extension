@@ -13,7 +13,7 @@ Entwickler:
 Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)**
 
 ## Mitwirken
-[nodejs](http://nodejs.org/) installieren danach folgenden im Terminal ausführen:<br>
+[nodejs](http://nodejs.org/) installieren und danach folgende Befehle im Terminal ausführen:<br>
 ```bash
 sudo npm install -g coffeescript
 sudo npm install -g grunt
