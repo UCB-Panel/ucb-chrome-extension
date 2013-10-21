@@ -18,7 +18,7 @@ Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)**
 sudo npm install -g coffeescript
 sudo npm install -g grunt
 sudo npm install -g grunt-cli
-```<br>
+```
 Danach sollte der Befehl ```grunt --version``` funktionieren.<br>
 Jetzt navigiert ihr im Terminal zum Verzeichnis der Extension und geht in den Ordner "UCB-Panel". Dort einfach den Befehl ```grunt``` eingeben und nun könnt ihr alle ```.coffee``` und ```.scss``` Dateien bearbeiten und sie werden automatisch kompiliert. Wenn ihr fertig seid, könnt ihr mit ```Strg+C``` den Prozess beenden.<br>
 Um erneut am Projekt zu arbeiten müsst ihr wie oben beschrieben Grunt wieder starten.
