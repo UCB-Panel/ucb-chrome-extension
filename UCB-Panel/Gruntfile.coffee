@@ -20,7 +20,7 @@ module.exports = (grunt) ->
 
 		uglify:
 			options:
-				banner: '/* 
+				banner: '/*
 \nAuthor:     UCB-Panel Team
 \nProject:    UCB-Panel
 \nLicense:    GPL v3
@@ -44,7 +44,7 @@ module.exports = (grunt) ->
 				files: ['pre/coffee/*.coffee'],
 				tasks: ['coffee', 'uglify']
 			compass:
-				files: ['pre/scss/*.scss'],
+				files: ['pre/compass/*.sass'],
 				tasks: ['compass']
 
 
