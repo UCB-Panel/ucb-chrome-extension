@@ -1,5 +1,5 @@
 # PROJECT: UCB-Panel
-# 
+#
 # AUTHOR : Niklas Heer (niklas.heer@me.com)
 # DATE   : 13.10.2013
 # LICENSE: GPL 3.0
@@ -13,10 +13,10 @@ mensaPlan = "test"
 
 # function to create the html code for a button
 createButton = (contentObj) ->
-	return ('<button class="' + contentObj.classes + 
+	return ('<button class="' + contentObj.classes +
 		'" type="button" id="' + contentObj.id +
-		'" value="' + contentObj.value + 
-		'"><div class="' + contentObj.icon + 
+		'" value="' + contentObj.value +
+		'"><div class="' + contentObj.icon +
 		'"></div>' + contentObj.text + '</button><br>')
 
 # function to create a button group
@@ -31,10 +31,10 @@ addButtonGroup = (buttons, parentClass) ->
 
 # function to add add a collapse-capable button
 createCollapseButton = (innerClass, value, icon, text) ->
-	return ('<button class="' + innerClass + 
-		'" value="' + value + 
-		'"><div class="' + icon + 
-		'"></div>' + text + 
+	return ('<button class="' + innerClass +
+		'" value="' + value +
+		'"><div class="' + icon +
+		'"></div>' + text +
 		'<div class="icon_arrow"></div></button>')
 
 # function to insert a spacer into a given parent class
