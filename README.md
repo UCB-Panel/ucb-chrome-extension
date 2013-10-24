@@ -30,7 +30,7 @@ Falls ihr Fragen habt einfach eine Mail an ```niklas.heer@me.com```!<br>
 
 [nodejs](http://nodejs.org/) installieren und danach folgende Befehle im Terminal ausführen:<br>
 ```bash
-sudo npm install -g coffeescript
+sudo npm install -g coffee-script
 sudo npm install -g grunt
 sudo npm install -g grunt-cli
 ```
