@@ -188,18 +188,37 @@
     ucbOnCampusGroup = [ucbMensa, ucbKneipe];
     addButtonGroup(ucbOnCampusGroup, ".ucbPanelButtonGroup");
     $.get("http://traffic.campus-company.eu/", function(page) {
-      var ip_address;
+      var TrafficButton, ip_address;
       ip_address = page.match(/Ihre IP-Adresse: 143.93.4[0-2]{1}.[0-9]{1,3}/) + "";
       ip_address = ip_address.replace(/Ihre IP-Adresse: /, "") + "";
       if (ip_address !== "null") {
         addSpacer(metaClass);
-        $(".ucbPanelButtonGroup").append('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>');
-        $(".ucbPanelButtonGroup").append('<div class="TrafficDisplay"></div>');
-        $(".TrafficDisplay").append('<div class="TrafficLeftSide"></div>');
-        $(".TrafficDisplay").append('<div class="TrafficRightSide"></div>');
-        $(".TrafficLeftSide").append('<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>');
-        $(".TrafficLeftSide").append('<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>');
-        $(".TrafficRightSide").append('<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>');
+        theme = localStorage["fav_theme"];
+        switch (theme) {
+          case "flat":
+            TrafficButton = $('<button class="button btn btn-default menuitem-iconic ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"><div class="icon-dashboard"></div>Rest-Traffic:&nbsp;<b class="traffic_total"> </b></button>');
+            TrafficButton.click(function() {
+              return chrome.tabs.create({
+                url: "http://traffic.campus-company.eu"
+              });
+            });
+            $(".ucbPanelButtonGroup").append(TrafficButton);
+            break;
+          default:
+            TrafficButton = $('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>');
+            TrafficButton.click(function() {
+              return chrome.tabs.create({
+                url: "http://traffic.campus-company.eu"
+              });
+            });
+            $(".ucbPanelButtonGroup").append(TrafficButton);
+            $(".ucbPanelButtonGroup").append('<div class="TrafficDisplay"></div>');
+            $(".TrafficDisplay").append('<div class="TrafficLeftSide"></div>');
+            $(".TrafficDisplay").append('<div class="TrafficRightSide"></div>');
+            $(".TrafficLeftSide").append('<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>');
+            $(".TrafficLeftSide").append('<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>');
+            $(".TrafficRightSide").append('<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>');
+        }
         return getTrafficAndPrint();
       }
     });
@@ -249,7 +268,7 @@
       $(".icon_arrow").css("background-image", "url(images/arrow_down.gif)");
     }
     $('.ucbMainPanel').slimScroll({
-      height: '510px',
+      height: '502px',
       color: '#666',
       size: '5px',
       alwaysVisible: true
@@ -278,13 +297,13 @@
           trig = $(this);
           if (trig.hasClass("trigger_active")) {
             $(".icon_arrow").css("background-image", "url(images/arrow_down.gif)");
-            trig.next(".ucbPanelCollapseContainer").slideToggle("slow");
+            trig.next(".ucbPanelCollapseContainer").slideToggle(300);
             return trig.removeClass("trigger_active");
           } else {
-            $(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle("slow");
+            $(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle(300);
             $(".trigger_active").removeClass("trigger_active");
             $(".icon_arrow").css("background-image", "url(images/arrow_up.gif)");
-            trig.next(".ucbPanelCollapseContainer").slideToggle("slow");
+            trig.next(".ucbPanelCollapseContainer").slideToggle(300);
             return trig.addClass("trigger_active");
           }
         } else {

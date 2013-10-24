@@ -235,13 +235,26 @@ buildGermanApp = ->
 		unless ip_address is "null"
 			addSpacer( metaClass )
 
-			$(".ucbPanelButtonGroup").append '<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>'
-			$(".ucbPanelButtonGroup").append '<div class="TrafficDisplay"></div>'
-			$(".TrafficDisplay").append '<div class="TrafficLeftSide"></div>'
-			$(".TrafficDisplay").append '<div class="TrafficRightSide"></div>'
-			$(".TrafficLeftSide").append '<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>'
-			$(".TrafficLeftSide").append '<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>'
-			$(".TrafficRightSide").append '<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>'
+			theme = localStorage["fav_theme"]
+			switch theme
+				when "flat"
+					TrafficButton = $('<button class="button btn btn-default menuitem-iconic ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"><div class="icon-dashboard"></div>Rest-Traffic:&nbsp;<b class="traffic_total"> </b></button>')
+					TrafficButton.click(() ->
+						chrome.tabs.create url: "http://traffic.campus-company.eu"
+					)
+					$(".ucbPanelButtonGroup").append TrafficButton
+				else
+					TrafficButton = $('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>')
+					TrafficButton.click(() ->
+						chrome.tabs.create url: "http://traffic.campus-company.eu"
+					)
+					$(".ucbPanelButtonGroup").append TrafficButton
+					$(".ucbPanelButtonGroup").append '<div class="TrafficDisplay"></div>'
+					$(".TrafficDisplay").append '<div class="TrafficLeftSide"></div>'
+					$(".TrafficDisplay").append '<div class="TrafficRightSide"></div>'
+					$(".TrafficLeftSide").append '<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>'
+					$(".TrafficLeftSide").append '<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>'
+					$(".TrafficRightSide").append '<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>'
 			getTrafficAndPrint() # wirte data
 
 
@@ -299,7 +312,7 @@ $(document).ready(->
 	$(".icon_arrow").css "background-image", "url(images/arrow_down.gif)"  unless trig.hasClass("trigger_active")
 
 	$('.ucbMainPanel').slimScroll
-		height: '510px',
+		height: '502px',
 		color: '#666',
 		size: '5px',
 		alwaysVisible: true
@@ -325,13 +338,13 @@ document.addEventListener "DOMContentLoaded", ->
 				trig = $(this)
 				if trig.hasClass("trigger_active")
 					$(".icon_arrow").css "background-image", "url(images/arrow_down.gif)"
-					trig.next(".ucbPanelCollapseContainer").slideToggle "slow"
+					trig.next(".ucbPanelCollapseContainer").slideToggle 300
 					trig.removeClass "trigger_active"
 				else
-					$(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle "slow"
+					$(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle 300
 					$(".trigger_active").removeClass "trigger_active"
 					$(".icon_arrow").css "background-image", "url(images/arrow_up.gif)"
-					trig.next(".ucbPanelCollapseContainer").slideToggle "slow"
+					trig.next(".ucbPanelCollapseContainer").slideToggle 300
 					trig.addClass "trigger_active"
 			else
 				LaunchURL event.currentTarget.value

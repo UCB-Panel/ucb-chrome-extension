@@ -10,9 +10,11 @@
 
 
 
-
-
-
+.ucbPanelButtonGroup {
+	padding-top:0;
+	width: 220px;
+	padding-bottom: 0;
+}
 
 
 
@@ -22,7 +24,7 @@
 
 .btn {
 	display: inline-block;
-	color: #FFF!important;
+	color: #FFF;
 	text-shadow: 0 -1px 0 rgba(0,0,0,0.25)!important;
 	background-image: none!important;
 	border: 5px solid #FFF;
@@ -33,10 +35,14 @@
 	cursor: pointer;
 	vertical-align: middle;
 	margin: 0;
-	position: relative
+	position: relative;
+	text-shadow: 0 -1px 0 rgba(250,250,250,0.25)!important
 }
+
+
+
 .btn-default {
-	color: #888!important;
+	color: #888;
 	text-shadow: 0 -1px 0 rgba(250,250,250,0.25)!important
 }
 .btn-default, .btn-default:focus {
@@ -61,6 +67,8 @@
 	background-color: #d8d8d8!important;
 	border-color: #d8d8d8
 }
+
+
 .btn-group>.btn, .btn-group>.btn+.btn {
 	margin: 0 1px 0 0
 }
@@ -154,11 +162,9 @@
 }
 
 
-
 .ucbPanelButtonGroup>button {
 	display: block;
 	position: relative;
-
 	width: 100%;
 	display: inline-block;
 	outline: none;
@@ -175,16 +181,13 @@
 	font: 13px 'Open Sans';
 	background-color: #f9f9f9;
 	color: #585858;
-	border-top: 1px solid #fcfcfc;
+	border-top: 1px solid #fff;
 	border-bottom: 1px solid #e5e5e5;
 }
 .ucbPanelButtonGroup button:focus {
 	outline: 0
 }
-.ucbPanelButtonGroup>button:focus {
-	background-color: #f9f9f9;
-	color: #438e13
-}
+
 .ucbPanelButtonGroup>button:hover {
 	background-color: #FFF;
 	color: #438e13
@@ -194,7 +197,7 @@
 	content: "";
 	position: absolute;
 	top: -1px;
-	bottom: 0;
+	bottom: -1px;
 	left: 0;
 	width: 3px;
 	max-width: 3px;
@@ -209,8 +212,8 @@
 	text-shadow: none;
 	font-size: 18px;
 	position: absolute;
-	right: 11px;
-	top: 10px;
+	right: 20px;
+	top: 11px;
 	padding: 0;
 	color: #666
 }
@@ -218,12 +221,13 @@
 	color: #438e13
 }
 .ucbPanelButtonGroup>hr {
-	height: 3px;
-	background-color: transparent;
+	height: 2px;
+	background-color: #e5e5e5;
 	position: static;
-	margin: 1px 0;
+	margin: 0;
 	-webkit-box-shadow: none;
-	box-shadow: none
+	box-shadow: none;
+	border: none;
 }
 .ucbPanelButtonGroup>.ucbPanelCollapseContainer {
 	display: none;
@@ -286,7 +290,7 @@
 	border-top: 1px dotted #9dbdd6
 }
 .ucbPanelButtonGroup>.ucbPanelCollapseContainer>li:first-child>a {
-	border-top: 1px solid #fafafa
+	border-top: 1px solid #f5f5f5
 }
 .ucbPanelButtonGroup>.ucbPanelCollapseContainer:before {
 	content: "";
@@ -352,20 +356,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-.ucbPanelButtonGroup {
-	padding-top:0;
-}
-
 .ucbPanelCollapseContainer {
 	background-color: #fff;
 	max-width: 220px;
@@ -378,7 +368,7 @@
 	max-width: 220px!important;
 }
 
-.menuitem-iconic {
+.menuitem-iconic, .menuitem-iconic:focus {
 	width: 100%;
 	display: inline-block;
 	outline: none;
@@ -395,23 +385,20 @@
 	font: 13px 'Open Sans';
 	background-color: #f9f9f9!important;
 	color: #585858;
-	border-top: 1px solid #fcfcfc;
+	border-top: 1px solid #fff;
 	border-bottom: 1px solid #e5e5e5;
-	border-left: 3px solid #f9f9f9;
+	height: 38px;
 }
-/*
 .menuitem-iconic:hover {
-	background-color: #fff;
-	color: #438e13;
-	border-top: 1px solid #fcfcfc;
+	background-color: #fff!important;
+	color: #438e13!important;
+	border-top: 1px solid #fff;
 	border-bottom: 1px solid #e5e5e5;
-	border-left: 3px solid #438e13;
 }
-*/
-.collapse_item {
+.collapse_item, .collapse_item:focus {
 	left:0!important;
 	width:220px!important;
-	padding: 7px 10px 7px 27px;
+	padding: 7px 10px 7px 32px;
 	background-color: #fff!important;
 	color: #616161;
 	border-top: 1px dotted #e4e4e4;
@@ -428,76 +415,35 @@
 	display: inline-block;
 	position: absolute;
 	width: 7px;
-	left: 17px;
+	left: 20px;
 	top: 17px;
 	border-top: 1px dotted #9dbdd6;
 }
 
-.ucbPanelButtonGroup {
-	width: 220px;
+.collapse_item:hover:before {
+	content: "\00BB";
+	position: absolute;
+	font-size:18px;
+	top:3px;
+	border:none;
+	left:13px;
+	display:block;
+	z-index:10;
+	text-shadow: 0px 0px 7px #ffffff;
 }
-/*
-hr {
-	margin:0;
-	margin-top:-1px;
-	padding:0;
-	background-color:#e5e5e5;
-	height:3px;
-}
-*/
+
 button div {
 	margin-right:12px;
 }
 
-.TrafficLeftSide {
-	display: none!important;
-}
-
-.TrafficDisplay:before {
-	content: "Dein Resttraffic beträgt noch:"
-}
-
-.ucbpanel_traffic {
-	display:none;
-}
-
-.TrafficRightSide {
-	float:none!important;
-	margin-left:0!important;
-	font: 16px 'Open Sans';
-	font-weight: 700;
-}
-
-.TrafficRightSide span {
-	display: none;
-}
-
-
 
 [class^="icon-"],
 [class*=" icon-"] {
-font-size:14px;
-width:16px!important;
-display:inline-block!important;
-text-align:center;
+	font-size:15px;
+	width:16px!important;
+	display:inline-block!important;
+	text-align:center;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -528,4 +474,25 @@ text-align:center;
 }
 .tooltip.bottom .tooltip-arrow {
 	border-bottom-color: #333
+}
+
+
+
+
+
+#footer {
+	border-top: 2px solid #e5e5e5;
+}
+
+#footer .btn-group-wrap {
+	padding-top: 6px;
+}
+
+#footer .btn {
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25)!important
+}
+
+.traffic_total {
+	font-weight: 700;
+	color:#438e13
 }

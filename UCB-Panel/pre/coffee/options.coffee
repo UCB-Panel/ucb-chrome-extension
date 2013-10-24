@@ -88,9 +88,6 @@ buildEnglishApp = ->
 # MAIN FUNCTION
 #
 $(document).ready ->
-	
-	# Build the App
-	
 	# build the localised App
 	locale = window.navigator.language
 	switch locale

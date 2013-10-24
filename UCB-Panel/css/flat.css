@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import "http://fonts.googleapis.com/css?family=Open+Sans:400,700";
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font: inherit; font-size: 100%; vertical-align: baseline; }
 
@@ -17,9 +16,11 @@ a img { border: none; }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary { display: block; }
 
-.btn { display: inline-block; color: white !important; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important; background-image: none !important; border: 5px solid #FFF; border-radius: 0; box-shadow: none !important; -webkit-transition: all ease .15s; transition: all ease .15s; cursor: pointer; vertical-align: middle; margin: 0; position: relative; }
+.ucbPanelButtonGroup { padding-top: 0; width: 220px; padding-bottom: 0; }
 
-.btn-default { color: #888888 !important; text-shadow: 0 -1px 0 rgba(250, 250, 250, 0.25) !important; }
+.btn { display: inline-block; color: #FFF; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important; background-image: none !important; border: 5px solid #FFF; border-radius: 0; box-shadow: none !important; -webkit-transition: all ease .15s; transition: all ease .15s; cursor: pointer; vertical-align: middle; margin: 0; position: relative; text-shadow: 0 -1px 0 rgba(250, 250, 250, 0.25) !important; }
+
+.btn-default { color: #888; text-shadow: 0 -1px 0 rgba(250, 250, 250, 0.25) !important; }
 
 .btn-default, .btn-default:focus { background-color: #e7e7e7 !important; border-color: #e7e7e7; }
 
@@ -77,21 +78,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .btn-group > .btn { border-radius: 0 !important; }
 
-.ucbPanelButtonGroup > button { display: block; position: relative; width: 100%; display: inline-block; outline: none; cursor: pointer; padding: 7px 10px 7px; text-shadow: none; background-image: none; border: none; -webkit-box-shadow: none; box-shadow: none; text-align: left; border-radius: 0; margin: 0; font: 13px 'Open Sans'; background-color: #f9f9f9; color: #585858; border-top: 1px solid #fcfcfc; border-bottom: 1px solid #e5e5e5; }
+.ucbPanelButtonGroup > button { display: block; position: relative; width: 100%; display: inline-block; outline: none; cursor: pointer; padding: 7px 10px 7px; text-shadow: none; background-image: none; border: none; -webkit-box-shadow: none; box-shadow: none; text-align: left; border-radius: 0; margin: 0; font: 13px 'Open Sans'; background-color: #f9f9f9; color: #585858; border-top: 1px solid #fff; border-bottom: 1px solid #e5e5e5; }
 
 .ucbPanelButtonGroup button:focus { outline: 0; }
 
-.ucbPanelButtonGroup > button:focus { background-color: #f9f9f9; color: #438e13; }
-
 .ucbPanelButtonGroup > button:hover { background-color: #FFF; color: #438e13; }
 
-.ucbPanelButtonGroup > button:hover:before { display: block; content: ""; position: absolute; top: -1px; bottom: 0; left: 0; width: 3px; max-width: 3px; overflow: hidden; background-color: #438e13; }
+.ucbPanelButtonGroup > button:hover:before { display: block; content: ""; position: absolute; top: -1px; bottom: -1px; left: 0; width: 3px; max-width: 3px; overflow: hidden; background-color: #438e13; }
 
-.ucbPanelButtonGroup > button > .arrow { display: inline-block; width: 14px !important; height: 14px; line-height: 14px; text-shadow: none; font-size: 18px; position: absolute; right: 11px; top: 10px; padding: 0; color: #666666; }
+.ucbPanelButtonGroup > button > .arrow { display: inline-block; width: 14px !important; height: 14px; line-height: 14px; text-shadow: none; font-size: 18px; position: absolute; right: 20px; top: 11px; padding: 0; color: #666666; }
 
 .ucbPanelButtonGroup > button:hover > .arrow { color: #438e13; }
 
-.ucbPanelButtonGroup > hr { height: 3px; background-color: transparent; position: static; margin: 1px 0; -webkit-box-shadow: none; box-shadow: none; }
+.ucbPanelButtonGroup > hr { height: 2px; background-color: #e5e5e5; position: static; margin: 0; -webkit-box-shadow: none; box-shadow: none; border: none; }
 
 .ucbPanelButtonGroup > .ucbPanelCollapseContainer { display: none; list-style: none; margin: 0; padding: 0; position: relative; background-color: #fff; border-top: 1px solid #e5e5e5; }
 
@@ -113,7 +112,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .ucbPanelButtonGroup > .ucbPanelCollapseContainer > li:before { content: ""; display: inline-block; position: absolute; width: 7px; left: 20px; top: 17px; border-top: 1px dotted #9dbdd6; }
 
-.ucbPanelButtonGroup > .ucbPanelCollapseContainer > li:first-child > a { border-top: 1px solid #fafafa; }
+.ucbPanelButtonGroup > .ucbPanelCollapseContainer > li:first-child > a { border-top: 1px solid whitesmoke; }
 
 .ucbPanelButtonGroup > .ucbPanelCollapseContainer:before { content: ""; display: block; position: absolute; z-index: 1; left: 18px; top: 0; bottom: 0; border: 1px dotted #9dbdd6; border-width: 0 0 0 1px; }
 
@@ -141,53 +140,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .ucbPanelButtonGroup .submenu .submenu a .badge, .ucbPanelButtonGroup .submenu .submenu a .label { top: 6px; }
 
-.ucbPanelButtonGroup { padding-top: 0; }
-
 .ucbPanelCollapseContainer { background-color: #fff; max-width: 220px; padding-top: 0; border-top: 1px solid #e5e5e5; }
 
 .trigger { width: 220px !important; max-width: 220px !important; }
 
-.menuitem-iconic { width: 100%; display: inline-block; outline: none; cursor: pointer; padding: 7px 10px 7px; text-shadow: none; background-image: none; border: none; -webkit-box-shadow: none; box-shadow: none; text-align: left; border-radius: 0; margin: 0; font: 13px 'Open Sans'; background-color: #f9f9f9 !important; color: #585858; border-top: 1px solid #fcfcfc; border-bottom: 1px solid #e5e5e5; border-left: 3px solid #f9f9f9; }
+.menuitem-iconic, .menuitem-iconic:focus { width: 100%; display: inline-block; outline: none; cursor: pointer; padding: 7px 10px 7px; text-shadow: none; background-image: none; border: none; -webkit-box-shadow: none; box-shadow: none; text-align: left; border-radius: 0; margin: 0; font: 13px 'Open Sans'; background-color: #f9f9f9 !important; color: #585858; border-top: 1px solid #fff; border-bottom: 1px solid #e5e5e5; height: 38px; }
 
-/*
-.menuitem-iconic:hover {
-	background-color: #fff;
-	color: #438e13;
-	border-top: 1px solid #fcfcfc;
-	border-bottom: 1px solid #e5e5e5;
-	border-left: 3px solid #438e13;
-}
-*/
-.collapse_item { left: 0 !important; width: 220px !important; padding: 7px 10px 7px 27px; background-color: white !important; color: #616161; border-top: 1px dotted #e4e4e4; border-bottom: none; }
+.menuitem-iconic:hover { background-color: white !important; color: #438e13 !important; border-top: 1px solid #fff; border-bottom: 1px solid #e5e5e5; }
+
+.collapse_item, .collapse_item:focus { left: 0 !important; width: 220px !important; padding: 7px 10px 7px 32px; background-color: white !important; color: #616161; border-top: 1px dotted #e4e4e4; border-bottom: none; }
 
 .collapse_item:hover { border-top: 1px dotted #e4e4e4; border-bottom: none; }
 
-.collapse_item:before { content: ""; display: inline-block; position: absolute; width: 7px; left: 17px; top: 17px; border-top: 1px dotted #9dbdd6; }
+.collapse_item:before { content: ""; display: inline-block; position: absolute; width: 7px; left: 20px; top: 17px; border-top: 1px dotted #9dbdd6; }
 
-.ucbPanelButtonGroup { width: 220px; }
+.collapse_item:hover:before { content: "\00BB"; position: absolute; font-size: 18px; top: 3px; border: none; left: 13px; display: block; z-index: 10; text-shadow: 0px 0px 7px #ffffff; }
 
-/*
-hr {
-	margin:0;
-	margin-top:-1px;
-	padding:0;
-	background-color:#e5e5e5;
-	height:3px;
-}
-*/
 button div { margin-right: 12px; }
 
-.TrafficLeftSide { display: none !important; }
-
-.TrafficDisplay:before { content: "Dein Resttraffic beträgt noch:"; }
-
-.ucbpanel_traffic { display: none; }
-
-.TrafficRightSide { float: none !important; margin-left: 0 !important; font: 16px 'Open Sans'; font-weight: 700; }
-
-.TrafficRightSide span { display: none; }
-
-[class^="icon-"], [class*=" icon-"] { font-size: 14px; width: 16px !important; display: inline-block !important; text-align: center; }
+[class^="icon-"], [class*=" icon-"] { font-size: 15px; width: 16px !important; display: inline-block !important; text-align: center; }
 
 .tooltip.in { opacity: 1; filter: alpha(opacity=100); }
 
@@ -200,3 +171,11 @@ button div { margin-right: 12px; }
 .tooltip.left .tooltip-arrow { border-left-color: #333333; }
 
 .tooltip.bottom .tooltip-arrow { border-bottom-color: #333333; }
+
+#footer { border-top: 2px solid #e5e5e5; }
+
+#footer .btn-group-wrap { padding-top: 6px; }
+
+#footer .btn { text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important; }
+
+.traffic_total { font-weight: 700; color: #438e13; }
