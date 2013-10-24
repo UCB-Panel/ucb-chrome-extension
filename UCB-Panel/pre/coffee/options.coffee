@@ -1,5 +1,5 @@
 # PROJECT: UCB-Panel
-# 
+#
 # AUTHOR : Niklas Heer (niklas.heer@me.com)
 # DATE   : 13.10.2013
 # LICENSE: GPL 3.0
@@ -11,7 +11,7 @@ save_options = ->
 	select = document.getElementById("theme")
 	theme = select.children[select.selectedIndex].value
 	localStorage["fav_theme"] = theme
-	
+
 	# Update status to let user know options were saved.
 	status = $('#status').append '<div class="alert alert-success">Options Saved.</div>'
 	status.show()
@@ -88,9 +88,6 @@ buildEnglishApp = ->
 # MAIN FUNCTION
 #
 $(document).ready ->
-	
-	# Build the App
-	
 	# build the localised App
 	locale = window.navigator.language
 	switch locale

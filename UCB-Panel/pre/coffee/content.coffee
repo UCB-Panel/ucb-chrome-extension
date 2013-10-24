@@ -200,7 +200,12 @@ buildGermanApp = ->
 		unless ip_address is "null"
 			addSpacer( metaClass )
 
-			$(".ucbPanelButtonGroup").append '<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>'
+			TrafficButton = $('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>')
+			TrafficButton.click(() ->
+				chrome.tabs.create url: "http://traffic.campus-company.eu"
+			)
+
+			$(".ucbPanelButtonGroup").append TrafficButton
 			$(".ucbPanelButtonGroup").append '<div class="TrafficDisplay"></div>'
 			$(".TrafficDisplay").append '<div class="TrafficLeftSide"></div>'
 			$(".TrafficDisplay").append '<div class="TrafficRightSide"></div>'
@@ -277,6 +282,7 @@ $(document).ready(->
 	$("#footer").tooltip()
 )
 
+
 # Add Listeners
 document.addEventListener "DOMContentLoaded", ->
 	LaunchURL = (oURL) ->
@@ -302,3 +308,5 @@ document.addEventListener "DOMContentLoaded", ->
 				LaunchURL event.currentTarget.value
 				event.preventDefault()
 		i++
+
+

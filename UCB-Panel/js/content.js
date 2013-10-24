@@ -155,12 +155,18 @@
     ucbOnCampusGroup = [ucbMensa, ucbKneipe];
     addButtonGroup(ucbOnCampusGroup, ".ucbPanelButtonGroup");
     $.get("http://traffic.campus-company.eu/", function(page) {
-      var ip_address;
+      var TrafficButton, ip_address;
       ip_address = page.match(/Ihre IP-Adresse: 143.93.4[0-2]{1}.[0-9]{1,3}/) + "";
       ip_address = ip_address.replace(/Ihre IP-Adresse: /, "") + "";
       if (ip_address !== "null") {
         addSpacer(metaClass);
-        $(".ucbPanelButtonGroup").append('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>');
+        TrafficButton = $('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>');
+        TrafficButton.click(function() {
+          return chrome.tabs.create({
+            url: "http://traffic.campus-company.eu"
+          });
+        });
+        $(".ucbPanelButtonGroup").append(TrafficButton);
         $(".ucbPanelButtonGroup").append('<div class="TrafficDisplay"></div>');
         $(".TrafficDisplay").append('<div class="TrafficLeftSide"></div>');
         $(".TrafficDisplay").append('<div class="TrafficRightSide"></div>');
