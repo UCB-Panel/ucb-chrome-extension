@@ -1,5 +1,5 @@
 (function() {
-  var Link, addButtonGroup, addSpacer, buildEnglishApp, buildGermanApp, buildView, createButton, createCollapseButton, getTrafficAndPrint, mensaPlan;
+  var FooterLink, Link, addButtonGroup, addSpacer, buildEnglishApp, buildGermanApp, buildView, createButton, createCollapseButton, createFooterButton, getTrafficAndPrint, mensaPlan;
 
   Link = (function() {
     function Link(classes, icon, text, value, id) {
@@ -14,13 +14,42 @@
 
   })();
 
+  FooterLink = (function() {
+    function FooterLink(classes, icon, text, value, id) {
+      this.classes = classes;
+      this.icon = icon;
+      this.text = text;
+      this.value = value;
+      this.id = id;
+    }
+
+    return FooterLink;
+
+  })();
+
   mensaPlan = "test";
 
   createButton = function(contentObj) {
-    return '<button class="' + contentObj.classes + '" type="button" id="' + contentObj.id + '" value="' + contentObj.value + '"><div class="' + contentObj.icon + '"></div>' + contentObj.text + '</button><br>';
+    var button;
+    button = $('<button class="' + contentObj.classes + '" type="button" id="' + contentObj.id + '" value="' + contentObj.value + '"><div class="' + contentObj.icon + '"></div>' + contentObj.text + '</button><br>');
+    return button.click(function() {
+      return chrome.tabs.create({
+        url: contentObj.value
+      });
+    });
   };
 
-  addButtonGroup = function(buttons, parentClass) {
+  createFooterButton = function(Obj) {
+    var button;
+    button = $('<button class="' + Obj.classes + '" type="button" id="' + Obj.id + '" value="' + Obj.value + '" data-toggle="tooltip" data-placement="top" title=""' + ' data-original-title="' + Obj.text + '" >' + '<i class="' + Obj.icon + '"></i >' + '</button>');
+    return button.click(function() {
+      return chrome.tabs.create({
+        url: Obj.value
+      });
+    });
+  };
+
+  addButtonGroup = function(buttons, parentClass, footer) {
     var button, i, length, _results;
     length = buttons.length;
     button = null;
@@ -28,21 +57,54 @@
     _results = [];
     while (i < length) {
       button = buttons[i];
-      $(parentClass).append(createButton(button));
+      if (footer) {
+        $(parentClass).append(createFooterButton(button));
+      } else {
+        $(parentClass).append(createButton(button));
+      }
       _results.push(i++);
     }
     return _results;
   };
 
   createCollapseButton = function(innerClass, value, icon, text) {
-    var theme;
+    var collapseButton, theme;
+    collapseButton = null;
     theme = localStorage["fav_theme"];
     switch (theme) {
       case "flat":
-        return '<button class="' + innerClass + '" value="' + value + '"><div class="' + icon + '"></div>' + text + '<b class="arrow icon-angle-down"></b></button>';
+        collapseButton = $('<button class="' + innerClass + '" value="' + value + '"><div class="' + icon + '"></div>' + text + '<b class="arrow icon-angle-down"></b></button>');
+        break;
       default:
-        return '<button class="' + innerClass + '" value="' + value + '"><div class="' + icon + '"></div>' + text + '<div class="icon_arrow"></div></button>';
+        collapseButton = $('<button class="' + innerClass + '" value="' + value + '"><div class="' + icon + '"></div>' + text + '<div class="icon_arrow"></div></button>');
     }
+    return collapseButton.click(function() {
+      var arrow, trig;
+      trig = $(this);
+      if (trig.hasClass("trigger_active")) {
+        if (theme === "flat") {
+          arrow = $('.arrow');
+          arrow.removeClass('icon-angle-up');
+          arrow.addClass('icon-angle-down');
+        } else {
+          $(".icon_arrow").css("background-image", "url(images/arrow_down.gif)");
+        }
+        trig.next(".ucbPanelCollapseContainer").slideToggle(300);
+        return trig.removeClass("trigger_active");
+      } else {
+        $(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle(300);
+        $(".trigger_active").removeClass("trigger_active");
+        if (theme === "flat") {
+          arrow = $('.arrow');
+          arrow.removeClass('icon-angle-down');
+          arrow.addClass('icon-angle-up');
+        } else {
+          $(".icon_arrow").css("background-image", "url(images/arrow_up.gif)");
+        }
+        trig.next(".ucbPanelCollapseContainer").slideToggle(300);
+        return trig.addClass("trigger_active");
+      }
+    });
   };
 
   addSpacer = function(parentClass) {
@@ -122,7 +184,7 @@
   };
 
   buildGermanApp = function() {
-    var btnBaseCSS, collapseCssClasses, footerHTML, metaClass, theme, ucbBlog, ucbCampusplan, ucbCollapseGroup, ucbCommunity, ucbCommunityGroup, ucbContact, ucbDataCenter, ucbDates, ucbExams, ucbFacebook, ucbGremienallee, ucbHomepage, ucbInternGroup, ucbIntranet, ucbJuris, ucbKneipe, ucbLibrary, ucbMSDNAA, ucbMensa, ucbOLAT, ucbOnCampusGroup, ucbQIS, ucbStaff, ucbStudIP, ucbTimetable, ucbWebMail;
+    var btnBaseCSS, collapseCssClasses, footerAbout, footerBugs, footerGroup, footerHTML, footerHome, footerSettings, metaClass, theme, ucbBlog, ucbCampusplan, ucbCollapseGroup, ucbCommunity, ucbCommunityGroup, ucbContact, ucbDataCenter, ucbDates, ucbExams, ucbFacebook, ucbGremienallee, ucbHomepage, ucbInternGroup, ucbIntranet, ucbJuris, ucbKneipe, ucbLibrary, ucbMSDNAA, ucbMensa, ucbOLAT, ucbOnCampusGroup, ucbQIS, ucbStaff, ucbStudIP, ucbTimetable, ucbWebMail;
     metaClass = ".ucbPanelButtonGroup";
     btnBaseCSS = "button btn btn-default menuitem-iconic ";
     collapseCssClasses = btnBaseCSS + "ucbpanel_iro collapse_item";
@@ -226,23 +288,17 @@
     });
     footerHTML = $('\
 		<div class="btn-group-wrap" >\
-			<div class="btn-group center" >\
-				<button id="[Footer] Hompage" value="http://ucb.we-develop.de" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Homepage" >\
-					<i class="glyphicon glyphicon-home"></i >\
-				</button>\
-				<button id="[Footer] About" value="http://ucb.we-develop.de/node/5" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Über das UCB-Panel" >\
-					 <i class="glyphicon glyphicon-question-sign"></i>\
-				</button>\
-				<button id="[Footer] Bugs" value="http://ucb.we-develop.de/contact" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Melde einen Bug oder Wunsch" >\
-					<i class="glyphicon glyphicon-bullhorn"></i>\
-				</button>\
-				<button id="[Footer] Settings" value="options.html" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Einstellungen" >\
-					<i class="glyphicon glyphicon-cog"></i>\
-				</button>\
+			<div class="btn-group center FooterInnerClass" >\
 			</div >\
 		</div >\
 	');
-    return $(".ucbPanelFooter").append(footerHTML);
+    $(".ucbPanelFooter").append(footerHTML);
+    footerHome = new Link("btn btn-default", "glyphicon glyphicon-home", "Homepage", "http://ucb.we-develop.de", "[Footer] Hompage");
+    footerAbout = new Link("btn btn-default", "glyphicon glyphicon-question-sign", "Über das UCB-Panel", "http://ucb.we-develop.de/node/5", "[Footer] About");
+    footerBugs = new Link("btn btn-default", "glyphicon glyphicon-bullhorn", "Melde einen Bug oder Wunsch", "http://ucb.we-develop.de/contact", "[Footer] Bugs");
+    footerSettings = new Link("btn btn-default", "glyphicon glyphicon-cog", "Einstellungen", "options.html", "[Footer] Settings");
+    footerGroup = [footerHome, footerAbout, footerBugs, footerSettings];
+    return addButtonGroup(footerGroup, ".FooterInnerClass", true);
   };
 
   buildEnglishApp = function() {};
@@ -280,55 +336,6 @@
       container: "body"
     });
     return $("#footer").tooltip();
-  });
-
-  document.addEventListener("DOMContentLoaded", function() {
-    var LaunchURL, anchors, i, theme, _results;
-    LaunchURL = function(oURL) {
-      return chrome.tabs.create({
-        url: oURL
-      });
-    };
-    anchors = document.querySelectorAll("button");
-    i = 0;
-    theme = localStorage["fav_theme"];
-    _results = [];
-    while (i < anchors.length) {
-      anchors[i].addEventListener("click", function(event) {
-        var arrow, trig;
-        if (event.currentTarget.value === "%COLLAPSE%") {
-          trig = $(this);
-          if (trig.hasClass("trigger_active")) {
-            if (theme === "flat") {
-              arrow = $('.arrow');
-              arrow.removeClass('icon-angle-up');
-              arrow.addClass('icon-angle-down');
-            } else {
-              $(".icon_arrow").css("background-image", "url(images/arrow_down.gif)");
-            }
-            trig.next(".ucbPanelCollapseContainer").slideToggle(300);
-            return trig.removeClass("trigger_active");
-          } else {
-            $(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle(300);
-            $(".trigger_active").removeClass("trigger_active");
-            if (theme === "flat") {
-              arrow = $('.arrow');
-              arrow.removeClass('icon-angle-down');
-              arrow.addClass('icon-angle-up');
-            } else {
-              $(".icon_arrow").css("background-image", "url(images/arrow_up.gif)");
-            }
-            trig.next(".ucbPanelCollapseContainer").slideToggle(300);
-            return trig.addClass("trigger_active");
-          }
-        } else {
-          LaunchURL(event.currentTarget.value);
-          return event.preventDefault();
-        }
-      });
-      _results.push(i++);
-    }
-    return _results;
   });
 
 }).call(this);
