@@ -3,36 +3,6 @@
 
   $.rloader([
     {
-      src: chrome.extension.getURL('vendors/bootstrap/css/bootstrap.min.css')
-    }
-  ]);
-
-  $.rloader([
-    {
-      src: chrome.extension.getURL('vendors/bootstrap/css/bootstrap-theme.min.css')
-    }
-  ]);
-
-  $.rloader([
-    {
-      src: chrome.extension.getURL('vendors/bootstrap/js/bootstrap.min.js')
-    }
-  ]);
-
-  $.rloader([
-    {
-      src: chrome.extension.getURL('vendors/jquery.xml2json.js')
-    }
-  ]);
-
-  $.rloader([
-    {
-      src: chrome.extension.getURL('vendors/jquery.slimscroll.min.js')
-    }
-  ]);
-
-  $.rloader([
-    {
       src: chrome.extension.getURL('css/main.css')
     }
   ]);
