@@ -23,11 +23,12 @@ theme = localStorage["fav_theme"]
 switch theme
 	when "simple"
 		$.rloader [src: chrome.extension.getURL('css/simple.css')]
-	when "flat"
+	when "classic"
+		$.rloader [src: chrome.extension.getURL('css/classic.css')]
+	else
 		$.rloader [src: chrome.extension.getURL('css/flat.css')]
 		$.rloader [src: chrome.extension.getURL('vendors/font-awesome/css/font-awesome.min.css')]
-	else
-		$.rloader [src: chrome.extension.getURL('css/classic.css')]
+
 
 
 

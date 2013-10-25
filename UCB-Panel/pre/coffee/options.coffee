@@ -82,8 +82,6 @@ buildEnglishApp = ->
 	')
 
 
-
-
 #
 # MAIN FUNCTION
 #

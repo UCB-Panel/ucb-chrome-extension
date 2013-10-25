@@ -23,7 +23,14 @@
         }
       ]);
       break;
-    case "flat":
+    case "classic":
+      $.rloader([
+        {
+          src: chrome.extension.getURL('css/classic.css')
+        }
+      ]);
+      break;
+    default:
       $.rloader([
         {
           src: chrome.extension.getURL('css/flat.css')
@@ -32,13 +39,6 @@
       $.rloader([
         {
           src: chrome.extension.getURL('vendors/font-awesome/css/font-awesome.min.css')
-        }
-      ]);
-      break;
-    default:
-      $.rloader([
-        {
-          src: chrome.extension.getURL('css/classic.css')
         }
       ]);
   }
