@@ -322,8 +322,6 @@ buildGermanApp = ->
 	addButtonGroup( footerGroup, ".FooterInnerClass", true)
 
 
-
-
 # build the english app content
 buildEnglishApp = ->
 	# NIY
@@ -346,10 +344,8 @@ buildView = () ->
 #
 # MAIN FUNCTION
 #
-$(document).ready(->
-
+main = () ->
 	buildView()
-
 	# initialize important stuff
 	$(".trigger").not(".trigger_active").next(".ucbPanelCollapseContainer").hide()
 	trig = $(this)
@@ -367,4 +363,6 @@ $(document).ready(->
 		container: "body"
 
 	$("#footer").tooltip()
-)
+
+
+main()

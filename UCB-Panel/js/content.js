@@ -1,5 +1,5 @@
 (function() {
-  var FooterLink, Link, addButtonGroup, addSpacer, buildEnglishApp, buildGermanApp, buildView, createButton, createCollapseButton, createFooterButton, getTrafficAndPrint, mensaPlan;
+  var FooterLink, Link, addButtonGroup, addSpacer, buildEnglishApp, buildGermanApp, buildView, createButton, createCollapseButton, createFooterButton, getTrafficAndPrint, main, mensaPlan;
 
   Link = (function() {
     function Link(classes, icon, text, value, id) {
@@ -317,7 +317,7 @@
     }
   };
 
-  $(document).ready(function() {
+  main = function() {
     var trig;
     buildView();
     $(".trigger").not(".trigger_active").next(".ucbPanelCollapseContainer").hide();
@@ -336,6 +336,8 @@
       container: "body"
     });
     return $("#footer").tooltip();
-  });
+  };
+
+  main();
 
 }).call(this);
