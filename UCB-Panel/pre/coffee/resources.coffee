@@ -25,6 +25,7 @@ switch theme
 		$.rloader [src: chrome.extension.getURL('css/simple.css')]
 	when "flat"
 		$.rloader [src: chrome.extension.getURL('css/flat.css')]
+		$.rloader [src: chrome.extension.getURL('vendors/font-awesome/css/font-awesome.min.css')]
 	else
 		$.rloader [src: chrome.extension.getURL('css/classic.css')]
 

@@ -35,7 +35,14 @@
   };
 
   createCollapseButton = function(innerClass, value, icon, text) {
-    return '<button class="' + innerClass + '" value="' + value + '"><div class="' + icon + '"></div>' + text + '<div class="icon_arrow"></div></button>';
+    var theme;
+    theme = localStorage["fav_theme"];
+    switch (theme) {
+      case "flat":
+        return '<button class="' + innerClass + '" value="' + value + '"><div class="' + icon + '"></div>' + text + '<b class="arrow icon-angle-down"></b></button>';
+      default:
+        return '<button class="' + innerClass + '" value="' + value + '"><div class="' + icon + '"></div>' + text + '<div class="icon_arrow"></div></button>';
+    }
   };
 
   addSpacer = function(parentClass) {
@@ -115,7 +122,7 @@
   };
 
   buildGermanApp = function() {
-    var btnBaseCSS, collapseCssClasses, footerHTML, metaClass, ucbBlog, ucbCampusplan, ucbCollapseGroup, ucbCommunity, ucbCommunityGroup, ucbContact, ucbDataCenter, ucbDates, ucbExams, ucbFacebook, ucbGremienallee, ucbHomepage, ucbInternGroup, ucbIntranet, ucbJuris, ucbKneipe, ucbLibrary, ucbMSDNAA, ucbMensa, ucbOLAT, ucbOnCampusGroup, ucbQIS, ucbStaff, ucbStudIP, ucbTimetable, ucbWebMail;
+    var btnBaseCSS, collapseCssClasses, footerHTML, metaClass, theme, ucbBlog, ucbCampusplan, ucbCollapseGroup, ucbCommunity, ucbCommunityGroup, ucbContact, ucbDataCenter, ucbDates, ucbExams, ucbFacebook, ucbGremienallee, ucbHomepage, ucbInternGroup, ucbIntranet, ucbJuris, ucbKneipe, ucbLibrary, ucbMSDNAA, ucbMensa, ucbOLAT, ucbOnCampusGroup, ucbQIS, ucbStaff, ucbStudIP, ucbTimetable, ucbWebMail;
     metaClass = ".ucbPanelButtonGroup";
     btnBaseCSS = "button btn btn-default menuitem-iconic ";
     collapseCssClasses = btnBaseCSS + "ucbpanel_iro collapse_item";
@@ -131,16 +138,42 @@
     ucbDates = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Zeitplan", "http://www.umwelt-campus.de/ucb/index.php?id=zeitplan", "[Collapsed] UCB Zeitplan");
     ucbTimetable = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Stundenplan", "http://www.umwelt-campus.de/ucb/index.php?id=fachbereiche", "[Collapsed] UCB Studenplan");
     ucbGremienallee = new Link(btnBaseCSS + "ucbpanel_gremienallee", "icon_ucbpanel_gremienallee", "Gremienallee", "http://www.gremienallee.de", "UCB Gremienallee");
-    ucbCommunity = new Link(btnBaseCSS + "ucbpanel_iro", "icon_ucbpanel_iro", "Community", "http://community.umwelt-campus.de/index.php", "UCB Community");
-    ucbQIS = new Link(btnBaseCSS + "ucbpanel_qis", "icon_ucbpanel_qis", "Qis", "https://qis.fh-trier.de/qisserver/rds?state=user&type=0", "UCB QIS");
+    ucbCommunity = new Link(btnBaseCSS + "ucbpanel_iro", "icon_ucbpanel_community", "Community", "http://community.umwelt-campus.de/index.php", "UCB Community");
+    ucbQIS = new Link(btnBaseCSS + "ucbpanel_qis", "icon_ucbpanel_qis", "QIS", "https://qis.fh-trier.de/qisserver/rds?state=user&type=0", "UCB QIS");
     ucbWebMail = new Link(btnBaseCSS + "ucbpanel_webmail", "icon_ucbpanel_webmail", "Webmail", "https://exchange.umwelt-campus.de", "UCB Webmail");
-    ucbIntranet = new Link(btnBaseCSS + "ucbpanel_iro", "icon_ucbpanel_iro", "Intranet", "http://www.umwelt-campus.de/ucb/index.php?id=intern", "UCB Intranet");
+    ucbIntranet = new Link(btnBaseCSS + "ucbpanel_iro", "icon_ucbpanel_intranet", "Intranet", "http://www.umwelt-campus.de/ucb/index.php?id=intern", "UCB Intranet");
     ucbLibrary = new Link(btnBaseCSS + "ucbpanel_bib", "icon_ucbpanel_bib", "eLibrary", "http://grimm.umwelt-campus.de/", "UCB eLibrary");
-    ucbStudIP = new Link(btnBaseCSS + "ucbpanel_studip", "icon_ucbpanel_studip", "StudIP", "https://studip.fh-trier.de/index.php?again=yes", "UCB StudIP");
+    ucbStudIP = new Link(btnBaseCSS + "ucbpanel_studip", "icon_ucbpanel_studip", "Stud.IP", "https://studip.fh-trier.de/index.php?again=yes", "UCB Stud.IP");
     ucbJuris = new Link(btnBaseCSS + "ucbpanel_juris", "icon_ucbpanel_juris", "Juris", "http://www.juris.de/jportal/Zugang.jsp", "UCB Juris");
     ucbOLAT = new Link(btnBaseCSS + "ucbpanel_olat", "icon_ucbpanel_olat", "OLAT", "https://olat.vcrp.de", "UCB OLAT");
     ucbMensa = new Link(btnBaseCSS + "ucbpanel_mensa", "icon_ucbpanel_mensa", "Mensa", "http://ucb.li/mensa", "UCB Mensa");
-    ucbKneipe = new Link(btnBaseCSS + "ucbpanel_kneipe", "icon_ucbpanel_kneipe", "Campus Kneipe", "http://www.umwelt-campus.de/ucb/index.php?id=8163&L=0", "UCB Campus Kneipe");
+    ucbKneipe = new Link(btnBaseCSS + "ucbpanel_kadu", "icon_ucbpanel_kadu", "KADU Campus Kneipe", "http://www.umwelt-campus.de/ucb/index.php?id=8163&L=0", "UCB Campus Kneipe");
+    theme = localStorage["fav_theme"];
+    switch (theme) {
+      case "flat":
+        ucbHomepage = new Link(collapseCssClasses, "icon-globe", "Startseite", "http://www.umwelt-campus.de/ucb/index.php", "[Collapsed] UCB Startseite");
+        ucbTimetable = new Link(collapseCssClasses, "icon-calendar", "Stundenplan", "http://www.umwelt-campus.de/ucb/index.php?id=fachbereiche", "[Collapsed] UCB Studenplan");
+        ucbDates = new Link(collapseCssClasses, "icon-time", "Zeitplan", "http://www.umwelt-campus.de/ucb/index.php?id=zeitplan", "[Collapsed] UCB Zeitplan");
+        ucbCampusplan = new Link(collapseCssClasses, "icon-map-marker", "Campusplan", "http://www.umwelt-campus.de/ucb/fileadmin/layout/ucbplan.pdf", "[Collapsed] UCB Campusplan");
+        ucbExams = new Link(collapseCssClasses, "icon-table", "Klausurplan", "http://www.umwelt-campus.de/ucb/index.php?id=klausurplan", "[Collapsed] UCB Klausurplan");
+        ucbContact = new Link(collapseCssClasses, "icon-signin", "Contact", "http://ucb-contact.umwelt-campus.de/", "[Collapsed] UCB Contact");
+        ucbBlog = new Link(collapseCssClasses, "icon-rss", "Blog", "http://blog.hochschule-trier.de/", "[Collapsed] UCB Blog");
+        ucbFacebook = new Link(collapseCssClasses, "icon-facebook", "Facebook-Seite", "https://www.facebook.com/UmweltCampus", "[Collapsed] UCB Facebook");
+        ucbStaff = new Link(collapseCssClasses, "icon-group", "Personalverzeichnis", "http://www.umwelt-campus.de/ucb/index.php?id=personalverzeichnis", "[Collapsed] UCB Personalverzeichnis");
+        ucbDataCenter = new Link(collapseCssClasses, "icon-laptop", "Rechenzentrum", "http://www.umwelt-campus.de/ucb/index.php?id=rechenzentrum", "[Collapsed] UCB Rechenzentrum");
+        ucbMSDNAA = new Link(collapseCssClasses, "icon-windows", "Microsoft-Dreamspark", "https://www.umwelt-campus.de/elms_login.php", "[Collapsed] UCB MSDNAA");
+        ucbCommunity = new Link(btnBaseCSS + "ucbpanel_iro", "icon-comments-alt", "Community", "http://community.umwelt-campus.de/index.php", "UCB Community");
+        ucbGremienallee = new Link(btnBaseCSS + "ucbpanel_gremienallee", "icon-info", "Gremienallee", "http://www.gremienallee.de", "UCB Gremienallee");
+        ucbStudIP = new Link(btnBaseCSS + "ucbpanel_studip", "icon-list-alt", "Stud.IP", "https://studip.fh-trier.de/index.php?again=yes", "UCB Stud.IP");
+        ucbWebMail = new Link(btnBaseCSS + "ucbpanel_webmail", "icon-envelope", "Webmail", "https://exchange.umwelt-campus.de", "UCB Webmail");
+        ucbQIS = new Link(btnBaseCSS + "ucbpanel_qis", "icon-bar-chart", "QIS", "https://qis.fh-trier.de/qisserver/rds?state=user&type=0", "UCB QIS");
+        ucbIntranet = new Link(btnBaseCSS + "ucbpanel_iro", "icon-sitemap", "Intranet", "http://www.umwelt-campus.de/ucb/index.php?id=intern", "UCB Intranet");
+        ucbLibrary = new Link(btnBaseCSS + "ucbpanel_bib", "icon-book", "eLibrary", "http://grimm.umwelt-campus.de/", "UCB eLibrary");
+        ucbJuris = new Link(btnBaseCSS + "ucbpanel_juris", "icon-legal", "Juris", "http://www.juris.de/jportal/Zugang.jsp", "UCB Juris");
+        ucbOLAT = new Link(btnBaseCSS + "ucbpanel_olat", "icon-file-text-alt", "OLAT", "https://olat.vcrp.de", "UCB OLAT");
+        ucbMensa = new Link(btnBaseCSS + "ucbpanel_mensa", "icon-food", "Mensa", "http://ucb.li/mensa", "UCB Mensa");
+        ucbKneipe = new Link(btnBaseCSS + "ucbpanel_kadu", "icon-beer", "KADU Campus Kneipe", "http://www.umwelt-campus.de/ucb/index.php?id=8163&L=0", "UCB Campus Kneipe");
+    }
     $(metaClass).append(createCollapseButton("btn btn-default trigger menuitem-iconic", "%COLLAPSE%", "icon_ucbpanel_iro", "Umwelt-Campus"));
     $(metaClass).append('<div class="ucbPanelCollapseContainer"></div>');
     ucbCollapseGroup = [ucbHomepage, ucbTimetable, ucbDates, ucbCampusplan, ucbExams, ucbContact, ucbBlog, ucbFacebook, ucbStaff, ucbDataCenter, ucbMSDNAA];
@@ -160,19 +193,32 @@
       ip_address = ip_address.replace(/Ihre IP-Adresse: /, "") + "";
       if (ip_address !== "null") {
         addSpacer(metaClass);
-        TrafficButton = $('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>');
-        TrafficButton.click(function() {
-          return chrome.tabs.create({
-            url: "http://traffic.campus-company.eu"
-          });
-        });
-        $(".ucbPanelButtonGroup").append(TrafficButton);
-        $(".ucbPanelButtonGroup").append('<div class="TrafficDisplay"></div>');
-        $(".TrafficDisplay").append('<div class="TrafficLeftSide"></div>');
-        $(".TrafficDisplay").append('<div class="TrafficRightSide"></div>');
-        $(".TrafficLeftSide").append('<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>');
-        $(".TrafficLeftSide").append('<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>');
-        $(".TrafficRightSide").append('<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>');
+        theme = localStorage["fav_theme"];
+        switch (theme) {
+          case "flat":
+            TrafficButton = $('<button class="button btn btn-default menuitem-iconic ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"><div class="icon-dashboard"></div>Rest-Traffic:&nbsp;<b class="traffic_total"> </b></button>');
+            TrafficButton.click(function() {
+              return chrome.tabs.create({
+                url: "http://traffic.campus-company.eu"
+              });
+            });
+            $(".ucbPanelButtonGroup").append(TrafficButton);
+            break;
+          default:
+            TrafficButton = $('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>');
+            TrafficButton.click(function() {
+              return chrome.tabs.create({
+                url: "http://traffic.campus-company.eu"
+              });
+            });
+            $(".ucbPanelButtonGroup").append(TrafficButton);
+            $(".ucbPanelButtonGroup").append('<div class="TrafficDisplay"></div>');
+            $(".TrafficDisplay").append('<div class="TrafficLeftSide"></div>');
+            $(".TrafficDisplay").append('<div class="TrafficRightSide"></div>');
+            $(".TrafficLeftSide").append('<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>');
+            $(".TrafficLeftSide").append('<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>');
+            $(".TrafficRightSide").append('<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>');
+        }
         return getTrafficAndPrint();
       }
     });
@@ -222,7 +268,7 @@
       $(".icon_arrow").css("background-image", "url(images/arrow_down.gif)");
     }
     $('.ucbMainPanel').slimScroll({
-      height: '510px',
+      height: '502px',
       color: '#666',
       size: '5px',
       alwaysVisible: true
@@ -251,13 +297,13 @@
           trig = $(this);
           if (trig.hasClass("trigger_active")) {
             $(".icon_arrow").css("background-image", "url(images/arrow_down.gif)");
-            trig.next(".ucbPanelCollapseContainer").slideToggle("slow");
+            trig.next(".ucbPanelCollapseContainer").slideToggle(300);
             return trig.removeClass("trigger_active");
           } else {
-            $(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle("slow");
+            $(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle(300);
             $(".trigger_active").removeClass("trigger_active");
             $(".icon_arrow").css("background-image", "url(images/arrow_up.gif)");
-            trig.next(".ucbPanelCollapseContainer").slideToggle("slow");
+            trig.next(".ucbPanelCollapseContainer").slideToggle(300);
             return trig.addClass("trigger_active");
           }
         } else {
