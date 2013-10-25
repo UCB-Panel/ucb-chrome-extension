@@ -126,28 +126,6 @@
     metaClass = ".ucbPanelButtonGroup";
     btnBaseCSS = "button btn btn-default menuitem-iconic ";
     collapseCssClasses = btnBaseCSS + "ucbpanel_iro collapse_item";
-    ucbHomepage = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Startseite", "http://www.umwelt-campus.de/ucb/index.php", "[Collapsed] UCB Startseite");
-    ucbCampusplan = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Campusplan", "http://www.umwelt-campus.de/ucb/fileadmin/layout/ucbplan.pdf", "[Collapsed] UCB Campusplan");
-    ucbContact = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Contact", "http://ucb-contact.umwelt-campus.de/", "[Collapsed] UCB Contact");
-    ucbMSDNAA = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Microsoft-Dreamspark", "https://www.umwelt-campus.de/elms_login.php", "[Collapsed] UCB MSDNAA");
-    ucbBlog = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Blog", "http://blog.hochschule-trier.de/", "[Collapsed] UCB Blog");
-    ucbFacebook = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Facebook-Seite", "https://www.facebook.com/UmweltCampus", "[Collapsed] UCB Facebook");
-    ucbStaff = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Personalverzeichnis", "http://www.umwelt-campus.de/ucb/index.php?id=personalverzeichnis", "[Collapsed] UCB Personalverzeichnis");
-    ucbDataCenter = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Rechenzentrum", "http://www.umwelt-campus.de/ucb/index.php?id=rechenzentrum", "[Collapsed] UCB Rechenzentrum");
-    ucbExams = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Klausurplan", "http://www.umwelt-campus.de/ucb/index.php?id=klausurplan", "[Collapsed] UCB Klausurplan");
-    ucbDates = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Zeitplan", "http://www.umwelt-campus.de/ucb/index.php?id=zeitplan", "[Collapsed] UCB Zeitplan");
-    ucbTimetable = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Stundenplan", "http://www.umwelt-campus.de/ucb/index.php?id=fachbereiche", "[Collapsed] UCB Studenplan");
-    ucbGremienallee = new Link(btnBaseCSS + "ucbpanel_gremienallee", "icon_ucbpanel_gremienallee", "Gremienallee", "http://www.gremienallee.de", "UCB Gremienallee");
-    ucbCommunity = new Link(btnBaseCSS + "ucbpanel_iro", "icon_ucbpanel_community", "Community", "http://community.umwelt-campus.de/index.php", "UCB Community");
-    ucbQIS = new Link(btnBaseCSS + "ucbpanel_qis", "icon_ucbpanel_qis", "QIS", "https://qis.fh-trier.de/qisserver/rds?state=user&type=0", "UCB QIS");
-    ucbWebMail = new Link(btnBaseCSS + "ucbpanel_webmail", "icon_ucbpanel_webmail", "Webmail", "https://exchange.umwelt-campus.de", "UCB Webmail");
-    ucbIntranet = new Link(btnBaseCSS + "ucbpanel_iro", "icon_ucbpanel_intranet", "Intranet", "http://www.umwelt-campus.de/ucb/index.php?id=intern", "UCB Intranet");
-    ucbLibrary = new Link(btnBaseCSS + "ucbpanel_bib", "icon_ucbpanel_bib", "eLibrary", "http://grimm.umwelt-campus.de/", "UCB eLibrary");
-    ucbStudIP = new Link(btnBaseCSS + "ucbpanel_studip", "icon_ucbpanel_studip", "Stud.IP", "https://studip.fh-trier.de/index.php?again=yes", "UCB Stud.IP");
-    ucbJuris = new Link(btnBaseCSS + "ucbpanel_juris", "icon_ucbpanel_juris", "Juris", "http://www.juris.de/jportal/Zugang.jsp", "UCB Juris");
-    ucbOLAT = new Link(btnBaseCSS + "ucbpanel_olat", "icon_ucbpanel_olat", "OLAT", "https://olat.vcrp.de", "UCB OLAT");
-    ucbMensa = new Link(btnBaseCSS + "ucbpanel_mensa", "icon_ucbpanel_mensa", "Mensa", "http://ucb.li/mensa", "UCB Mensa");
-    ucbKneipe = new Link(btnBaseCSS + "ucbpanel_kadu", "icon_ucbpanel_kadu", "KADU Campus Kneipe", "http://www.umwelt-campus.de/ucb/index.php?id=8163&L=0", "UCB Campus Kneipe");
     theme = localStorage["fav_theme"];
     switch (theme) {
       case "flat":
@@ -173,6 +151,30 @@
         ucbOLAT = new Link(btnBaseCSS + "ucbpanel_olat", "icon-file-text-alt", "OLAT", "https://olat.vcrp.de", "UCB OLAT");
         ucbMensa = new Link(btnBaseCSS + "ucbpanel_mensa", "icon-food", "Mensa", "http://ucb.li/mensa", "UCB Mensa");
         ucbKneipe = new Link(btnBaseCSS + "ucbpanel_kadu", "icon-beer", "KADU Campus Kneipe", "http://www.umwelt-campus.de/ucb/index.php?id=8163&L=0", "UCB Campus Kneipe");
+        break;
+      default:
+        ucbHomepage = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Startseite", "http://www.umwelt-campus.de/ucb/index.php", "[Collapsed] UCB Startseite");
+        ucbCampusplan = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Campusplan", "http://www.umwelt-campus.de/ucb/fileadmin/layout/ucbplan.pdf", "[Collapsed] UCB Campusplan");
+        ucbContact = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Contact", "http://ucb-contact.umwelt-campus.de/", "[Collapsed] UCB Contact");
+        ucbMSDNAA = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Microsoft-Dreamspark", "https://www.umwelt-campus.de/elms_login.php", "[Collapsed] UCB MSDNAA");
+        ucbBlog = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Blog", "http://blog.hochschule-trier.de/", "[Collapsed] UCB Blog");
+        ucbFacebook = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Facebook-Seite", "https://www.facebook.com/UmweltCampus", "[Collapsed] UCB Facebook");
+        ucbStaff = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Personalverzeichnis", "http://www.umwelt-campus.de/ucb/index.php?id=personalverzeichnis", "[Collapsed] UCB Personalverzeichnis");
+        ucbDataCenter = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Rechenzentrum", "http://www.umwelt-campus.de/ucb/index.php?id=rechenzentrum", "[Collapsed] UCB Rechenzentrum");
+        ucbExams = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Klausurplan", "http://www.umwelt-campus.de/ucb/index.php?id=klausurplan", "[Collapsed] UCB Klausurplan");
+        ucbDates = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Zeitplan", "http://www.umwelt-campus.de/ucb/index.php?id=zeitplan", "[Collapsed] UCB Zeitplan");
+        ucbTimetable = new Link(collapseCssClasses, "icon_ucbpanel_iro", "Stundenplan", "http://www.umwelt-campus.de/ucb/index.php?id=fachbereiche", "[Collapsed] UCB Studenplan");
+        ucbGremienallee = new Link(btnBaseCSS + "ucbpanel_gremienallee", "icon_ucbpanel_gremienallee", "Gremienallee", "http://www.gremienallee.de", "UCB Gremienallee");
+        ucbCommunity = new Link(btnBaseCSS + "ucbpanel_iro", "icon_ucbpanel_community", "Community", "http://community.umwelt-campus.de/index.php", "UCB Community");
+        ucbQIS = new Link(btnBaseCSS + "ucbpanel_qis", "icon_ucbpanel_qis", "QIS", "https://qis.fh-trier.de/qisserver/rds?state=user&type=0", "UCB QIS");
+        ucbWebMail = new Link(btnBaseCSS + "ucbpanel_webmail", "icon_ucbpanel_webmail", "Webmail", "https://exchange.umwelt-campus.de", "UCB Webmail");
+        ucbIntranet = new Link(btnBaseCSS + "ucbpanel_iro", "icon_ucbpanel_intranet", "Intranet", "http://www.umwelt-campus.de/ucb/index.php?id=intern", "UCB Intranet");
+        ucbLibrary = new Link(btnBaseCSS + "ucbpanel_bib", "icon_ucbpanel_bib", "eLibrary", "http://grimm.umwelt-campus.de/", "UCB eLibrary");
+        ucbStudIP = new Link(btnBaseCSS + "ucbpanel_studip", "icon_ucbpanel_studip", "Stud.IP", "https://studip.fh-trier.de/index.php?again=yes", "UCB Stud.IP");
+        ucbJuris = new Link(btnBaseCSS + "ucbpanel_juris", "icon_ucbpanel_juris", "Juris", "http://www.juris.de/jportal/Zugang.jsp", "UCB Juris");
+        ucbOLAT = new Link(btnBaseCSS + "ucbpanel_olat", "icon_ucbpanel_olat", "OLAT", "https://olat.vcrp.de", "UCB OLAT");
+        ucbMensa = new Link(btnBaseCSS + "ucbpanel_mensa", "icon_ucbpanel_mensa", "Mensa", "http://ucb.li/mensa", "UCB Mensa");
+        ucbKneipe = new Link(btnBaseCSS + "ucbpanel_kadu", "icon_ucbpanel_kadu", "KADU Campus Kneipe", "http://www.umwelt-campus.de/ucb/index.php?id=8163&L=0", "UCB Campus Kneipe");
     }
     $(metaClass).append(createCollapseButton("btn btn-default trigger menuitem-iconic", "%COLLAPSE%", "icon_ucbpanel_iro", "Umwelt-Campus"));
     $(metaClass).append('<div class="ucbPanelCollapseContainer"></div>');
@@ -281,7 +283,7 @@
   });
 
   document.addEventListener("DOMContentLoaded", function() {
-    var LaunchURL, anchors, i, _results;
+    var LaunchURL, anchors, i, theme, _results;
     LaunchURL = function(oURL) {
       return chrome.tabs.create({
         url: oURL
@@ -289,20 +291,33 @@
     };
     anchors = document.querySelectorAll("button");
     i = 0;
+    theme = localStorage["fav_theme"];
     _results = [];
     while (i < anchors.length) {
       anchors[i].addEventListener("click", function(event) {
-        var trig;
+        var arrow, trig;
         if (event.currentTarget.value === "%COLLAPSE%") {
           trig = $(this);
           if (trig.hasClass("trigger_active")) {
-            $(".icon_arrow").css("background-image", "url(images/arrow_down.gif)");
+            if (theme === "flat") {
+              arrow = $('.arrow');
+              arrow.removeClass('icon-angle-up');
+              arrow.addClass('icon-angle-down');
+            } else {
+              $(".icon_arrow").css("background-image", "url(images/arrow_down.gif)");
+            }
             trig.next(".ucbPanelCollapseContainer").slideToggle(300);
             return trig.removeClass("trigger_active");
           } else {
             $(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle(300);
             $(".trigger_active").removeClass("trigger_active");
-            $(".icon_arrow").css("background-image", "url(images/arrow_up.gif)");
+            if (theme === "flat") {
+              arrow = $('.arrow');
+              arrow.removeClass('icon-angle-down');
+              arrow.addClass('icon-angle-up');
+            } else {
+              $(".icon_arrow").css("background-image", "url(images/arrow_up.gif)");
+            }
             trig.next(".ucbPanelCollapseContainer").slideToggle(300);
             return trig.addClass("trigger_active");
           }
