@@ -193,6 +193,7 @@
       ip_address = ip_address.replace(/Ihre IP-Adresse: /, "") + "";
       if (ip_address !== "null") {
         addSpacer(metaClass);
+<<<<<<< HEAD
         theme = localStorage["fav_theme"];
         switch (theme) {
           case "flat":
@@ -219,6 +220,21 @@
             $(".TrafficLeftSide").append('<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>');
             $(".TrafficRightSide").append('<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>');
         }
+=======
+        TrafficButton = $('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>');
+        TrafficButton.click(function() {
+          return chrome.tabs.create({
+            url: "http://traffic.campus-company.eu"
+          });
+        });
+        $(".ucbPanelButtonGroup").append(TrafficButton);
+        $(".ucbPanelButtonGroup").append('<div class="TrafficDisplay"></div>');
+        $(".TrafficDisplay").append('<div class="TrafficLeftSide"></div>');
+        $(".TrafficDisplay").append('<div class="TrafficRightSide"></div>');
+        $(".TrafficLeftSide").append('<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>');
+        $(".TrafficLeftSide").append('<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>');
+        $(".TrafficRightSide").append('<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>');
+>>>>>>> master
         return getTrafficAndPrint();
       }
     });

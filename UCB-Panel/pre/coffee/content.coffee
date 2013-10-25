@@ -1,5 +1,5 @@
 # PROJECT: UCB-Panel
-# 
+#
 # AUTHOR : Niklas Heer (niklas.heer@me.com)
 # DATE   : 13.10.2013
 # LICENSE: GPL 3.0
@@ -13,11 +13,17 @@ mensaPlan = "test"
 
 # function to create the html code for a button
 createButton = (contentObj) ->
-	return ('<button class="' + contentObj.classes + 
+	return ('<button class="' + contentObj.classes +
 		'" type="button" id="' + contentObj.id +
+<<<<<<< HEAD
 		'" value="' + contentObj.value + 
 		'"><div class="' + contentObj.icon + 
 		'"></div>' + contentObj.text + '</button>')
+=======
+		'" value="' + contentObj.value +
+		'"><div class="' + contentObj.icon +
+		'"></div>' + contentObj.text + '</button><br>')
+>>>>>>> master
 
 # function to create a button group
 addButtonGroup = (buttons, parentClass) ->
@@ -31,6 +37,7 @@ addButtonGroup = (buttons, parentClass) ->
 
 # function to add add a collapse-capable button
 createCollapseButton = (innerClass, value, icon, text) ->
+<<<<<<< HEAD
 	theme = localStorage["fav_theme"]
 	switch theme
 		when "flat"
@@ -45,6 +52,13 @@ createCollapseButton = (innerClass, value, icon, text) ->
 				'"><div class="' + icon + 
 				'"></div>' + text + 
 				'<div class="icon_arrow"></div></button>')
+=======
+	return ('<button class="' + innerClass +
+		'" value="' + value +
+		'"><div class="' + icon +
+		'"></div>' + text +
+		'<div class="icon_arrow"></div></button>')
+>>>>>>> master
 
 # function to insert a spacer into a given parent class
 addSpacer = (parentClass) ->
@@ -235,6 +249,7 @@ buildGermanApp = ->
 		unless ip_address is "null"
 			addSpacer( metaClass )
 
+<<<<<<< HEAD
 			theme = localStorage["fav_theme"]
 			switch theme
 				when "flat"
@@ -255,6 +270,20 @@ buildGermanApp = ->
 					$(".TrafficLeftSide").append '<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>'
 					$(".TrafficLeftSide").append '<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>'
 					$(".TrafficRightSide").append '<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>'
+=======
+			TrafficButton = $('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>')
+			TrafficButton.click(() ->
+				chrome.tabs.create url: "http://traffic.campus-company.eu"
+			)
+
+			$(".ucbPanelButtonGroup").append TrafficButton
+			$(".ucbPanelButtonGroup").append '<div class="TrafficDisplay"></div>'
+			$(".TrafficDisplay").append '<div class="TrafficLeftSide"></div>'
+			$(".TrafficDisplay").append '<div class="TrafficRightSide"></div>'
+			$(".TrafficLeftSide").append '<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>'
+			$(".TrafficLeftSide").append '<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>'
+			$(".TrafficRightSide").append '<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>'
+>>>>>>> master
 			getTrafficAndPrint() # wirte data
 
 
@@ -325,6 +354,7 @@ $(document).ready(->
 	$("#footer").tooltip()
 )
 
+
 # Add Listeners
 document.addEventListener "DOMContentLoaded", ->
 	LaunchURL = (oURL) ->
@@ -350,3 +380,5 @@ document.addEventListener "DOMContentLoaded", ->
 				LaunchURL event.currentTarget.value
 				event.preventDefault()
 		i++
+
+
