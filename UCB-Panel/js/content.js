@@ -251,6 +251,26 @@
     addSpacer(metaClass);
     ucbOnCampusGroup = [ucbMensa, ucbKneipe];
     addButtonGroup(ucbOnCampusGroup, ".ucbPanelButtonGroup");
+    $(metaClass).append(createCollapseButton(btnBaseCSS + "ucbpanel_mensa trigger", "%COLLAPSE%", "icon_ucbpanel_mensa", "Mensa"));
+    $(metaClass).append('<div class="ucbPanelCollapseContainer ucbMensaCollapse" id="ucbMensaCollapse"></div>');
+    $.get("http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", function(xml) {
+      var json;
+      json = $.xml2json(xml);
+      $('#ucbMensaCollapse').append(json);
+      return console.log(json);
+    });
+    jQuery.ajax({
+      url: "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml",
+      success: function(xml) {
+        return $('.ucbMensaCollapse').waitUntilExists(function(xml) {
+          var json;
+          json = $.xml2json(xml);
+          $('.ucbMensaCollapse').append(json);
+          return console.log(json);
+        });
+      },
+      async: false
+    });
     $.get("http://traffic.campus-company.eu/", function(page) {
       var TrafficButton, ip_address;
       ip_address = page.match(/Ihre IP-Adresse: 143.93.4[0-2]{1}.[0-9]{1,3}/) + "";
