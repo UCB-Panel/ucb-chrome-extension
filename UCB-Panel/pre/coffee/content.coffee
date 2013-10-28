@@ -260,9 +260,9 @@ buildGermanApp = ->
 
 
 	$.get "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", (xml) ->
-	  json = $.xml2json(xml)
-	  $('#ucbMensaCollapse').append json
-	  console.log json
+		json = $.xml2json(xml)
+		$('#ucbMensaCollapse').append json
+		console.log json
 
 	jQuery.ajax
 		url: "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml"
