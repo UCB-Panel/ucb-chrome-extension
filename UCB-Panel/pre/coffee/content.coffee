@@ -78,22 +78,22 @@ createCollapseButton = (innerClass, value, icon, text) ->
 		trig = $(this)
 		if trig.hasClass("trigger_active")
 			if theme is "flat"
-				arrow = $('.arrow')
+				arrow = trig.find('.arrow')
 				arrow.removeClass('icon-angle-up')
 				arrow.addClass('icon-angle-down')
 			else
-				$(".icon_arrow").css "background-image", "url(images/arrow_down.gif)"
+				trig.find(".icon_arrow").css "background-image", "url(images/arrow_down.gif)"
 			trig.next(".ucbPanelCollapseContainer").slideToggle 300
 			trig.removeClass "trigger_active"
 		else
 			$(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle 300
 			$(".trigger_active").removeClass "trigger_active"
 			if theme is "flat"
-				arrow = $('.arrow')
+				arrow = trig.find('.arrow')
 				arrow.removeClass('icon-angle-down')
 				arrow.addClass('icon-angle-up')
 			else
-				$(".icon_arrow").css "background-image", "url(images/arrow_up.gif)"
+				trig.find(".icon_arrow").css "background-image", "url(images/arrow_up.gif)"
 			trig.next(".ucbPanelCollapseContainer").slideToggle 300
 			trig.addClass "trigger_active"
 	)
@@ -196,12 +196,18 @@ getFoodAndPrice = (input, isKomponentenEssen) ->
 getMensaAndPrint = () ->
 	$.get "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", (xml) ->
 		json = $.xml2json(xml)
-		datum = $.format.date(new Date(), 'dd.MM.yyyy')
+		# datum = $.format.date(new Date(), 'dd.MM.yyyy')
+		datum = $.format.date("2009-12-18 10:54:50.546", 'dd.MM.yyyy')
+		i = 0
 		_.each(json.tag, (tag) ->
+			i++
 			if tag.datum is datum
 				$('.ucbMensaCollapse').append '<p><b>Stammessen:</b><br>' + getFoodAndPrice(tag.stammessen) + '</p>'
 				$('.ucbMensaCollapse').append '<p><b>Vegetarisch:</b><br>' + getFoodAndPrice(tag.vegetarisch) + '</p>'
 				$('.ucbMensaCollapse').append '<p><b>Komponentenessen:</b><br>' + getFoodAndPrice(tag.komponentenessen, true) + '</p>'
+			else
+				if i is 5
+					$('.ucbMensaCollapse').append '<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Kochtöpfe gefunden.</b><br>'
 		)
 
 
@@ -307,7 +313,7 @@ buildGermanApp = ->
 
 	footerHome     = new Link("footerHome", "btn btn-default", "Homepage", "http://ucb.we-develop.de", "[Footer] Hompage")
 	footerAbout    = new Link("footerAbout", "btn btn-default", "Über das UCB-Panel", "http://ucb.we-develop.de/node/5", "[Footer] About")
-	footerBugs     = new Link("footerBugs", "btn btn-default", "Melde einen Bug oder Wunsch", "https://github.com/niklas-heer/ucb-chrome-extension/issues?state=open", "[Footer] Bugs")
+	footerBugs     = new Link("footerBugs", "btn btn-default", "Melde einen Bug oder Wunsch", "https://github.com/niklas-heer/ucb-chrome-extension/issues", "[Footer] Bugs")
 	footerSettings = new Link("footerSettings", "btn btn-default", "Einstellungen", "options.html", "[Footer] Settings")
 
 	footerGroup = [footerHome, footerAbout, footerBugs, footerSettings]
