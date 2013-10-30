@@ -1,5 +1,5 @@
 (function() {
-  var FooterLink, Link, addButtonGroup, addSpacer, buildEnglishApp, buildGermanApp, buildView, createButton, createCollapseButton, createFooterButton, getFoodAndPrice, getMensaAndPrint, getTrafficAndPrint, main, mensaPlan, theme_config;
+  var FooterLink, Link, addButtonGroup, addSpacer, buildEnglishApp, buildGermanApp, buildView, createButton, createCollapseButton, createFooterButton, getFoodAndPrice, getMensaAndPrint, getTrafficAndPrint, main, theme_config;
 
   Link = (function() {
     function Link(name, classes, text, value, id) {
@@ -26,8 +26,6 @@
     return FooterLink;
 
   })();
-
-  mensaPlan = "test";
 
   theme_config = $.parseJSON($.ajax({
     url: "themes/" + localStorage["fav_theme"] + ".json",

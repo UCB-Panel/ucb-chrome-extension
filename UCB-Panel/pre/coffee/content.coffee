@@ -12,7 +12,6 @@ class FooterLink
 	constructor: ( @classes, @icon, @text, @value, @id) ->
 
 # initalize
-mensaPlan = "test"
 theme_config = $.parseJSON(
 	$.ajax(
 		{
