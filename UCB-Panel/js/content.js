@@ -220,7 +220,6 @@
       gefunden = false;
       return _.each(json.tag, function(tag) {
         i++;
-        console.log(i);
         if (tag.datum === datum) {
           gefunden = true;
           if (tag.stammessen.match("Feiertag")) {

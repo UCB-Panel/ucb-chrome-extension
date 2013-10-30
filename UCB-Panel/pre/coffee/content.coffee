@@ -208,7 +208,6 @@ getMensaAndPrint = () ->
 		gefunden = false
 		_.each(json.tag, (tag) ->
 			i++
-			console.log i
 			if tag.datum is datum
 				gefunden = true
 				if tag.stammessen.match("Feiertag")
