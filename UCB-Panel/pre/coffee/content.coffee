@@ -196,17 +196,25 @@ getFoodAndPrice = (input, isKomponentenEssen) ->
 getMensaAndPrint = () ->
 	$.get "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", (xml) ->
 		json = $.xml2json(xml)
-		# datum = $.format.date(new Date(), 'dd.MM.yyyy')
-		datum = $.format.date("2009-12-18 10:54:50.546", 'dd.MM.yyyy')
+
+		# datum = $.format.date("2013-10-31 10:54:50.546", 'dd.MM.yyyy') # zum testen
+		datum = $.format.date(new Date(), 'dd.MM.yyyy')
+
 		i = 0
+		gefunden = false
 		_.each(json.tag, (tag) ->
 			i++
+			console.log i
 			if tag.datum is datum
-				$('.ucbMensaCollapse').append '<p><b>Stammessen:</b><br>' + getFoodAndPrice(tag.stammessen) + '</p>'
-				$('.ucbMensaCollapse').append '<p><b>Vegetarisch:</b><br>' + getFoodAndPrice(tag.vegetarisch) + '</p>'
-				$('.ucbMensaCollapse').append '<p><b>Komponentenessen:</b><br>' + getFoodAndPrice(tag.komponentenessen, true) + '</p>'
+				gefunden = true
+				if tag.stammessen.match("Feiertag")
+					$('.ucbMensaCollapse').append '<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Heute ist ein Feiertag!</b><br>'
+				else
+					$('.ucbMensaCollapse').append '<p><b>Stammessen:</b><br>' + getFoodAndPrice(tag.stammessen) + '</p>'
+					$('.ucbMensaCollapse').append '<p><b>Vegetarisch:</b><br>' + getFoodAndPrice(tag.vegetarisch) + '</p>'
+					$('.ucbMensaCollapse').append '<p><b>Komponentenessen:</b><br>' + getFoodAndPrice(tag.komponentenessen, true) + '</p>'
 			else
-				if i is 5
+				if i >= 5 and not gefunden
 					$('.ucbMensaCollapse').append '<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Kochtöpfe gefunden.</b><br>'
 		)
 

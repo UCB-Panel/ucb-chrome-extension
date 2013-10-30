@@ -208,18 +208,25 @@
 
   getMensaAndPrint = function() {
     return $.get("http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", function(xml) {
-      var datum, i, json;
+      var datum, gefunden, i, json;
       json = $.xml2json(xml);
-      datum = $.format.date("2009-12-18 10:54:50.546", 'dd.MM.yyyy');
+      datum = $.format.date(new Date(), 'dd.MM.yyyy');
       i = 0;
+      gefunden = false;
       return _.each(json.tag, function(tag) {
         i++;
+        console.log(i);
         if (tag.datum === datum) {
-          $('.ucbMensaCollapse').append('<p><b>Stammessen:</b><br>' + getFoodAndPrice(tag.stammessen) + '</p>');
-          $('.ucbMensaCollapse').append('<p><b>Vegetarisch:</b><br>' + getFoodAndPrice(tag.vegetarisch) + '</p>');
-          return $('.ucbMensaCollapse').append('<p><b>Komponentenessen:</b><br>' + getFoodAndPrice(tag.komponentenessen, true) + '</p>');
+          gefunden = true;
+          if (tag.stammessen.match("Feiertag")) {
+            return $('.ucbMensaCollapse').append('<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Heute ist ein Feiertag!</b><br>');
+          } else {
+            $('.ucbMensaCollapse').append('<p><b>Stammessen:</b><br>' + getFoodAndPrice(tag.stammessen) + '</p>');
+            $('.ucbMensaCollapse').append('<p><b>Vegetarisch:</b><br>' + getFoodAndPrice(tag.vegetarisch) + '</p>');
+            return $('.ucbMensaCollapse').append('<p><b>Komponentenessen:</b><br>' + getFoodAndPrice(tag.komponentenessen, true) + '</p>');
+          }
         } else {
-          if (i === 5) {
+          if (i >= 5 && !gefunden) {
             return $('.ucbMensaCollapse').append('<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Kochtöpfe gefunden.</b><br>');
           }
         }
