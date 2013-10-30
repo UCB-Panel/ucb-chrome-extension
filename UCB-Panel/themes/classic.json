@@ -1,0 +1,30 @@
+{
+	"icons": {
+		"ucbHomepage": "icon_ucbpanel_iro",
+		"ucbTimetable": "icon_ucbpanel_iro",
+		"ucbDates": "icon_ucbpanel_iro",
+		"ucbCampusplan": "icon_ucbpanel_iro",
+		"ucbExams": "icon_ucbpanel_iro",
+		"ucbContact": "icon_ucbpanel_iro",
+		"ucbBlog": "icon_ucbpanel_iro",
+		"ucbFacebook": "icon_ucbpanel_iro",
+		"ucbStaff": "icon_ucbpanel_iro",
+		"ucbDataCenter": "icon_ucbpanel_iro",
+		"ucbMSDNAA": "icon_ucbpanel_iro",
+		"ucbCommunity": "icon_ucbpanel_community",
+		"ucbGremienallee": "icon_ucbpanel_gremienallee",
+		"ucbStudIP": "icon_ucbpanel_studip",
+		"ucbWebMail": "icon_ucbpanel_webmail",
+		"ucbQIS": "icon_ucbpanel_qis",
+		"ucbIntranet": "icon_ucbpanel_intranet",
+		"ucbLibrary": "icon_ucbpanel_bib",
+		"ucbJuris": "icon_ucbpanel_juris",
+		"ucbOLAT": "icon_ucbpanel_olat",
+		"ucbMensa": "icon_ucbpanel_mensa",
+		"ucbKneipe": "icon_ucbpanel_kadu",
+		"footerHome": "glyphicon glyphicon-home",
+		"footerAbout": "glyphicon glyphicon-question-sign",
+		"footerBugs": "glyphicon glyphicon-bullhorn",
+		"footerSettings": "glyphicon glyphicon-cog"
+	}
+}
