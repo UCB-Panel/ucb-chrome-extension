@@ -15,6 +15,10 @@
 
   theme = localStorage["fav_theme"];
 
+  if (theme == null) {
+    localStorage["fav_theme"] = "flat";
+  }
+
   switch (theme) {
     case "simple":
       $.rloader([

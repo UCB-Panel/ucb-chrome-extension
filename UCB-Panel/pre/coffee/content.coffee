@@ -259,19 +259,19 @@ buildGermanApp = ->
 	$(metaClass).append '<div class="ucbPanelCollapseContainer ucbMensaCollapse" id="ucbMensaCollapse"></div>'
 
 
-	$.get "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", (xml) ->
-		json = $.xml2json(xml)
-		$('#ucbMensaCollapse').append json
-		console.log json
+	# $.get "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", (xml) ->
+	# 	json = $.xml2json(xml)
+	# 	$('#ucbMensaCollapse').append json
+	# 	console.log json
 
-	jQuery.ajax
-		url: "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml"
-		success: (xml) ->
-			$('.ucbMensaCollapse').waitUntilExists (xml) ->
-				json = $.xml2json(xml)
-				$('.ucbMensaCollapse').append json
-				console.log json
-		async: false
+	# jQuery.ajax
+	# 	url: "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml"
+	# 	success: (xml) ->
+	# 		$('.ucbMensaCollapse').waitUntilExists (xml) ->
+	# 			json = $.xml2json(xml)
+	# 			$('.ucbMensaCollapse').append json
+	# 			console.log json
+	# 	async: false
 
 
 	# check if we are on the Campus, if not don't display Trafficmeter

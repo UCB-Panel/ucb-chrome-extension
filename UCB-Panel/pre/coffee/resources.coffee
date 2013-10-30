@@ -20,6 +20,11 @@ $.rloader [src: chrome.extension.getURL('css/icons.css')]
 
 # load themes
 theme = localStorage["fav_theme"]
+
+# set default theme if not set at all
+unless theme?
+	localStorage["fav_theme"] = "flat"
+
 switch theme
 	when "simple"
 		$.rloader [src: chrome.extension.getURL('css/simple.css')]
