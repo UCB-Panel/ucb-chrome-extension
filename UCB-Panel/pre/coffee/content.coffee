@@ -189,7 +189,7 @@ getFoodAndPrice = (input, isKomponentenEssen) ->
 			money = ["2,25€", "3,65€"]
 		else
 			money = ["2,30€", "4,35€"]
-	output += "<br>Preis: " + money[0] + " / " + money[1]
+	output += "<br>Preis: " + money[0] + " &#185; / " + money[1] + " &#178;"
 
 	return output
 
@@ -201,7 +201,7 @@ getMensaAndPrint = () ->
 			chrome.tabs.create url: "http://ucb.li/mensa"
 		)
 
-		# datum = $.format.date("2013-10-31 10:54:50.546", 'dd.MM.yyyy') # zum testen
+		# datum = $.format.date("2013-10-30 10:54:50.546", 'dd.MM.yyyy') # zum testen
 		datum = $.format.date(new Date(), 'dd.MM.yyyy')
 
 		i = 0
@@ -217,6 +217,7 @@ getMensaAndPrint = () ->
 					$('.ucbMensaCollapse').append '<p><b>Stammessen:</b><br>' + getFoodAndPrice(tag.stammessen) + '</p>'
 					$('.ucbMensaCollapse').append '<p><b>Vegetarisch:</b><br>' + getFoodAndPrice(tag.vegetarisch) + '</p>'
 					$('.ucbMensaCollapse').append '<p><b>Komponentenessen:</b><br>' + getFoodAndPrice(tag.komponentenessen, true) + '</p>'
+					$('.ucbMensaCollapse').append '<br><p>&#185; für Studierende<br>&#178; für Gäste</p>'
 			else
 				if i >= 5 and not gefunden
 					$('.ucbMensaCollapse').append '<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Kochtöpfe gefunden.</b><br>'

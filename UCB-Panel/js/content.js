@@ -202,7 +202,7 @@
         money = ["2,30€", "4,35€"];
       }
     }
-    output += "<br>Preis: " + money[0] + " / " + money[1];
+    output += "<br>Preis: " + money[0] + " &#185; / " + money[1] + " &#178;";
     return output;
   };
 
@@ -228,7 +228,8 @@
           } else {
             $('.ucbMensaCollapse').append('<p><b>Stammessen:</b><br>' + getFoodAndPrice(tag.stammessen) + '</p>');
             $('.ucbMensaCollapse').append('<p><b>Vegetarisch:</b><br>' + getFoodAndPrice(tag.vegetarisch) + '</p>');
-            return $('.ucbMensaCollapse').append('<p><b>Komponentenessen:</b><br>' + getFoodAndPrice(tag.komponentenessen, true) + '</p>');
+            $('.ucbMensaCollapse').append('<p><b>Komponentenessen:</b><br>' + getFoodAndPrice(tag.komponentenessen, true) + '</p>');
+            return $('.ucbMensaCollapse').append('<br><p>&#185; für Studierende<br>&#178; für Gäste</p>');
           }
         } else {
           if (i >= 5 && !gefunden) {
