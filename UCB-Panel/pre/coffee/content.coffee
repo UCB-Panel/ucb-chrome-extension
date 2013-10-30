@@ -315,7 +315,7 @@ buildGermanApp = ->
 
 	footerHome = new Link("btn btn-default", "glyphicon glyphicon-home", "Homepage", "http://ucb.we-develop.de", "[Footer] Hompage")
 	footerAbout = new Link("btn btn-default", "glyphicon glyphicon-question-sign", "Über das UCB-Panel", "http://ucb.we-develop.de/node/5", "[Footer] About")
-	footerBugs = new Link("btn btn-default", "glyphicon glyphicon-bullhorn", "Melde einen Bug oder Wunsch", "http://ucb.we-develop.de/contact", "[Footer] Bugs")
+	footerBugs = new Link("btn btn-default", "glyphicon glyphicon-bullhorn", "Melde einen Bug oder Wunsch", "https://github.com/niklas-heer/ucb-chrome-extension/issues?state=open", "[Footer] Bugs")
 	footerSettings = new Link("btn btn-default", "glyphicon glyphicon-cog", "Einstellungen", "options.html", "[Footer] Settings")
 
 	footerGroup = [footerHome, footerAbout, footerBugs, footerSettings]
