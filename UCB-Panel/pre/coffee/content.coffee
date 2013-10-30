@@ -176,6 +176,35 @@ getTrafficAndPrint = () ->
 		$('.traffic_down').append(data.DownGB)
 		$('.traffic_total').append(data.TrafficGB)
 
+getFoodAndPrice = (input, isKomponentenEssen) ->
+	regexHTML = /(<([^>]+)>)/ig
+	result = input.replace(regexHTML, "")
+
+	regexMoney = /(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\.[0-9]{2})?|(?:\.[0-9]{3})*(?:,[0-9]{2})?)[€]/g
+	money = result.match(regexMoney)
+	output = result.replace(regexMoney, "")
+	output = output.replace("/", "")
+
+	unless money?
+		if isKomponentenEssen
+			money = ["2,25€", "3,65€"]
+		else
+			money = ["2,30€", "4,35€"]
+	output += "<br>Preis: " + money[0] + " / " + money[1]
+
+	return output
+
+getMensaAndPrint = () ->
+	$.get "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", (xml) ->
+		json = $.xml2json(xml)
+		datum = $.format.date(new Date(), 'dd.MM.yyyy')
+		_.each(json.tag, (tag) ->
+			if tag.datum is datum
+				$('.ucbMensaCollapse').append '<p><b>Stammessen:</b><br>' + getFoodAndPrice(tag.stammessen) + '</p>'
+				$('.ucbMensaCollapse').append '<p><b>Vegetarisch:</b><br>' + getFoodAndPrice(tag.vegetarisch) + '</p>'
+				$('.ucbMensaCollapse').append '<p><b>Komponentenessen:</b><br>' + getFoodAndPrice(tag.komponentenessen, true) + '</p>'
+		)
+
 
 # build the german app content
 buildGermanApp = ->
@@ -231,29 +260,12 @@ buildGermanApp = ->
 	addSpacer( metaClass )
 
 	# <!-- Auf dem Campus -->
-	ucbOnCampusGroup = [ucbMensa, ucbKneipe]
+	ucbOnCampusGroup = [ ucbKneipe]
 	addButtonGroup( ucbOnCampusGroup, ".ucbPanelButtonGroup" )
-
-
 	# Mensa crawler
-	$(metaClass).append createCollapseButton(btnBaseCSS + "ucbpanel_mensa trigger", "%COLLAPSE%", "icon_ucbpanel_mensa", "Mensa")
+	$(metaClass).append createCollapseButton(btnBaseCSS + "ucbpanel_mensa trigger", "%COLLAPSE%", theme_config.icons["ucbMensa"], "Mensa")
 	$(metaClass).append '<div class="ucbPanelCollapseContainer ucbMensaCollapse" id="ucbMensaCollapse"></div>'
-
-
-	# $.get "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", (xml) ->
-	# 	json = $.xml2json(xml)
-	# 	$('#ucbMensaCollapse').append json
-	# 	console.log json
-
-	# jQuery.ajax
-	# 	url: "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml"
-	# 	success: (xml) ->
-	# 		$('.ucbMensaCollapse').waitUntilExists (xml) ->
-	# 			json = $.xml2json(xml)
-	# 			$('.ucbMensaCollapse').append json
-	# 			console.log json
-	# 	async: false
-
+	getMensaAndPrint()
 
 	# check if we are on the Campus, if not don't display Trafficmeter
 	$.get "http://traffic.campus-company.eu/", (page) ->
@@ -282,7 +294,7 @@ buildGermanApp = ->
 					$(".TrafficLeftSide").append '<p class="traffic_down" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-down"></span> </p>'
 					$(".TrafficLeftSide").append '<p class="traffic_up" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-circle-arrow-up"></span> </p>'
 					$(".TrafficRightSide").append '<p class="traffic_total" type="button" id="Campus Company Traffic"><span class="glyphicon glyphicon-sort"></span> </p>'
-			getTrafficAndPrint() # wirte data
+			getTrafficAndPrint() # write data
 
 
 	# <!-- Footer -->

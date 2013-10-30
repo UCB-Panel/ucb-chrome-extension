@@ -1,5 +1,5 @@
 (function() {
-  var FooterLink, Link, addButtonGroup, addSpacer, buildEnglishApp, buildGermanApp, buildView, createButton, createCollapseButton, createFooterButton, getTrafficAndPrint, main, mensaPlan, theme_config;
+  var FooterLink, Link, addButtonGroup, addSpacer, buildEnglishApp, buildGermanApp, buildView, createButton, createCollapseButton, createFooterButton, getFoodAndPrice, getMensaAndPrint, getTrafficAndPrint, main, mensaPlan, theme_config;
 
   Link = (function() {
     function Link(name, classes, text, value, id) {
@@ -189,6 +189,40 @@
     });
   };
 
+  getFoodAndPrice = function(input, isKomponentenEssen) {
+    var money, output, regexHTML, regexMoney, result;
+    regexHTML = /(<([^>]+)>)/ig;
+    result = input.replace(regexHTML, "");
+    regexMoney = /(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\.[0-9]{2})?|(?:\.[0-9]{3})*(?:,[0-9]{2})?)[€]/g;
+    money = result.match(regexMoney);
+    output = result.replace(regexMoney, "");
+    output = output.replace("/", "");
+    if (money == null) {
+      if (isKomponentenEssen) {
+        money = ["2,25€", "3,65€"];
+      } else {
+        money = ["2,30€", "4,35€"];
+      }
+    }
+    output += "<br>Preis: " + money[0] + " / " + money[1];
+    return output;
+  };
+
+  getMensaAndPrint = function() {
+    return $.get("http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", function(xml) {
+      var datum, json;
+      json = $.xml2json(xml);
+      datum = $.format.date(new Date(), 'dd.MM.yyyy');
+      return _.each(json.tag, function(tag) {
+        if (tag.datum === datum) {
+          $('.ucbMensaCollapse').append('<p><b>Stammessen:</b><br>' + getFoodAndPrice(tag.stammessen) + '</p>');
+          $('.ucbMensaCollapse').append('<p><b>Vegetarisch:</b><br>' + getFoodAndPrice(tag.vegetarisch) + '</p>');
+          return $('.ucbMensaCollapse').append('<p><b>Komponentenessen:</b><br>' + getFoodAndPrice(tag.komponentenessen, true) + '</p>');
+        }
+      });
+    });
+  };
+
   buildGermanApp = function() {
     var btnBaseCSS, collapseCssClasses, footerAbout, footerBugs, footerGroup, footerHTML, footerHome, footerSettings, metaClass, ucbBlog, ucbCampusplan, ucbCollapseGroup, ucbCommunity, ucbCommunityGroup, ucbContact, ucbDataCenter, ucbDates, ucbExams, ucbFacebook, ucbGremienallee, ucbHomepage, ucbInternGroup, ucbIntranet, ucbJuris, ucbKneipe, ucbLibrary, ucbMSDNAA, ucbMensa, ucbOLAT, ucbOnCampusGroup, ucbQIS, ucbStaff, ucbStudIP, ucbTimetable, ucbWebMail;
     metaClass = ".ucbPanelButtonGroup";
@@ -227,10 +261,11 @@
     ucbInternGroup = [ucbStudIP, ucbWebMail, ucbQIS, ucbIntranet, ucbLibrary, ucbJuris, ucbOLAT];
     addButtonGroup(ucbInternGroup, ".ucbPanelButtonGroup");
     addSpacer(metaClass);
-    ucbOnCampusGroup = [ucbMensa, ucbKneipe];
+    ucbOnCampusGroup = [ucbKneipe];
     addButtonGroup(ucbOnCampusGroup, ".ucbPanelButtonGroup");
-    $(metaClass).append(createCollapseButton(btnBaseCSS + "ucbpanel_mensa trigger", "%COLLAPSE%", "icon_ucbpanel_mensa", "Mensa"));
+    $(metaClass).append(createCollapseButton(btnBaseCSS + "ucbpanel_mensa trigger", "%COLLAPSE%", theme_config.icons["ucbMensa"], "Mensa"));
     $(metaClass).append('<div class="ucbPanelCollapseContainer ucbMensaCollapse" id="ucbMensaCollapse"></div>');
+    getMensaAndPrint();
     $.get("http://traffic.campus-company.eu/", function(page) {
       var TrafficButton, ip_address, theme;
       ip_address = page.match(/Ihre IP-Adresse: 143.93.4[0-2]{1}.[0-9]{1,3}/) + "";
