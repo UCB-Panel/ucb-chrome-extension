@@ -232,7 +232,7 @@
           }
         } else {
           if (i >= 5 && !gefunden) {
-            return $('.ucbMensaCollapse').append('<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Kochtöpfe gefunden.</b><br>');
+            return $('.ucbMensaCollapse').append('<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Essen gefunden.</b><br>');
           }
         }
       });

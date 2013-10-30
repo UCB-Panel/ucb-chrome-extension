@@ -219,7 +219,7 @@ getMensaAndPrint = () ->
 					$('.ucbMensaCollapse').append '<br><p>&#185; für Studierende<br>&#178; für Gäste</p>'
 			else
 				if i >= 5 and not gefunden
-					$('.ucbMensaCollapse').append '<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Kochtöpfe gefunden.</b><br>'
+					$('.ucbMensaCollapse').append '<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Essen gefunden.</b><br>'
 		)
 
 
