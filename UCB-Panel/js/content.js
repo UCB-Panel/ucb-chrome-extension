@@ -210,6 +210,11 @@
     return $.get("http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", function(xml) {
       var datum, gefunden, i, json;
       json = $.xml2json(xml);
+      $('.ucbMensaCollapse').click(function() {
+        return chrome.tabs.create({
+          url: "http://ucb.li/mensa"
+        });
+      });
       datum = $.format.date(new Date(), 'dd.MM.yyyy');
       i = 0;
       gefunden = false;

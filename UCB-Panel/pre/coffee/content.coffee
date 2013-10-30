@@ -197,6 +197,10 @@ getMensaAndPrint = () ->
 	$.get "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", (xml) ->
 		json = $.xml2json(xml)
 
+		$('.ucbMensaCollapse').click(() ->
+			chrome.tabs.create url: "http://ucb.li/mensa"
+		)
+
 		# datum = $.format.date("2013-10-31 10:54:50.546", 'dd.MM.yyyy') # zum testen
 		datum = $.format.date(new Date(), 'dd.MM.yyyy')
 
