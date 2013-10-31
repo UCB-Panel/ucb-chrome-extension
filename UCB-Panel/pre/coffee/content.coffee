@@ -86,8 +86,8 @@ createCollapseButton = (innerClass, value, icon, text) ->
 			trig.next(".ucbPanelCollapseContainer").slideToggle 300
 			trig.removeClass "trigger_active"
 		else
-			$(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle 300
-			$(".trigger_active").removeClass "trigger_active"
+			trig.find(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle 300
+			trig.find(".trigger_active").removeClass "trigger_active"
 			if theme is "flat"
 				arrow = trig.find('.arrow')
 				arrow.removeClass('icon-angle-down')
