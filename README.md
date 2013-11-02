@@ -11,7 +11,7 @@ Entwickler: <br>
 - Tad Wohlrapp<br>
 - Christian Schönemann (Mensa-Plan API)
 
-Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)** 
+Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)**
 
 Verwendete Software für das Projekt:
 
