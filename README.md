@@ -23,6 +23,8 @@ Verwendete Software für das Projekt:
 - [jquery](http://jquery.com/)
 - [underscorejs](http://underscorejs.org/)
 - [rloader](https://code.google.com/p/rloader/)
+- [Font Awesome](http://fontawesome.io/)
+- [rloader](https://code.google.com/p/rloader/)
 
 ## Mitwirken
 Jeder ist herzlich eingeladen an der Extension mit zu wirken.<br>
