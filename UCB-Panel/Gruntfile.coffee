@@ -16,7 +16,9 @@ module.exports = (grunt) ->
 		compass:
 			dist:
 				options:
-					config: 'config.rb'
+					sassDir: 'pre/compass',
+					cssDir: 'css'
+					environment: 'production'
 
 		uglify:
 			options:
