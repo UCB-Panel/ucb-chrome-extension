@@ -20,11 +20,13 @@ Verwendete Software für das Projekt:
 - [coffeescript](http://coffeescript.org/)
 - [compass](http://compass-style.org/)
 - [bootstrap](http://getbootstrap.com/)
-- [jquery](http://jquery.com/)
 - [underscorejs](http://underscorejs.org/)
-- [rloader](https://code.google.com/p/rloader/)
 - [Font Awesome](http://fontawesome.io/)
-- [rloader](https://code.google.com/p/rloader/)
+- [jQuery](http://jquery.com/)
+- [jQuery rloader](https://code.google.com/p/rloader/)
+- [jQuery dateFormat](https://github.com/phstc/jquery-dateFormat)
+- [jQuery slimScroll](http://rocha.la/jQuery-slimScroll)
+- [jQuery xml2json](https://github.com/josefvanniekerk/jQuery-xml2json)
 
 ## Mitwirken
 Jeder ist herzlich eingeladen an der Extension mit zu wirken.<br>
