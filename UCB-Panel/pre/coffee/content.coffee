@@ -201,8 +201,8 @@ getMensaAndPrint = () ->
 			chrome.tabs.create url: "http://ucb.li/mensa"
 		)
 
-		datum = $.format.date("2013-10-30 10:54:50.546", 'dd.MM.yyyy') # zum testen
-		# datum = $.format.date(new Date(), 'dd.MM.yyyy')
+		# datum = $.format.date("2013-10-31 10:54:50.546", 'dd.MM.yyyy') # zum testen
+		datum = $.format.date(new Date(), 'dd.MM.yyyy')
 
 		i = 0
 		gefunden = false
@@ -211,7 +211,7 @@ getMensaAndPrint = () ->
 			if tag.datum is datum
 				gefunden = true
 				if tag.stammessen.match("Feiertag")
-					$('.ucbMensaCollapse').append '<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Heute ist ein Feiertag!</b><br>'
+					$('.ucbMensaCollapse').append '<div class="collapse_item noFood"><span class="glyphicon glyphicon-ban-circle"></span></i> Heute ist ein Feiertag!</div>'
 				else
 					$('.ucbMensaCollapse').append '<div class="collapse_item stammessen"><p class="heading">Stammessen:</p>' + getFoodAndPrice(tag.stammessen) + '</div>'
 					$('.ucbMensaCollapse').append '<div class="collapse_item vegetarisch"><p class="heading">Vegetarisch:</p>' + getFoodAndPrice(tag.vegetarisch) + '</div>'
@@ -219,7 +219,7 @@ getMensaAndPrint = () ->
 					$('.ucbMensaCollapse').append '<div class="info">&#185; für Studierende<br>&#178; für Gäste</p>'
 			else
 				if i >= 5 and not gefunden
-					$('.ucbMensaCollapse').append '<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Essen gefunden.</b><br>'
+					$('.ucbMensaCollapse').append '<div class="collapse_item noFood"><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Essen gefunden.</div>'
 		)
 
 

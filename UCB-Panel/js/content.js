@@ -215,7 +215,7 @@
           url: "http://ucb.li/mensa"
         });
       });
-      datum = $.format.date("2013-10-30 10:54:50.546", 'dd.MM.yyyy');
+      datum = $.format.date(new Date(), 'dd.MM.yyyy');
       i = 0;
       gefunden = false;
       return _.each(json.tag, function(tag) {
@@ -223,7 +223,7 @@
         if (tag.datum === datum) {
           gefunden = true;
           if (tag.stammessen.match("Feiertag")) {
-            return $('.ucbMensaCollapse').append('<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Heute ist ein Feiertag!</b><br>');
+            return $('.ucbMensaCollapse').append('<div class="collapse_item noFood"><span class="glyphicon glyphicon-ban-circle"></span></i> Heute ist ein Feiertag!</div>');
           } else {
             $('.ucbMensaCollapse').append('<div class="collapse_item stammessen"><p class="heading">Stammessen:</p>' + getFoodAndPrice(tag.stammessen) + '</div>');
             $('.ucbMensaCollapse').append('<div class="collapse_item vegetarisch"><p class="heading">Vegetarisch:</p>' + getFoodAndPrice(tag.vegetarisch) + '</div>');
@@ -232,7 +232,7 @@
           }
         } else {
           if (i >= 5 && !gefunden) {
-            return $('.ucbMensaCollapse').append('<p><b><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Essen gefunden.</b><br>');
+            return $('.ucbMensaCollapse').append('<div class="collapse_item noFood"><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Essen gefunden.</div>');
           }
         }
       });

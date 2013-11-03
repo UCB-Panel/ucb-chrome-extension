@@ -43,3 +43,29 @@
 		@include background-image(linear-gradient(darken($color, 5%), $color))
 		@include box-shadow(0 0.1em 0.2em rgba(black,0.1) inset, 0 0.1em 0.1em rgba(black,0.2) inset, 0.05em 0 0.07em rgba(black,0.2) inset, -0.05em 0 0.07em rgba(black,0.2) inset)
 		@include transition(all 10ms)
+
+// Mensa-Plan //
+.ucbMensaCollapse
+	display: block
+	font: 13px 'Open Sans'
+	cursor: pointer
+
+	.noFood
+		font-size: 14px
+		font-weight: bold
+
+	.collapse_item
+		padding-bottom: 10px
+
+	.heading
+		font-weight: bold
+		font-size: 14px
+
+	.price
+		font-weight: bold
+
+	.info
+		font-size: 11px
+		font-style: italic
+		text-align: center
+		padding: 10px 0px
