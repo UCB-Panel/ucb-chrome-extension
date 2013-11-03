@@ -232,7 +232,6 @@ buildGermanApp = ->
 	btnBaseCSS = "button btn btn-default menuitem-iconic "
 	collapseCssClasses = btnBaseCSS + "ucbpanel_iro collapse_item"
 
-
 	# Content Objects
 	ucbHomepage     = new Link("ucbHomepage", collapseCssClasses, "Startseite", "http://www.umwelt-campus.de/ucb/index.php", "[Collapsed] UCB Startseite")
 	ucbTimetable    = new Link("ucbTimetable", collapseCssClasses, "Stundenplan", "http://www.umwelt-campus.de/ucb/index.php?id=fachbereiche", "[Collapsed] UCB Studenplan")
@@ -336,7 +335,6 @@ buildGermanApp = ->
 buildEnglishApp = ->
 	# NIY
 
-
 buildView = () ->
 	# Build the App
 	$(".ucbMainPanel").append "<div class=\"ucbPanelButtonGroup\"></div>"
@@ -356,6 +354,7 @@ buildView = () ->
 #
 main = () ->
 	buildView()
+
 	# initialize important stuff
 	$(".trigger").not(".trigger_active").next(".ucbPanelCollapseContainer").hide()
 	trig = $(this)
