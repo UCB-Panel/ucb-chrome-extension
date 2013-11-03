@@ -39,6 +39,10 @@ Danach sollte der Befehl ```grunt --version``` funktionieren.<br>
 Jetzt navigiert ihr im Terminal zum Verzeichnis der Extension und geht in den Ordner "UCB-Panel". Dort einfach den Befehl ```grunt``` eingeben und nun könnt ihr alle ```.coffee``` und ```.scss``` Dateien bearbeiten und sie werden automatisch kompiliert. Wenn ihr fertig seid, könnt ihr mit ```Strg+C``` den Prozess beenden.<br>
 Um erneut am Projekt zu arbeiten müsst ihr wie oben beschrieben Grunt wieder starten.
 
+Nun solltet ihr noch SASS und Compass installieren.
+- [SASS installieren](http://sass-lang.com/install)
+- [Compass installieren](http://compass-style.org/install/)
+
 
 ## Lizenz
 Die Extension steht unter der **_[GNU General Public License (GPL 3.0)](http://www.gnu.org/licenses/gpl-3.0.html)_** mit Ausnahme folgender Werke:
