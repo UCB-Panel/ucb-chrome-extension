@@ -6,13 +6,19 @@
 
 # classes
 class Link
-	constructor: ( @name, @classes, @text, @value, @id) ->
-
-class FooterLink
-	constructor: ( @classes, @icon, @text, @value, @id) ->
+	constructor: ( @name, @classes, @id) ->
 
 # initalize
-theme_config = $.parseJSON(
+locale = window.navigator.language
+_CONTENT = $.parseJSON(
+	$.ajax(
+		{
+			url: "_locales/" + locale + "/data.json",
+			async: false,
+			dataType: 'json'
+		}
+	).responseText).PanelContent
+_THEMES = $.parseJSON(
 	$.ajax(
 		{
 			url: "themes/" + localStorage["fav_theme"] + ".json",
@@ -22,26 +28,24 @@ theme_config = $.parseJSON(
 	).responseText)
 
 # function to create the html code for a button
-createButton = (contentObj) ->
-	button = $('<button class="' + contentObj.classes +
-		'" type="button" id="' + contentObj.id +
-		'" value="' + contentObj.value +
-		'"><div class="' + theme_config.icons[contentObj.name] +
-		'"></div>' + contentObj.text + '</button><br>')
+createButton = (Obj) ->
+	button = $('<button class="' + Obj.classes +
+		'" type="button" id="' + Obj.id +
+		'"><div class="' + _THEMES.icons[Obj.name] +
+		'"></div>' + _CONTENT[Obj.name].name + '</button><br>')
 	button.click(() ->
-		chrome.tabs.create url: contentObj.value
+		chrome.tabs.create url: _CONTENT[Obj.name].link
 	)
 
 createFooterButton = (Obj) ->
 	button = $('<button class="' + Obj.classes +
 		'" type="button" id="' + Obj.id +
-		'" value="' + Obj.value +
 		'" data-toggle="tooltip" data-placement="top" title=""' +
-		' data-original-title="' + Obj.text + '" >' +
-		'<i class="' + theme_config.icons[Obj.name] + '"></i >' +
+		' data-original-title="' + _CONTENT[Obj.name].name + '" >' +
+		'<i class="' + _THEMES.icons[Obj.name] + '"></i >' +
 		'</button>')
 	button.click(() ->
-		chrome.tabs.create url: Obj.value
+		chrome.tabs.create url: _CONTENT[Obj.name].link
 	)
 
 # function to create a button group
@@ -222,9 +226,9 @@ getMensaAndPrint = () ->
 					$('.ucbMensaCollapse').append '<div class="collapse_item noFood"><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Essen gefunden.</div>'
 		)
 
-
-# build the german app content
-buildGermanApp = ->
+# Build the App
+buildView = () ->
+	$(".ucbMainPanel").append "<div class=\"ucbPanelButtonGroup\"></div>"
 	# General Variables
 	metaClass = ".ucbPanelButtonGroup" # jQuery identifier
 
@@ -233,28 +237,29 @@ buildGermanApp = ->
 	collapseCssClasses = btnBaseCSS + "ucbpanel_iro collapse_item"
 
 	# Content Objects
-	ucbHomepage     = new Link("ucbHomepage", collapseCssClasses, "Startseite", "http://www.umwelt-campus.de/ucb/index.php", "[Collapsed] UCB Startseite")
-	ucbTimetable    = new Link("ucbTimetable", collapseCssClasses, "Stundenplan", "http://www.umwelt-campus.de/ucb/index.php?id=fachbereiche", "[Collapsed] UCB Studenplan")
-	ucbDates        = new Link("ucbDates", collapseCssClasses, "Zeitplan", "http://www.umwelt-campus.de/ucb/index.php?id=zeitplan", "[Collapsed] UCB Zeitplan")
-	ucbCampusplan   = new Link("ucbCampusplan", collapseCssClasses, "Campusplan", "http://www.umwelt-campus.de/ucb/fileadmin/layout/ucbplan.pdf", "[Collapsed] UCB Campusplan")
-	ucbExams        = new Link("ucbExams", collapseCssClasses, "Klausurplan", "http://www.umwelt-campus.de/ucb/index.php?id=klausurplan", "[Collapsed] UCB Klausurplan")
-	ucbContact      = new Link("ucbContact", collapseCssClasses, "Contact", "http://ucb-contact.umwelt-campus.de/", "[Collapsed] UCB Contact")
-	ucbBlog         = new Link("ucbBlog", collapseCssClasses, "Blog", "http://blog.hochschule-trier.de/", "[Collapsed] UCB Blog")
-	ucbFacebook     = new Link("ucbFacebook", collapseCssClasses, "Facebook-Seite", "https://www.facebook.com/UmweltCampus", "[Collapsed] UCB Facebook")
-	ucbStaff        = new Link("ucbStaff", collapseCssClasses, "Personalverzeichnis", "http://www.umwelt-campus.de/ucb/index.php?id=personalverzeichnis", "[Collapsed] UCB Personalverzeichnis")
-	ucbDataCenter   = new Link("ucbDataCenter", collapseCssClasses, "Rechenzentrum", "http://www.umwelt-campus.de/ucb/index.php?id=rechenzentrum", "[Collapsed] UCB Rechenzentrum")
-	ucbMSDNAA       = new Link("ucbMSDNAA", collapseCssClasses, "Microsoft-Dreamspark", "https://www.umwelt-campus.de/elms_login.php", "[Collapsed] UCB MSDNAA")
-	ucbCommunity    = new Link("ucbCommunity", btnBaseCSS + "ucbpanel_iro", "Community", "http://community.umwelt-campus.de/index.php", "UCB Community")
-	ucbGremienallee = new Link("ucbGremienallee", btnBaseCSS + "ucbpanel_gremienallee", "Gremienallee", "http://www.gremienallee.de", "UCB Gremienallee")
-	ucbStudIP       = new Link("ucbStudIP", btnBaseCSS + "ucbpanel_studip", "Stud.IP", "https://studip.fh-trier.de/index.php?again=yes", "UCB Stud.IP")
-	ucbWebMail      = new Link("ucbWebMail", btnBaseCSS + "ucbpanel_webmail", "Webmail", "https://exchange.umwelt-campus.de", "UCB Webmail")
-	ucbQIS          = new Link("ucbQIS", btnBaseCSS + "ucbpanel_qis", "QIS", "https://qis.fh-trier.de/qisserver/rds?state=user&type=0", "UCB QIS")
-	ucbIntranet     = new Link("ucbIntranet", btnBaseCSS + "ucbpanel_iro", "Intranet", "http://www.umwelt-campus.de/ucb/index.php?id=intern", "UCB Intranet")
-	ucbLibrary      = new Link("ucbLibrary", btnBaseCSS + "ucbpanel_bib", "eLibrary", "http://grimm.umwelt-campus.de/", "UCB eLibrary")
-	ucbJuris        = new Link("ucbJuris", btnBaseCSS + "ucbpanel_juris", "Juris", "http://www.juris.de/jportal/Zugang.jsp", "UCB Juris")
-	ucbOLAT         = new Link("ucbOLAT", btnBaseCSS + "ucbpanel_olat", "OLAT", "https://olat.vcrp.de", "UCB OLAT")
-	ucbMensa        = new Link("ucbMensa", btnBaseCSS + "ucbpanel_mensa", "Mensa", "http://ucb.li/mensa", "UCB Mensa")
-	ucbKneipe       = new Link("ucbKneipe", btnBaseCSS + "ucbpanel_kadu", "KADU Campus Kneipe", "http://www.umwelt-campus.de/ucb/index.php?id=8163&L=0", "UCB Campus Kneipe")
+	ucbHomepage     = new Link("ucbHomepage", collapseCssClasses, "[Collapsed] UCB Startseite")
+	ucbTimetable    = new Link("ucbTimetable", collapseCssClasses, "[Collapsed] UCB Studenplan")
+	ucbDates        = new Link("ucbDates", collapseCssClasses, "[Collapsed] UCB Zeitplan")
+	ucbCampusplan   = new Link("ucbCampusplan", collapseCssClasses, "[Collapsed] UCB Campusplan")
+	ucbExams        = new Link("ucbExams", collapseCssClasses, "[Collapsed] UCB Klausurplan")
+	ucbContact      = new Link("ucbContact", collapseCssClasses, "[Collapsed] UCB Contact")
+	ucbBlog         = new Link("ucbBlog", collapseCssClasses, "[Collapsed] UCB Blog")
+	ucbFacebook     = new Link("ucbFacebook", collapseCssClasses, "[Collapsed] UCB Facebook")
+	ucbStaff        = new Link("ucbStaff", collapseCssClasses, "[Collapsed] UCB Personalverzeichnis")
+	ucbDataCenter   = new Link("ucbDataCenter", collapseCssClasses, "[Collapsed] UCB Rechenzentrum")
+	ucbMSDNAA       = new Link("ucbMSDNAA", collapseCssClasses, "[Collapsed] UCB MSDNAA")
+	ucbCommunity    = new Link("ucbCommunity", btnBaseCSS + "ucbpanel_iro", "UCB Community")
+	ucbGremienallee = new Link("ucbGremienallee", btnBaseCSS + "ucbpanel_gremienallee", "UCB Gremienallee")
+	ucbStudIP       = new Link("ucbStudIP", btnBaseCSS + "ucbpanel_studip", "UCB Stud.IP")
+	ucbWebMail      = new Link("ucbWebMail", btnBaseCSS + "ucbpanel_webmail", "UCB Webmail")
+	ucbQIS          = new Link("ucbQIS", btnBaseCSS + "ucbpanel_qis", "UCB QIS")
+	ucbIntranet     = new Link("ucbIntranet", btnBaseCSS + "ucbpanel_iro", "UCB Intranet")
+	ucbLibrary      = new Link("ucbLibrary", btnBaseCSS + "ucbpanel_bib", "UCB eLibrary")
+	ucbJuris        = new Link("ucbJuris", btnBaseCSS + "ucbpanel_juris", "UCB Juris")
+	ucbOLAT         = new Link("ucbOLAT", btnBaseCSS + "ucbpanel_olat", "UCB OLAT")
+	ucbMensa        = new Link("ucbMensa", btnBaseCSS + "ucbpanel_mensa", "UCB Mensa")
+	ucbKneipe       = new Link("ucbKneipe", btnBaseCSS + "ucbpanel_kadu", "UCB Campus Kneipe")
+
 
 	# Collapse Container
 	$(metaClass).append createCollapseButton("btn btn-default trigger menuitem-iconic", "%COLLAPSE%", "icon_ucbpanel_iro", "Umwelt-Campus")
@@ -279,7 +284,7 @@ buildGermanApp = ->
 	ucbOnCampusGroup = [ ucbKneipe]
 	addButtonGroup( ucbOnCampusGroup, ".ucbPanelButtonGroup" )
 	# Mensa crawler
-	$(metaClass).append createCollapseButton(btnBaseCSS + "ucbpanel_mensa trigger", "%COLLAPSE%", theme_config.icons["ucbMensa"], "Mensa")
+	$(metaClass).append createCollapseButton(btnBaseCSS + "ucbpanel_mensa trigger", "%COLLAPSE%", _THEMES.icons["ucbMensa"], "Mensa")
 	$(metaClass).append '<div class="ucbPanelCollapseContainer ucbMensaCollapse" id="ucbMensaCollapse"></div>'
 	getMensaAndPrint()
 
@@ -322,32 +327,13 @@ buildGermanApp = ->
 	')
 	$(".ucbPanelFooter").append footerHTML
 
-	footerHome     = new Link("footerHome", "btn btn-default", "Homepage", "http://ucb.we-develop.de", "[Footer] Hompage")
-	footerAbout    = new Link("footerAbout", "btn btn-default", "Über das UCB-Panel", "http://ucb.we-develop.de/node/5", "[Footer] About")
-	footerBugs     = new Link("footerBugs", "btn btn-default", "Melde einen Bug oder Wunsch", "https://github.com/niklas-heer/ucb-chrome-extension/issues", "[Footer] Bugs")
-	footerSettings = new Link("footerSettings", "btn btn-default", "Einstellungen", "options.html", "[Footer] Settings")
+	footerHome     = new Link("footerHome", "btn btn-default", "[Footer] Hompage")
+	footerAbout    = new Link("footerAbout", "btn btn-default", "[Footer] About")
+	footerBugs     = new Link("footerBugs", "btn btn-default", "[Footer] Bugs")
+	footerSettings = new Link("footerSettings", "btn btn-default", "[Footer] Settings")
 
 	footerGroup = [footerHome, footerAbout, footerBugs, footerSettings]
 	addButtonGroup( footerGroup, ".FooterInnerClass", true)
-
-
-# build the english app content
-buildEnglishApp = ->
-	# NIY
-
-buildView = () ->
-	# Build the App
-	$(".ucbMainPanel").append "<div class=\"ucbPanelButtonGroup\"></div>"
-
-	# build the localised App
-	locale = window.navigator.language
-	switch locale
-		when "de"
-			buildGermanApp()
-		when "en"
-			buildEnglishApp()
-		else
-			buildEnglishApp()
 
 #
 # MAIN FUNCTION

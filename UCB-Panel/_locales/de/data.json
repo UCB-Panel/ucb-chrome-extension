@@ -1,0 +1,108 @@
+{
+	"PanelContent": {
+		"ucbHomepage": {
+			"name": "Startseite",
+			"link": "http://www.umwelt-campus.de/ucb/index.php"
+		},
+		"ucbTimetable": {
+			"name": "Stundenplan",
+			"link": "http://www.umwelt-campus.de/ucb/index.php?id=fachbereiche"
+		},
+		"ucbDates": {
+			"name": "Zeitplan",
+			"link": "http://www.umwelt-campus.de/ucb/index.php?id=zeitplan"
+		},
+		"ucbCampusplan": {
+			"name": "Campusplan",
+			"link": "http://www.umwelt-campus.de/ucb/fileadmin/layout/ucbplan.pdf"
+		},
+		"ucbExams": {
+			"name": "Klausurplan",
+			"link": "http://www.umwelt-campus.de/ucb/index.php?id=klausurplan"
+		},
+		"ucbContact": {
+			"name": "Contact",
+			"link": "http://ucb-contact.umwelt-campus.de/"
+		},
+		"ucbBlog": {
+			"name": "Blog",
+			"link": "http://blog.hochschule-trier.de/"
+		},
+		"ucbFacebook": {
+			"name": "Facebook-Seite",
+			"link": "https://www.facebook.com/UmweltCampus"
+		},
+		"ucbStaff": {
+			"name": "Personalverzeichnis",
+			"link": "http://www.umwelt-campus.de/ucb/index.php?id=personalverzeichnis"
+		},
+		"ucbDataCenter": {
+			"name": "Rechenzentrum",
+			"link": "http://www.umwelt-campus.de/ucb/index.php?id=rechenzentrum"
+		},
+		"ucbMSDNAA": {
+			"name": "Microsoft-Dreamspark",
+			"link": "https://www.umwelt-campus.de/elms_login.php"
+		},
+		"ucbCommunity": {
+			"name": "Community",
+			"link": "http://community.umwelt-campus.de/index.php"
+		},
+		"ucbGremienallee": {
+			"name": "Gremienallee",
+			"link": "http://www.gremienallee.de"
+		},
+		"ucbStudIP": {
+			"name": "Stud.IP",
+			"link": "https://studip.fh-trier.de/index.php?again=yes"
+		},
+		"ucbWebMail": {
+			"name": "Webmail",
+			"link": "https://exchange.umwelt-campus.de"
+		},
+		"ucbQIS": {
+			"name": "QIS",
+			"link": "https://qis.fh-trier.de/qisserver/rds?state=user&type=0"
+		},
+		"ucbIntranet": {
+			"name": "Intranet",
+			"link": "http://www.umwelt-campus.de/ucb/index.php?id=intern"
+		},
+		"ucbLibrary": {
+			"name": "eLibrary",
+			"link": "http://grimm.umwelt-campus.de/"
+		},
+		"ucbJuris": {
+			"name": "Juris",
+			"link": "http://www.juris.de/jportal/Zugang.jsp"
+		},
+		"ucbOLAT": {
+			"name": "OLAT",
+			"link": "https://olat.vcrp.de"
+		},
+		"ucbMensa": {
+			"name": "Mensa",
+			"link": "http://ucb.li/mensa"
+		},
+		"ucbKneipe": {
+			"name": "KADU Campus Kneipe",
+			"link": "http://www.umwelt-campus.de/ucb/index.php?id=8163&L=0"
+		},
+		"footerHome": {
+			"name": "Homepage",
+			"link": "http://ucb.we-develop.de"
+		},
+		"footerAbout": {
+			"name": "Über das UCB-Panel",
+			"link": "http://ucb.we-develop.de/node/5"
+		},
+		"footerBugs": {
+			"name": "Melde einen Bug oder Wunsch",
+			"link": "https://github.com/niklas-heer/ucb-chrome-extension/issues"
+		},
+		"footerSettings": {
+			"name": "Einstellungen",
+			"link": "options.html"
+		}
+	}
+}
