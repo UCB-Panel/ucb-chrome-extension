@@ -49,7 +49,7 @@ Nun solltet ihr noch SASS und Compass installieren.
 
 
 ## Lizenz
-Die Extension steht unter der **_[GNU General Public License (GPL 3.0)](http://www.gnu.org/licenses/gpl-3.0.html)_** mit Ausnahme folgender Werke. Sie unterliegen den jeweiligen Lizenzen der Rechteinhaber:
+Die Extension steht unter der **_[GNU General Public License (GPL 3.0)](http://www.gnu.org/licenses/gpl-3.0.html)_** mit Ausnahme folgender Werke (sie unterliegen den jeweiligen Lizenzen der Rechteinhaber):
 
 - **_law icon_** von [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/) `(UCB-Panel/images/law.png)`
 - **_check icon_** von [Double-J designs](http://www.doublejdesign.co.uk/) `(UCB-Panel/fireworks/okay.png)`
