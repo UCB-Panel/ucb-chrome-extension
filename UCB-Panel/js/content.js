@@ -110,73 +110,93 @@
 
   getTrafficAndPrint = function() {
     return $.get("http://traffic.campus-company.eu/", function(page) {
-      var data, dataPerDate, downloadThisMonth, exp, tag, trafficPerMonth, uploadThisMonth;
-      exp = page.match(/Ihr Restguthaben: <strong>\s*[0-9]*\.[0-9]* MB/);
-      trafficPerMonth = page.match(/von [0-9]* MB pro Monat/) + "";
-      downloadThisMonth = page.match(/<th>Monatssumme<\/th>\s*<th align=\"right\">[0-9]*\.?[0-9]*\,[0-9]*/) + "";
-      uploadThisMonth = page.match(/<th>Monatssumme<\/th>\s*<th align=\"right\">[0-9]*\.?[0-9]*\,[0-9]*<\/th>\s*<th align="right">[0-9]*\.?[0-9]*\,[0-9]*/) + "";
-      dataPerDate = new Array();
-      tag = void 0;
-      while ((tag = page.match(/<tr class=\"(trbg1|trbg0)\">\s*<td>([0-9]{4}-[0-9]{2}-[0-9]{2})<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<\/tr>/)) != null) {
-        page = page.replace(/<tr class=\"(trbg1|trbg0)\">\s*<td>([0-9]{4}-[0-9]{2}-[0-9]{2})<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<\/tr>/, "");
-        data = new Object();
-        data.date = Date.parse(tag[2]);
-        data.down = tag[3];
-        data.down = data.down.replace(/\./, "");
-        data.down = data.down.replace(/,/, ".");
-        data.down *= 1;
-        data.up = tag[4];
-        data.up = data.up.replace(/\./, "");
-        data.up = data.up.replace(/,/, ".");
-        data.up *= 1;
-        data.traffic = tag[5];
-        data.traffic = data.traffic.replace(/\./, "");
-        data.traffic = data.traffic.replace(/,/, ".");
-        data.traffic *= 1;
-        dataPerDate.push(data);
+    	    /*
+    	    	Beschreibt die Logik für die Werte welche aus der Seite gelesen werden sollen.
+    	    	name: Name im Result
+    	    	regex: Regulärer Ausdruck
+    	    	group: Nummer der Gruppe die verwendet werden soll Gruppe = (...)
+    	    	def: Default-Wert wenn nicht gefunden
+    	    	fixNumber: Ändert das Format der Zahl in ein von Javscript lesbares Format
+    	    	toFixed: Ändert die Nummer zu einer Zahl mit Anzahl an Nachkommastellen
+    	    	divideBy: Dividiert den Wert durch diesen Wert (MB zu GB)
+    	    	unit: Einheit
+    	    */
+	    var rules = [
+      	      {
+      	      	      name: "credit",
+      	      	      regex: /von\s*(\d*)\sMB\spro\sMonat/,
+      	      	      group: 1,
+      	      	      def: "NotFound",
+      	      	      fixNumber: false,
+      	      	      toFixed: 2,
+      	      	      divideBy: 1000,
+      	      	      unit: "GB",
+      	      },
+      	      {
+      	      	      name: "remaining",
+      	      	      regex: /Ihr\s*Restguthaben:\s*<strong>\s*(\d*\.\d*)\s*MB/,
+      	      	      group: 1,
+      	      	      def: "NotFound",
+      	      	      fixNumber: false,
+      	      	      toFixed: 2,
+      	      	      divideBy: 1000,
+      	      	      unit: "GB",
+      	      },
+      	      {
+      	      	      name: "upload",
+      	      	      regex: /<th>Monatssumme<\/th>\s*<th align=\"right\">((\d*\.)*\d*\,\d*)/,
+      	      	      group: 1,
+      	      	      def: "NotFound",
+      	      	      fixNumber: true,
+      	      	      toFixed: 2,
+      	      	      divideBy: 1000,
+      	      	      unit: "GB",
+      	      },
+      	      {
+      	      	      name: "download",
+      	      	      regex: /<th>Monatssumme<\/th>\s*<th align=\"right\">(\d*\.)*\d*\,\d*<\/th>\s*<th align="right">((\d*\.)*\d*\,\d*)/,
+      	      	      group: 2,
+      	      	      def: "NotFound",
+      	      	      fixNumber: true,
+      	      	      toFixed: 2,
+      	      	      divideBy: 1000,
+      	      	      unit: "GB",
+      	      },
+      ];
+      //Entfernt Overhead am Anfang und Ende - nicht getestet ob es dann schneller ist
+      page = page.replace(/.*<body>/,"");
+      page = page.replace(/<div[^>]*>.*/,"");
+      
+      //Result Object
+      var result = new Object();
+      for (var r in rules) {
+      	      var rule = rules[r];
+      	      //Match
+      	      var matcher = page.match(rule.regex);
+      	      if (matcher != null) {
+      	      	      //Match erfolgreich
+      	      	      result[rule.name] = matcher[rule.group];
+      	      	      if (rule.fixNumber != undefined && rule.fixNumber) {
+      	      	      	      result[rule.name]  = result[rule.name] .replace(/\./,"");
+      	      	      	      result[rule.name]  = result[rule.name] .replace(/\,/,".");
+      	      	      }
+      	      	      if (rule.divideBy != undefined) {
+      	      	      	      result[rule.name]/= rule.divideBy;
+      	      	      }
+      	      	      if (rule.toFixed != undefined) {
+      	      	      	      result[rule.name] = parseFloat(result[rule.name]).toFixed(rule.toFixed);
+      	      	      }
+      	      	      if (rule.unit != undefined) {
+      	      	      	      result[rule.name]+=" "+rule.unit;
+      	      	      }
+      	      } else {
+      	      	      //Match nicht erfolgreich
+      	      	      result[rule.name] = rule.def;
+      	      }
       }
-      if (trafficPerMonth !== "null") {
-        trafficPerMonth = trafficPerMonth.replace(/von /, "") + "";
-        trafficPerMonth = trafficPerMonth.replace(RegExp(" MB pro Monat"), "") + "";
-        trafficPerMonth = trafficPerMonth * 1;
-      }
-      if (exp != null) {
-        exp = exp + "";
-        exp = exp.replace(/Ihr Restguthaben: <strong>\s*/, "") + "";
-        exp = exp.replace(RegExp(" MB"), "") + "";
-        exp = exp * 1;
-      }
-      if (downloadThisMonth !== "null") {
-        downloadThisMonth = downloadThisMonth.replace(/<th>Monatssumme<\/th>\s*<th align=\"right\">/, "");
-        downloadThisMonth = downloadThisMonth.replace(/\./, "");
-        downloadThisMonth = downloadThisMonth.replace(/,/, ".");
-        downloadThisMonth *= 1;
-      } else {
-        downloadThisMonth = 0.0;
-      }
-      if (uploadThisMonth !== "null") {
-        uploadThisMonth = uploadThisMonth.replace(/<th>Monatssumme<\/th>\s*<th align=\"right\">[0-9]*\.?[0-9]*\,[0-9]*<\/th>\s*<th align="right">/, "");
-        uploadThisMonth = uploadThisMonth.replace(/\./, "");
-        uploadThisMonth = uploadThisMonth.replace(/,/, ".");
-        uploadThisMonth *= 1;
-      } else {
-        uploadThisMonth = 0.0;
-      }
-      data = new Object();
-      data.Traffic = exp.toFixed(2) + " MB";
-      data.TrafficGBMB = ((exp / 1000).toFixed(2) > 1 ? (exp / 1000).toFixed(2) + " GB" : exp.toFixed(2) + " MB");
-      data.TrafficGB = (exp / 1000).toFixed(2) + " GB";
-      data.TrafficPM = trafficPerMonth.toFixed(2) + " MB";
-      data.TrafficPMraw = trafficPerMonth.toFixed(2);
-      data.TrafficPMGB = (trafficPerMonth / 1000).toFixed(2) + " GB";
-      data.Down = downloadThisMonth.toFixed(2) + " MB";
-      data.DownGB = (downloadThisMonth / 1000).toFixed(2) + " GB";
-      data.Up = uploadThisMonth.toFixed(2) + " MB";
-      data.UpGB = (uploadThisMonth / 1000).toFixed(2) + " GB";
-      data.dataPerDate = dataPerDate;
-      $('.traffic_up').append(data.UpGB);
-      $('.traffic_down').append(data.DownGB);
-      return $('.traffic_total').append(data.TrafficGB);
+      $('.traffic_up').append(result.upload);
+      $('.traffic_down').append(result.download);
+      return $('.traffic_total').append(result.remaining);
     });
   };
 
