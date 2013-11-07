@@ -107,77 +107,83 @@ createCollapseButton = (innerClass, value, icon, text) ->
 addSpacer = (parentClass) ->
 	$(parentClass).append "<hr />"
 
-getTrafficAndPrint = () ->
+getTrafficAndPrint = ->
 	$.get "http://traffic.campus-company.eu/", (page) ->
-		exp = page.match(/Ihr Restguthaben: <strong>\s*[0-9]*\.[0-9]* MB/)
-		trafficPerMonth = page.match(/von [0-9]* MB pro Monat/) + ""
-		downloadThisMonth = page.match(/<th>Monatssumme<\/th>\s*<th align=\"right\">[0-9]*\.?[0-9]*\,[0-9]*/) + ""
-		uploadThisMonth = page.match(/<th>Monatssumme<\/th>\s*<th align=\"right\">[0-9]*\.?[0-9]*\,[0-9]*<\/th>\s*<th align="right">[0-9]*\.?[0-9]*\,[0-9]*/) + ""
-		dataPerDate = new Array()
-		tag = undefined
-		while (tag = page.match(/<tr class=\"(trbg1|trbg0)\">\s*<td>([0-9]{4}-[0-9]{2}-[0-9]{2})<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<\/tr>/))?
-			page = page.replace(/<tr class=\"(trbg1|trbg0)\">\s*<td>([0-9]{4}-[0-9]{2}-[0-9]{2})<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<td align=\"right\">([0-9]*\.?[0-9]*\,[0-9]*)<\/td>\s*<\/tr>/, "")
-			data = new Object()
-			data.date = Date.parse(tag[2])
-			data.down = tag[3]
-			data.down = data.down.replace(/\./, "")
-			data.down = data.down.replace(/,/, ".")
-			data.down *= 1
-			data.up = tag[4]
-			data.up = data.up.replace(/\./, "")
-			data.up = data.up.replace(/,/, ".")
-			data.up *= 1
-			data.traffic = tag[5]
-			data.traffic = data.traffic.replace(/\./, "")
-			data.traffic = data.traffic.replace(/,/, ".")
-			data.traffic *= 1
-			dataPerDate.push data
-		unless trafficPerMonth is "null"
-			#TRAFFIC PRO MONAT
-			trafficPerMonth = trafficPerMonth.replace(/von /, "") + ""
-			trafficPerMonth = trafficPerMonth.replace(RegExp(" MB pro Monat"), "") + ""
-			trafficPerMonth = trafficPerMonth * 1
-		if exp?
-			#TRAFFIC AKTUELL
-			exp = exp + ""
-			exp = exp.replace(/Ihr Restguthaben: <strong>\s*/, "") + ""
-			exp = exp.replace(RegExp(" MB"), "") + ""
-			exp = exp * 1
-		unless downloadThisMonth is "null"
-			#Downloaded AKTUELL
-			downloadThisMonth = downloadThisMonth.replace(/<th>Monatssumme<\/th>\s*<th align=\"right\">/, "")
-			downloadThisMonth = downloadThisMonth.replace(/\./, "")
-			downloadThisMonth = downloadThisMonth.replace(/,/, ".")
-			downloadThisMonth *= 1
-		else
-			downloadThisMonth = 0.0
-		unless uploadThisMonth is "null"
-			#Uploaded AKTUELL
-			uploadThisMonth = uploadThisMonth.replace(/<th>Monatssumme<\/th>\s*<th align=\"right\">[0-9]*\.?[0-9]*\,[0-9]*<\/th>\s*<th align="right">/, "")
-			uploadThisMonth = uploadThisMonth.replace(/\./, "")
-			uploadThisMonth = uploadThisMonth.replace(/,/, ".")
-			uploadThisMonth *= 1
-		else
-			uploadThisMonth = 0.0
+		#
+		# Beschreibt die Logik für die Werte welche aus der Seite gelesen werden sollen.
+		# name: Name im Result
+		# regex: Regulärer Ausdruck
+		# group: Nummer der Gruppe die verwendet werden soll Gruppe = (...)
+		# def: Default-Wert wenn nicht gefunden
+		# fixNumber: Ändert das Format der Zahl in ein von Javscript lesbares Format
+		# toFixed: Ändert die Nummer zu einer Zahl mit Anzahl an Nachkommastellen
+		# divideBy: Dividiert den Wert durch diesen Wert (MB zu GB)
+		# unit: Einheit
+		#
+		rules = [
+			name: "credit"
+			regex: /von\s*(\d*)\sMB\spro\sMonat/
+			group: 1
+			def: "NotFound"
+			fixNumber: false
+			toFixed: 2
+			divideBy: 1000
+			unit: "GB"
+		,
+			name: "remaining"
+			regex: /Ihr\s*Restguthaben:\s*<strong>\s*(\d*\.\d*)\s*MB/
+			group: 1
+			def: "NotFound"
+			fixNumber: false
+			toFixed: 2
+			divideBy: 1000
+			unit: "GB"
+		,
+			name: "upload"
+			regex: /<th>Monatssumme<\/th>\s*<th align=\"right\">((\d*\.)*\d*\,\d*)/
+			group: 1
+			def: "NotFound"
+			fixNumber: true
+			toFixed: 2
+			divideBy: 1000
+			unit: "GB"
+		,
+			name: "download"
+			regex: /<th>Monatssumme<\/th>\s*<th align=\"right\">(\d*\.)*\d*\,\d*<\/th>\s*<th align="right">((\d*\.)*\d*\,\d*)/
+			group: 2
+			def: "NotFound"
+			fixNumber: true
+			toFixed: 2
+			divideBy: 1000
+			unit: "GB"
+		]
 
-		# daten verarbeiten und in lesbare form bringen
-		data = new Object()
-		data.Traffic = exp.toFixed(2) + " MB"
-		data.TrafficGBMB = ((if (exp / 1000).toFixed(2) > 1 then (exp / 1000).toFixed(2) + " GB" else exp.toFixed(2) + " MB"))
-		data.TrafficGB = (exp / 1000).toFixed(2) + " GB"
-		data.TrafficPM = trafficPerMonth.toFixed(2) + " MB"
-		data.TrafficPMraw = trafficPerMonth.toFixed(2)
-		data.TrafficPMGB = (trafficPerMonth / 1000).toFixed(2) + " GB"
-		data.Down = downloadThisMonth.toFixed(2) + " MB"
-		data.DownGB = (downloadThisMonth / 1000).toFixed(2) + " GB"
-		data.Up = uploadThisMonth.toFixed(2) + " MB"
-		data.UpGB = (uploadThisMonth / 1000).toFixed(2) + " GB"
-		data.dataPerDate = dataPerDate
+		#Entfernt Overhead am Anfang und Ende - nicht getestet ob es dann schneller ist
+		page = page.replace(/.*<body>/, "")
+		page = page.replace(/<div[^>]*>.*/, "")
 
-		#write data to extension
-		$('.traffic_up').append(data.UpGB)
-		$('.traffic_down').append(data.DownGB)
-		$('.traffic_total').append(data.TrafficGB)
+		#Result Object
+		result = new Object()
+		for r of rules
+			rule = rules[r]
+
+			#Match
+			matcher = page.match(rule.regex)
+			if matcher?
+				#Match erfolgreich
+				result[rule.name] = matcher[rule.group]
+				if rule.fixNumber isnt `undefined` and rule.fixNumber
+					result[rule.name] = result[rule.name].replace(/\./, "")
+					result[rule.name] = result[rule.name].replace(/\,/, ".")
+				result[rule.name] /= rule.divideBy  unless rule.divideBy is `undefined`
+				result[rule.name] = parseFloat(result[rule.name]).toFixed(rule.toFixed)  unless rule.toFixed is `undefined`
+				result[rule.name] += " " + rule.unit  unless rule.unit is `undefined`
+			else
+				#Match nicht erfolgreich
+				result[rule.name] = rule.def
+		$(".traffic_up").append result.upload
+		$(".traffic_down").append result.download
+		$(".traffic_total").append result.remaining
 
 getFoodAndPrice = (input, isKomponentenEssen) ->
 	regexHTML = /(<([^>]+)>)/ig

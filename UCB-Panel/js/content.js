@@ -110,93 +110,74 @@
 
   getTrafficAndPrint = function() {
     return $.get("http://traffic.campus-company.eu/", function(page) {
-    	    /*
-    	    	Beschreibt die Logik für die Werte welche aus der Seite gelesen werden sollen.
-    	    	name: Name im Result
-    	    	regex: Regulärer Ausdruck
-    	    	group: Nummer der Gruppe die verwendet werden soll Gruppe = (...)
-    	    	def: Default-Wert wenn nicht gefunden
-    	    	fixNumber: Ändert das Format der Zahl in ein von Javscript lesbares Format
-    	    	toFixed: Ändert die Nummer zu einer Zahl mit Anzahl an Nachkommastellen
-    	    	divideBy: Dividiert den Wert durch diesen Wert (MB zu GB)
-    	    	unit: Einheit
-    	    */
-	    var rules = [
-      	      {
-      	      	      name: "credit",
-      	      	      regex: /von\s*(\d*)\sMB\spro\sMonat/,
-      	      	      group: 1,
-      	      	      def: "NotFound",
-      	      	      fixNumber: false,
-      	      	      toFixed: 2,
-      	      	      divideBy: 1000,
-      	      	      unit: "GB",
-      	      },
-      	      {
-      	      	      name: "remaining",
-      	      	      regex: /Ihr\s*Restguthaben:\s*<strong>\s*(\d*\.\d*)\s*MB/,
-      	      	      group: 1,
-      	      	      def: "NotFound",
-      	      	      fixNumber: false,
-      	      	      toFixed: 2,
-      	      	      divideBy: 1000,
-      	      	      unit: "GB",
-      	      },
-      	      {
-      	      	      name: "upload",
-      	      	      regex: /<th>Monatssumme<\/th>\s*<th align=\"right\">((\d*\.)*\d*\,\d*)/,
-      	      	      group: 1,
-      	      	      def: "NotFound",
-      	      	      fixNumber: true,
-      	      	      toFixed: 2,
-      	      	      divideBy: 1000,
-      	      	      unit: "GB",
-      	      },
-      	      {
-      	      	      name: "download",
-      	      	      regex: /<th>Monatssumme<\/th>\s*<th align=\"right\">(\d*\.)*\d*\,\d*<\/th>\s*<th align="right">((\d*\.)*\d*\,\d*)/,
-      	      	      group: 2,
-      	      	      def: "NotFound",
-      	      	      fixNumber: true,
-      	      	      toFixed: 2,
-      	      	      divideBy: 1000,
-      	      	      unit: "GB",
-      	      },
+      var matcher, r, result, rule, rules;
+      rules = [
+        {
+          name: "credit",
+          regex: /von\s*(\d*)\sMB\spro\sMonat/,
+          group: 1,
+          def: "NotFound",
+          fixNumber: false,
+          toFixed: 2,
+          divideBy: 1000,
+          unit: "GB"
+        }, {
+          name: "remaining",
+          regex: /Ihr\s*Restguthaben:\s*<strong>\s*(\d*\.\d*)\s*MB/,
+          group: 1,
+          def: "NotFound",
+          fixNumber: false,
+          toFixed: 2,
+          divideBy: 1000,
+          unit: "GB"
+        }, {
+          name: "upload",
+          regex: /<th>Monatssumme<\/th>\s*<th align=\"right\">((\d*\.)*\d*\,\d*)/,
+          group: 1,
+          def: "NotFound",
+          fixNumber: true,
+          toFixed: 2,
+          divideBy: 1000,
+          unit: "GB"
+        }, {
+          name: "download",
+          regex: /<th>Monatssumme<\/th>\s*<th align=\"right\">(\d*\.)*\d*\,\d*<\/th>\s*<th align="right">((\d*\.)*\d*\,\d*)/,
+          group: 2,
+          def: "NotFound",
+          fixNumber: true,
+          toFixed: 2,
+          divideBy: 1000,
+          unit: "GB"
+        }
       ];
-      //Entfernt Overhead am Anfang und Ende - nicht getestet ob es dann schneller ist
-      page = page.replace(/.*<body>/,"");
-      page = page.replace(/<div[^>]*>.*/,"");
-      
-      //Result Object
-      var result = new Object();
-      for (var r in rules) {
-      	      var rule = rules[r];
-      	      //Match
-      	      var matcher = page.match(rule.regex);
-      	      if (matcher != null) {
-      	      	      //Match erfolgreich
-      	      	      result[rule.name] = matcher[rule.group];
-      	      	      if (rule.fixNumber != undefined && rule.fixNumber) {
-      	      	      	      result[rule.name]  = result[rule.name] .replace(/\./,"");
-      	      	      	      result[rule.name]  = result[rule.name] .replace(/\,/,".");
-      	      	      }
-      	      	      if (rule.divideBy != undefined) {
-      	      	      	      result[rule.name]/= rule.divideBy;
-      	      	      }
-      	      	      if (rule.toFixed != undefined) {
-      	      	      	      result[rule.name] = parseFloat(result[rule.name]).toFixed(rule.toFixed);
-      	      	      }
-      	      	      if (rule.unit != undefined) {
-      	      	      	      result[rule.name]+=" "+rule.unit;
-      	      	      }
-      	      } else {
-      	      	      //Match nicht erfolgreich
-      	      	      result[rule.name] = rule.def;
-      	      }
+      page = page.replace(/.*<body>/, "");
+      page = page.replace(/<div[^>]*>.*/, "");
+      result = new Object();
+      for (r in rules) {
+        rule = rules[r];
+        matcher = page.match(rule.regex);
+        if (matcher != null) {
+          result[rule.name] = matcher[rule.group];
+          if (rule.fixNumber !== undefined && rule.fixNumber) {
+            result[rule.name] = result[rule.name].replace(/\./, "");
+            result[rule.name] = result[rule.name].replace(/\,/, ".");
+          }
+          if (rule.divideBy !== undefined) {
+            result[rule.name] /= rule.divideBy;
+          }
+          if (rule.toFixed !== undefined) {
+            result[rule.name] = parseFloat(result[rule.name]).toFixed(rule.toFixed);
+          }
+          if (rule.unit !== undefined) {
+            result[rule.name] += " " + rule.unit;
+          }
+        } else {
+          result[rule.name] = rule.def;
+        }
       }
-      $('.traffic_up').append(result.upload);
-      $('.traffic_down').append(result.download);
-      return $('.traffic_total').append(result.remaining);
+      $(".traffic_up").append(result.upload);
+      $(".traffic_down").append(result.download);
+      return $(".traffic_total").append(result.remaining);
     });
   };
 
