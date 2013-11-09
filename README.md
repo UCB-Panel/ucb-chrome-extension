@@ -9,6 +9,7 @@ Dieses Projekt wird von Studenten des UCBs erstellt und ist kein offizielles Pro
 Entwickler: <br>
 - Niklas Heer<br>
 - Tad Wohlrapp<br>
+- Sebastian Stein (Traffic-Meter Backend)<br>
 - Christian Schönemann (Mensa-Plan API)
 
 Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)**
