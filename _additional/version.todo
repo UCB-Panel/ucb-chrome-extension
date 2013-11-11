@@ -1,5 +1,5 @@
 
-Features:
+v2.0.0:
  ✔ ucb-panel.html wurde entleeret und aufgeräumt. Es enthält keine Funktionen mehr. @done (13-09-24 19:35)
  ✔ Internationalisierung wurde eingeführt. @done (13-09-24 19:35)
  ✔ Englishe Übersetzung wurde erstellt. (_locales/de/messages.json und _locales/en/messages.json hinzugefügt) @done (13-09-24 19:35)
@@ -39,12 +39,13 @@ Features:
  ✔ options.html erstellen @done (13-10-17 01:20)
  ✔ Style aufgeteilt. (main.css und icons.css hinzugefügt) @done (13-10-17 01:21)
  ✔ Webmail Icon zu Exchange bzw. MS ändern @done (13-10-17 01:42)
- ☐ Extension komplett auf Englisch übersetzt
- ☐ Analytic wieder aktivieren -> Release
- ☐ Changelog erstellen
+ ✔ Extension komplett auf Englisch übersetzt @done (13-11-11 14:53)
+ ✔ Analytic wieder aktivieren -> Release @done (13-11-11 14:53)
+ ✔ Changelog erstellen @done (13-11-11 14:58)
+ ✔ flat-design @done (13-11-11 15:50)
+ ✔ Mensaplan wird per xml geholt und direkt in der Extension angezeigt @done (13-11-11 15:50)
 
 
 v2.1.0:
- ☐ Mensaplan wird per xml geholt und direkt in der Extension angezeigt
  ☐ Suchfunktion für den Umwelt-Campus
- ☐ flat-design
+
