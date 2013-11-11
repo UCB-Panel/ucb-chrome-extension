@@ -30,9 +30,10 @@
     var button;
     button = $('<button class="' + Obj.classes + '" type="button" id="' + Obj.id + '"><div class="' + _THEMES.icons[Obj.name] + '"></div>' + _CONTENT[Obj.name].name + '</button><br>');
     return button.click(function() {
-      return chrome.tabs.create({
+      chrome.tabs.create({
         url: _CONTENT[Obj.name].link
       });
+      return _gaq.push(['_trackEvent', Obj.id, 'clicked']);
     });
   };
 
@@ -40,9 +41,10 @@
     var button;
     button = $('<button class="' + Obj.classes + '" type="button" id="' + Obj.id + '" data-toggle="tooltip" data-placement="top" title=""' + ' data-original-title="' + _CONTENT[Obj.name].name + '" >' + '<i class="' + _THEMES.icons[Obj.name] + '"></i >' + '</button>');
     return button.click(function() {
-      return chrome.tabs.create({
+      chrome.tabs.create({
         url: _CONTENT[Obj.name].link
       });
+      return _gaq.push(['_trackEvent', Obj.id, 'clicked']);
     });
   };
 
@@ -77,6 +79,7 @@
     }
     return collapseButton.click(function() {
       var arrow, trig;
+      _gaq.push(['_trackEvent', '[Collapse Button] ' + text, 'clicked']);
       trig = $(this);
       if (trig.hasClass("trigger_active")) {
         if (theme === "flat") {
@@ -205,9 +208,10 @@
       var datum, gefunden, i, json;
       json = $.xml2json(xml);
       $('.ucbMensaCollapse').click(function() {
-        return chrome.tabs.create({
+        chrome.tabs.create({
           url: "http://ucb.li/mensa"
         });
+        return _gaq.push(['_trackEvent', '[extern] UCB Mensa', 'clicked']);
       });
       datum = $.format.date(new Date(), 'dd.MM.yyyy');
       i = 0;
@@ -297,6 +301,7 @@
           default:
             TrafficButton = $('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>');
             TrafficButton.click(function() {
+              _gaq.push(['_trackEvent', '[extern] UCB TrafficMeter', 'clicked']);
               return chrome.tabs.create({
                 url: "http://traffic.campus-company.eu"
               });

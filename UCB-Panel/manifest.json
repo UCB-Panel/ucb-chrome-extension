@@ -6,8 +6,11 @@
   "default_locale": "de",
   "permissions": [
     "tabs",
+    "storage",
     "http://infotv.umwelt-campus.de/",
-    "http://traffic.campus-company.eu/"
+    "http://traffic.campus-company.eu/",
+    "http://*/*",
+    "https://*/*"
   ],
   "options_page": "options.html",
   "icons": {
@@ -20,6 +23,7 @@
     "default_popup": "ucb-panel.html"
   },
   "web_accessible_resources": [
-    "images/favicon.png"
+    "images/favicon.png",
+    "ga.js"
   ]
 }

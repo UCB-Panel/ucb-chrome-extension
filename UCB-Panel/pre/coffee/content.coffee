@@ -27,6 +27,7 @@ _THEMES = $.parseJSON(
 		}
 	).responseText)
 
+
 # function to create the html code for a button
 createButton = (Obj) ->
 	button = $('<button class="' + Obj.classes +
@@ -35,6 +36,7 @@ createButton = (Obj) ->
 		'"></div>' + _CONTENT[Obj.name].name + '</button><br>')
 	button.click(() ->
 		chrome.tabs.create url: _CONTENT[Obj.name].link
+		_gaq.push(['_trackEvent', Obj.id, 'clicked'])
 	)
 
 createFooterButton = (Obj) ->
@@ -46,6 +48,7 @@ createFooterButton = (Obj) ->
 		'</button>')
 	button.click(() ->
 		chrome.tabs.create url: _CONTENT[Obj.name].link
+		_gaq.push(['_trackEvent', Obj.id, 'clicked'])
 	)
 
 # function to create a button group
@@ -79,6 +82,7 @@ createCollapseButton = (innerClass, value, icon, text) ->
 				'"></div>' + text +
 				'<div class="icon_arrow"></div></button>')
 	collapseButton.click(() ->
+		_gaq.push(['_trackEvent', '[Collapse Button] ' + text, 'clicked'])
 		trig = $(this)
 		if trig.hasClass("trigger_active")
 			if theme is "flat"
@@ -209,6 +213,7 @@ getMensaAndPrint = () ->
 
 		$('.ucbMensaCollapse').click(() ->
 			chrome.tabs.create url: "http://ucb.li/mensa"
+			_gaq.push(['_trackEvent', '[extern] UCB Mensa', 'clicked'])
 		)
 
 		# datum = $.format.date("2013-10-31 10:54:50.546", 'dd.MM.yyyy') # zum testen
@@ -312,6 +317,7 @@ buildView = () ->
 				else
 					TrafficButton = $('<button class="button ucbpanel_traffic" type="button" id="Campus Company Traffic" value="http://traffic.campus-company.eu"></button>')
 					TrafficButton.click(() ->
+						_gaq.push(['_trackEvent', '[extern] UCB TrafficMeter', 'clicked'])
 						chrome.tabs.create url: "http://traffic.campus-company.eu"
 					)
 					$(".ucbPanelButtonGroup").append TrafficButton
@@ -364,6 +370,5 @@ main = () ->
 		container: "body"
 
 	$("#footer").tooltip()
-
 
 main()
