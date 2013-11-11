@@ -22,7 +22,7 @@ def createZipFile(fs_version):
     os.chdir("UCB-Panel")
     zip = Popen(['zip', '-FSr@', "../"+release_path+filename], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
 
-    zip_stdout = zip.communicate(input='_locales\ncss\nimages\njs\nvendors\nREADME\nchangelog\nicon-128.png\nicon-simple-128.png\nLICENSE\nmanifest.json\noptions.html\nucb-panel.html\n')[0]
+    zip_stdout = zip.communicate(input='_locales\ncss\nimages\nthemes\njs\nvendors\nREADME\nchangelog\nicon-128.png\nicon-simple-128.png\nLICENSE\nmanifest.json\noptions.html\nucb-panel.html\nUCB-Panel.png')[0]
     print(zip_stdout)
     os.chdir(home)
 
