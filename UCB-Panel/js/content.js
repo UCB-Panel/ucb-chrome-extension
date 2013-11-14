@@ -207,6 +207,9 @@
     return $.get("http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", function(xml) {
       var datum, gefunden, i, json;
       json = $.xml2json(xml);
+      $('.ucbMainPanel').slimScroll().bind('slimscroll', function(e, pos) {
+        return console.log("Position " + pos);
+      });
       $('.ucbMensaCollapse').click(function() {
         chrome.tabs.create({
           url: "http://ucb.li/mensa"
@@ -344,6 +347,7 @@
       height: '502px',
       color: '#666',
       size: '5px',
+      allowPageScroll: true,
       alwaysVisible: true
     });
     $("#footer").tooltip({

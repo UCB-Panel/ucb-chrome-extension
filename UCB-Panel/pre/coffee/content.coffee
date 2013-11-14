@@ -85,6 +85,7 @@ createCollapseButton = (innerClass, value, icon, text) ->
 		_gaq.push(['_trackEvent', '[Collapse Button] ' + text, 'clicked'])
 		trig = $(this)
 		if trig.hasClass("trigger_active")
+			# Einklappen
 			if theme is "flat"
 				arrow = trig.find('.arrow')
 				arrow.removeClass('icon-angle-up')
@@ -94,6 +95,7 @@ createCollapseButton = (innerClass, value, icon, text) ->
 			trig.next(".ucbPanelCollapseContainer").slideToggle 300
 			trig.removeClass "trigger_active"
 		else
+			# Ausklappen
 			trig.find(".trigger_active").next(".ucbPanelCollapseContainer").slideToggle 300
 			trig.find(".trigger_active").removeClass "trigger_active"
 			if theme is "flat"
@@ -211,6 +213,12 @@ getMensaAndPrint = () ->
 	$.get "http://infotv.umwelt-campus.de/mensa/xml/mensa.xml", (xml) ->
 		json = $.xml2json(xml)
 
+
+
+		$('.ucbMainPanel').slimScroll().bind('slimscroll', (e, pos) ->
+			console.log "Position " + pos
+		)
+
 		$('.ucbMensaCollapse').click(() ->
 			chrome.tabs.create url: "http://ucb.li/mensa"
 			_gaq.push(['_trackEvent', '[extern] UCB Mensa', 'clicked'])
@@ -236,6 +244,7 @@ getMensaAndPrint = () ->
 				if i >= 5 and not gefunden
 					$('.ucbMensaCollapse').append '<div class="collapse_item noFood"><span class="glyphicon glyphicon-ban-circle"></span></i> Keine Essen gefunden.</div>'
 		)
+
 
 # Build the App
 buildView = () ->
@@ -358,11 +367,13 @@ main = () ->
 	trig = $(this)
 	$(".icon_arrow").css "background-image", "url(images/arrow_down.gif)"  unless trig.hasClass("trigger_active")
 
-	$('.ucbMainPanel').slimScroll
+	$('.ucbMainPanel').slimScroll({
 		height: '502px',
 		color: '#666',
 		size: '5px',
+		allowPageScroll: true
 		alwaysVisible: true
+	})
 
 	# Toggle tooltip
 	$("#footer").tooltip
@@ -372,3 +383,4 @@ main = () ->
 	$("#footer").tooltip()
 
 main()
+
