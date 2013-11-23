@@ -1,6 +1,8 @@
 UCB-Panel
 ====================
 
+[](_additional/Header_v1.fw.png?raw=true)
+
 ## Über die Extension
 Die Google Chrome Extension des Umwelt Campus Birkenfeld (UCB).
 Dies ist ein Projekt welches auf der Arbeit von super_stein basiert, welcher eine Erweiterung für den Firefox programmiert hat.
