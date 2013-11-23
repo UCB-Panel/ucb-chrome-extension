@@ -61,4 +61,4 @@ Die Extension steht unter der **_[GNU General Public License (GPL 3.0)](http://w
 - **_beer icon_** von [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/) `(UCB-Panel/images/beer.png)`
 - **_traffic light icon_** von [Double-J designs](http://www.doublejdesign.co.uk/) `(UCB-Panel/images/traffic.png)`
 - **_chart icon_** von [Double-J designs](http://www.doublejdesign.co.uk/) `(UCB-Panel/images/chart.png)`
-- aller Werke in `vendors`
+- alle Werke in `vendors`
