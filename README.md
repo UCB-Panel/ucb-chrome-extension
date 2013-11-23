@@ -1,7 +1,7 @@
 UCB-Panel
 ====================
 
-[](_additional/Header_v1.fw.png?raw=true)
+![](_additional/Header_v1.fw.png?raw=true)
 
 ## Über die Extension
 Die Google Chrome Extension des Umwelt Campus Birkenfeld (UCB).
