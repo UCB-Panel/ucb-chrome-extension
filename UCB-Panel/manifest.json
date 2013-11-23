@@ -1,6 +1,7 @@
 {
   "name": "__MSG_extensionName__",
-  "version": "2.0.1",
+  "short_name": "__MSG_extensionName__",
+  "version": "2.0.2",
   "manifest_version": 2,
   "description": "__MSG_extensionDescription__",
   "default_locale": "de",
@@ -8,7 +9,7 @@
     "tabs",
     "storage",
     "http://infotv.umwelt-campus.de/",
-    "http://traffic.campus-company.eu/",
+    "http://traffic.campus-company.eu/*",
     "http://*/*",
     "https://*/*"
   ],

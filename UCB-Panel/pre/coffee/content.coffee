@@ -367,13 +367,23 @@ main = () ->
 	trig = $(this)
 	$(".icon_arrow").css "background-image", "url(images/arrow_down.gif)"  unless trig.hasClass("trigger_active")
 
-	$('.ucbMainPanel').slimScroll({
-		height: '502px',
-		color: '#666',
-		size: '5px',
-		allowPageScroll: true
-		alwaysVisible: true
-	})
+	# Itemhöhe 38px
+
+	_PANELHEIGHT = "502px"
+
+	$.ajax(
+		url: 'http://traffic.campus-company.eu/',
+		async: false,
+		type: "GET",
+		dataType: "JSONP",
+		crossDomain: true,
+		complete: (page) ->
+			console.log page
+	).done((page) ->
+		console.log page
+	)
+
+
 
 	# Toggle tooltip
 	$("#footer").tooltip

@@ -336,19 +336,25 @@
   };
 
   main = function() {
-    var trig;
+    var trig, _PANELHEIGHT;
     buildView();
     $(".trigger").not(".trigger_active").next(".ucbPanelCollapseContainer").hide();
     trig = $(this);
     if (!trig.hasClass("trigger_active")) {
       $(".icon_arrow").css("background-image", "url(images/arrow_down.gif)");
     }
-    $('.ucbMainPanel').slimScroll({
-      height: '502px',
-      color: '#666',
-      size: '5px',
-      allowPageScroll: true,
-      alwaysVisible: true
+    _PANELHEIGHT = "502px";
+    $.ajax({
+      url: 'http://traffic.campus-company.eu/',
+      async: false,
+      type: "GET",
+      dataType: "JSONP",
+      crossDomain: true,
+      complete: function(page) {
+        return console.log(page);
+      }
+    }).done(function(page) {
+      return console.log(page);
     });
     $("#footer").tooltip({
       selector: "[data-toggle=tooltip]",
