@@ -348,13 +348,22 @@
       url: 'http://traffic.campus-company.eu/',
       async: false,
       type: "GET",
-      dataType: "JSONP",
-      crossDomain: true,
+      crossDomain: false,
       complete: function(page) {
-        return console.log(page);
+        var ip_address;
+        ip_address = page.responseText.match(/Ihre IP-Adresse: 143.93.4[0-2]{1}.[0-9]{1,3}/) + "";
+        ip_address = ip_address.replace(/Ihre IP-Adresse: /, "") + "";
+        if (ip_address === "null") {
+          _PANELHEIGHT = "462px";
+        }
+        return $('.ucbMainPanel').slimScroll({
+          height: _PANELHEIGHT,
+          color: '#666',
+          size: '5px',
+          allowPageScroll: true,
+          alwaysVisible: true
+        });
       }
-    }).done(function(page) {
-      return console.log(page);
     });
     $("#footer").tooltip({
       selector: "[data-toggle=tooltip]",
