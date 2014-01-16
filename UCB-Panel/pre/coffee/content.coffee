@@ -6,7 +6,7 @@
 
 # classes
 class Link
-	constructor: ( @name, @classes, @id) ->
+	constructor: ( @name, @classes, @id ) ->
 
 # initalize
 locale = window.navigator.language
