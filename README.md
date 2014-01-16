@@ -9,10 +9,10 @@ Dies ist ein Projekt welches auf der Arbeit von super_stein basiert, welcher ein
 Dieses Projekt wird von Studenten des UCBs erstellt und ist kein offizielles Projekt des UCBs.
 
 Entwickler: <br>
-- Niklas Heer<br>
-- Tad Wohlrapp<br>
-- Sebastian Stein (Traffic-Meter Backend)<br>
-- Christian Schönemann (Mensa-Plan API)
+- ```Lead-Developer```    : Niklas Heer<br>
+- ```Developer/Designer```: Tad Wohlrapp<br>
+- ```Developer```         : Sebastian Stein (Traffic-Meter Backend)<br>
+- ```Developer```         : Christian Schönemann (Mensa-Plan API)
 
 Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)**
 
