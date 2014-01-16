@@ -5,14 +5,14 @@ UCB-Panel
 
 ## Über die Extension
 Die Google Chrome Extension des Umwelt Campus Birkenfeld (UCB).
-Dies ist ein Projekt welches auf der Arbeit von super_stein basiert, welcher eine Erweiterung für den Firefox programmiert hat.
+Dies ist ein Projekt welches auf der Arbeit von Sebastian Stein (super_stein) basiert, welcher eine Erweiterung für den Firefox programmiert hat.
 Dieses Projekt wird von Studenten des UCBs erstellt und ist kein offizielles Projekt des UCBs.
 
 Entwickler: <br>
-- ```Lead-Developer```    : Niklas Heer<br>
-- ```Developer/Designer```: Tad Wohlrapp<br>
-- ```Developer```         : Sebastian Stein (Traffic-Meter Backend)<br>
-- ```Developer```         : Christian Schönemann (Mensa-Plan API)
+- **Lead-Developer**: [Niklas Heer](https://github.com/niklas-heer) <small>(Gründer)</small><br>
+- **Developer**: [Tad Wohlrapp](https://github.com/TadWohlrapp) <small>(Design)</small><br>
+- **Developer**: [Sebastian Stein](https://github.com/super-stein) <small>(Traffic-Meter Backend)</small><br>
+- **Developer**: Christian Schönemann <small>(Mensa-Plan API)</small>
 
 Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)**
 
