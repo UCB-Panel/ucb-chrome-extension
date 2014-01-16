@@ -98,7 +98,7 @@
 		},
 		"footerBugs": {
 			"name": "Melde einen Bug oder Wunsch",
-			"link": "https://github.com/niklas-heer/ucb-chrome-extension/issues"
+			"link": "https://github.com/UCB-Panel/ucb-chrome-extension/issues"
 		},
 		"footerSettings": {
 			"name": "Einstellungen",
