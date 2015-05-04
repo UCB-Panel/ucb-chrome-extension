@@ -14,8 +14,6 @@ Entwickler: <br>
 - **Developer**: [Sebastian Stein](https://github.com/super-stein) <small>(Traffic-Meter Backend)</small><br>
 - **Developer**: Christian Schönemann <small>(Mensa-Plan API)</small>
 
-Offizielle Homepage: **[http://ucb.we-develop.de](http://ucb.we-develop.de)**
-
 Verwendete Software für das Projekt:
 
 - [nodejs](http://nodejs.org/)
