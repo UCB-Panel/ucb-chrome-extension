@@ -32,7 +32,6 @@ Verwendete Software für das Projekt:
 ## Mitwirken
 Jeder ist herzlich eingeladen an der Extension mit zu wirken.<br>
 Um die nötige Software zu installieren solltet ihr den unten beschriebenen Schritten folgen.<br>
-Falls ihr Fragen habt einfach eine Mail an ```niklas.heer@me.com```!<br>
 
 [nodejs](http://nodejs.org/) installieren und danach folgende Befehle im Terminal ausführen:<br>
 ```bash
